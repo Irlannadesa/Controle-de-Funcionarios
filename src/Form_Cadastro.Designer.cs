@@ -56,6 +56,7 @@
             text_nome.Name = "text_nome";
             text_nome.Size = new Size(328, 23);
             text_nome.TabIndex = 0;
+            text_nome.KeyPress += text_nome_KeyPress;
             // 
             // lbl_text_form_cadastro
             // 
@@ -166,14 +167,18 @@
             // 
             mtb_dtNascimento.Format = DateTimePickerFormat.Short;
             mtb_dtNascimento.Location = new Point(221, 248);
+            mtb_dtNascimento.MaxDate = new DateTime(2008, 1, 1, 0, 0, 0, 0);
+            mtb_dtNascimento.MinDate = new DateTime(1963, 12, 1, 0, 0, 0, 0);
             mtb_dtNascimento.Name = "mtb_dtNascimento";
             mtb_dtNascimento.Size = new Size(141, 23);
             mtb_dtNascimento.TabIndex = 4;
+            mtb_dtNascimento.Value = new DateTime(2008, 1, 1, 0, 0, 0, 0);
             // 
             // mtb_dtAdimissao
             // 
             mtb_dtAdimissao.Format = DateTimePickerFormat.Short;
             mtb_dtAdimissao.Location = new Point(34, 312);
+            mtb_dtAdimissao.MaxDate = new DateTime(2023, 4, 24, 23, 59, 59, 0);
             mtb_dtAdimissao.Name = "mtb_dtAdimissao";
             mtb_dtAdimissao.Size = new Size(137, 23);
             mtb_dtAdimissao.TabIndex = 5;
@@ -191,7 +196,7 @@
             // mtb_cpf
             // 
             mtb_cpf.Location = new Point(34, 141);
-            mtb_cpf.Mask = "000.000.000-00";
+            mtb_cpf.Mask = "000,000,000-00";
             mtb_cpf.Name = "mtb_cpf";
             mtb_cpf.Size = new Size(137, 23);
             mtb_cpf.TabIndex = 1;

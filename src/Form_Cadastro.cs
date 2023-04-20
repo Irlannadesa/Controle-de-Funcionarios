@@ -1,5 +1,6 @@
 ﻿using ListaDePessoas.Modelo;
-using static ListaDePessoas.Modelo.Funcionario;
+using System.Text.RegularExpressions;
+
 
 namespace ListaDePessoas
 {
@@ -18,7 +19,7 @@ namespace ListaDePessoas
 
         private void btn_enviar_cadastro_Click(object sender, EventArgs e)
         {
-            if (ChecarDados())
+            if (Validacoes())
             {
                 var funcionario = new Funcionario();
                 funcionario.Nome = text_nome.Text;
@@ -28,14 +29,7 @@ namespace ListaDePessoas
                 funcionario.DataNascimento = mtb_dtNascimento.Value;
                 funcionario.DataAdmissao = mtb_dtAdimissao.Value;
                 funcionario.Id = _id;
-                if (mtb_sexo.Text == "Masculino")
-                {
-                    funcionario.Genero = Sexo.Masculino;
-                }
-                else
-                {
-                    funcionario.Genero = Sexo.Feminino;
-                }
+                
                 _funcionarios.Add(funcionario);
 
                 this.Close();
@@ -46,24 +40,48 @@ namespace ListaDePessoas
                 MessageBox.Show("Precisa preencher todos os campos", "Erro:");
             }
         }
-        private bool ChecarDados()
+
+        private bool Validacoes()
         {
-            if (!string.IsNullOrEmpty(text_nome.Text) && !string.IsNullOrEmpty(text_endereco.Text) &&
-                !string.IsNullOrEmpty(mtb_telefone.Text) &&
-                mtb_sexo.SelectedItem != null)
 
-
-                return true;
-
-            else
-
+            var ValidaCPF = mtb_cpf.Text;
+            if (!Regex.IsMatch(ValidaCPF, @"^\d{3}\.\d{3}\.\d{3}-\d{2}$") || string.IsNullOrEmpty(mtb_cpf.Text))
+            {
+                MessageBox.Show("CPF inválido!");
                 return false;
+            }
+
+            var ValidaTelefone = mtb_telefone.Text;
+            if (!Regex.IsMatch(ValidaTelefone, @"^\(\d{2}\)\s\d{4}-\d{4}$") || string.IsNullOrEmpty(mtb_telefone.Text))
+            {
+                MessageBox.Show("Telefone Inválido!");
+                return false;
+            }
+
+            var ValidaDataNascimento = new DateTime();
+            if (!DateTime.TryParse(mtb_dtNascimento.Text, out ValidaDataNascimento))
+            {
+                MessageBox.Show("Selecione uma data de Nascimento Válida!");
+                return false;
+            }
+                               
+            return true;
 
         }
+    
+
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void text_nome_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
