@@ -29,7 +29,7 @@ namespace ListaDePessoas
                 funcionario.DataNascimento = mtb_dtNascimento.Value;
                 funcionario.DataAdmissao = mtb_dtAdimissao.Value;
                 funcionario.Id = _id;
-                
+
                 _funcionarios.Add(funcionario);
 
                 this.Close();
@@ -64,11 +64,11 @@ namespace ListaDePessoas
                 MessageBox.Show("Selecione uma data de Nascimento Válida!");
                 return false;
             }
-                               
+
             return true;
 
         }
-    
+
 
 
         private void btn_cancelar_Click(object sender, EventArgs e)
