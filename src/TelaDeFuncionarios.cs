@@ -2,34 +2,36 @@ using ListaDePessoas.Modelo;
 
 namespace ListaDePessoas
 {
-    public partial class Janela_Principal : Form
+    public partial class TelaDeFuncionarios : Form
     {
         private List<Funcionario> _funcionarios;
         private int _ultimoId;
-        public Janela_Principal()
+        public TelaDeFuncionarios()
         {
             InitializeComponent();
             _funcionarios = new List<Funcionario>();
             _ultimoId = 0;
         }
 
-        private void btn_cadastrar_Click(object sender, EventArgs e)
+        private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
             _ultimoId = _ultimoId + 1;
-            Form_Cadastro form = new Form_Cadastro(_funcionarios, _ultimoId);
+            TelaDeCadastro form = new TelaDeCadastro(_funcionarios, _ultimoId, false);
             form.ShowDialog();
             dataGrid_funcionarios.DataSource = null;
-            dataGrid_funcionarios.DataSource = _funcionarios;
-            dataGrid_funcionarios.Refresh();
+            dataGrid_funcionarios.DataSource = _funcionarios;            
         }
 
-        private void btn_editar_Click(object sender, EventArgs e)
+        private void AoClicarEmEditar(object sender, EventArgs e)
         {
-
+            int idParaEditar = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
+            TelaDeCadastro formularioDeCadastro = new TelaDeCadastro(_funcionarios, idParaEditar, true);
+            formularioDeCadastro.ShowDialog();
+            dataGrid_funcionarios.DataSource = null;
+            dataGrid_funcionarios.DataSource = _funcionarios;
         }
-        private void btn_excluir_Click(object sender, EventArgs e)        {
-
-
+        private void AoClicarEmExcluir(object sender, EventArgs e)        
+        {
             int idParaExcluir;
 
             if (dataGrid_funcionarios.SelectedRows.Count > 0)
@@ -49,10 +51,8 @@ namespace ListaDePessoas
                         break;
                     }
                 }
-
                 dataGrid_funcionarios.DataSource = null;
                 dataGrid_funcionarios.DataSource = _funcionarios;
-
             }
             else
             {
@@ -60,9 +60,5 @@ namespace ListaDePessoas
                 return;
             }
         }
-
-
     }
-
-
 }

@@ -1,6 +1,6 @@
 ﻿namespace ListaDePessoas
 {
-    partial class Form_Cadastro
+    partial class TelaDeCadastro
     {
         /// <summary>
         /// Required designer variable.
@@ -54,7 +54,7 @@
             text_nome.Name = "text_nome";
             text_nome.Size = new Size(328, 23);
             text_nome.TabIndex = 0;
-            text_nome.KeyPress += text_nome_KeyPress;
+            text_nome.KeyPress += AoDigitarNoCampoNome;
             // 
             // lbl_text_form_cadastro
             // 
@@ -140,7 +140,7 @@
             btn_enviar_cadastro.TabIndex = 7;
             btn_enviar_cadastro.Text = "Salvar";
             btn_enviar_cadastro.UseVisualStyleBackColor = true;
-            btn_enviar_cadastro.Click += btn_enviar_cadastro_Click;
+            btn_enviar_cadastro.Click += AoClicarEmEnviar;
             // 
             // mtb_dtNascimento
             // 
@@ -189,7 +189,7 @@
             btn_cancelar.TabIndex = 8;
             btn_cancelar.Text = "Cancelar";
             btn_cancelar.UseVisualStyleBackColor = true;
-            btn_cancelar.Click += btn_cancelar_Click;
+            btn_cancelar.Click += AoClicarEmCancelar;
             // 
             // Form_Cadastro
             // 
