@@ -24,12 +24,12 @@ namespace ListaDePessoas
                 {
                     if (funcionario.Id == id)
                     {
-                        text_nome.Text = funcionario.Nome;
-                        mtb_cpf.Text = funcionario.CPF;
-                        text_endereco.Text = funcionario.Endereco;
-                        mtb_telefone.Text = funcionario.Telefone;
-                        mtb_dtNascimento.Value = funcionario.DataNascimento;
-                        mtb_dtAdimissao.Value = funcionario.DataAdmissao;
+                        campoDeNome.Text = funcionario.Nome;
+                        campoDeCpf.Text = funcionario.CPF;
+                        campoDeEndereco.Text = funcionario.Endereco;
+                        campoDeTelefone.Text = funcionario.Telefone;
+                        campoDeDataDeNascimento.Value = funcionario.DataNascimento;
+                        campoDeDataDeAdmissao.Value = funcionario.DataAdmissao;
 
                     }
                 }
@@ -47,24 +47,24 @@ namespace ListaDePessoas
                     {
                         if (funcionario.Id == _id)
                         {
-                            funcionario.Nome = text_nome.Text;
-                            funcionario.CPF = mtb_cpf.Text;
-                            funcionario.Endereco = text_endereco.Text;
-                            funcionario.Telefone = mtb_telefone.Text;
-                            funcionario.DataNascimento = mtb_dtNascimento.Value;
-                            funcionario.DataAdmissao = mtb_dtAdimissao.Value;
+                            funcionario.Nome = campoDeNome.Text;
+                            funcionario.CPF = campoDeCpf.Text;
+                            funcionario.Endereco = campoDeEndereco.Text;
+                            funcionario.Telefone = campoDeTelefone.Text;
+                            funcionario.DataNascimento = campoDeDataDeNascimento.Value;
+                            funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
                         }
                     }
                 }
                 else
                 {
                     var funcionario = new Funcionario();
-                    funcionario.Nome = text_nome.Text;
-                    funcionario.CPF = mtb_cpf.Text;
-                    funcionario.Endereco = text_endereco.Text;
-                    funcionario.Telefone = mtb_telefone.Text;
-                    funcionario.DataNascimento = mtb_dtNascimento.Value;
-                    funcionario.DataAdmissao = mtb_dtAdimissao.Value;
+                    funcionario.Nome = campoDeNome.Text;
+                    funcionario.CPF = campoDeCpf.Text;
+                    funcionario.Endereco = campoDeEndereco.Text;
+                    funcionario.Telefone = campoDeTelefone.Text;
+                    funcionario.DataNascimento = campoDeDataDeNascimento.Value;
+                    funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
                     funcionario.Id = _id;
 
                     _funcionarios.Add(funcionario);
@@ -82,22 +82,22 @@ namespace ListaDePessoas
         private bool Validar()
         {
 
-            var ValidaCPF = mtb_cpf.Text;
-            if (!Regex.IsMatch(ValidaCPF, @"^\d{3}\.\d{3}\.\d{3}-\d{2}$") || string.IsNullOrEmpty(mtb_cpf.Text))
+            var ValidaCPF = campoDeCpf.Text;
+            if (!Regex.IsMatch(ValidaCPF, @"^\d{3}\.\d{3}\.\d{3}-\d{2}$") || string.IsNullOrEmpty(campoDeCpf.Text))
             {
                 MessageBox.Show("CPF inválido!");
                 return false;
             }
 
-            var ValidaTelefone = mtb_telefone.Text;
-            if (!Regex.IsMatch(ValidaTelefone, @"^\(\d{2}\)\s\d{4}-\d{4}$") || string.IsNullOrEmpty(mtb_telefone.Text))
+            var ValidaTelefone = campoDeTelefone.Text;
+            if (!Regex.IsMatch(ValidaTelefone, @"^\(\d{2}\)\s\d{4}-\d{4}$") || string.IsNullOrEmpty(campoDeTelefone.Text))
             {
                 MessageBox.Show("Telefone Inválido!");
                 return false;
             }
 
             var ValidaDataNascimento = new DateTime();
-            if (!DateTime.TryParse(mtb_dtNascimento.Text, out ValidaDataNascimento))
+            if (!DateTime.TryParse(campoDeDataDeNascimento.Text, out ValidaDataNascimento))
             {
                 MessageBox.Show("Selecione uma data de Nascimento Válida!");
                 return false;
@@ -106,13 +106,10 @@ namespace ListaDePessoas
             return true;
         }
 
-
-
         private void AoClicarEmCancelar(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void AoDigitarNoCampoNome(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar))
