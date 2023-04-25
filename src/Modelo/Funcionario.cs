@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ListaDePessoas.Modelo
+﻿namespace ListaDePessoas.Modelo
 {
     public class Funcionario
     {
@@ -15,10 +9,6 @@ namespace ListaDePessoas.Modelo
         public string Telefone { get; set; }
         public DateTime DataNascimento { get; set; }
         public DateTime DataAdmissao { get; set; }
-        public Sexo Genero { get; set; }
-        public enum Sexo {
-            Masculino,
-            Feminino
-        }
+      
     }
 }

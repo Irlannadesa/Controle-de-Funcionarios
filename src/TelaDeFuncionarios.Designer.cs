@@ -1,6 +1,6 @@
 ﻿namespace ListaDePessoas
 {
-    partial class Janela_Principal
+    partial class TelaDeFuncionarios
     {
         /// <summary>
         ///  Required designer variable.
@@ -45,7 +45,7 @@
             btn_cadastrar.TabIndex = 0;
             btn_cadastrar.Text = "Cadatrar Funcionário";
             btn_cadastrar.UseVisualStyleBackColor = true;
-            btn_cadastrar.Click += btn_cadastrar_Click;
+            btn_cadastrar.Click += AoClicarEmCadastrar;
             // 
             // lbl_titulo
             // 
@@ -66,7 +66,7 @@
             btn_editar.TabIndex = 3;
             btn_editar.Text = "Editar Funcionário";
             btn_editar.UseVisualStyleBackColor = true;
-            btn_editar.Click += btn_editar_Click;
+            btn_editar.Click += AoClicarEmEditar;
             // 
             // btn_excluir
             // 
@@ -77,7 +77,7 @@
             btn_excluir.TabIndex = 4;
             btn_excluir.Text = "Excluir Funcionário";
             btn_excluir.UseVisualStyleBackColor = true;
-            btn_excluir.Click += btn_excluir_Click;
+            btn_excluir.Click += AoClicarEmExcluir;
             // 
             // dataGrid_funcionarios
             // 
