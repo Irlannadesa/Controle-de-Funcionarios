@@ -9,10 +9,9 @@ namespace ListaDePessoas
         
         private int _id;
         private bool _eEdicao;
-        public TelaDeCadastro(List<Funcionario> funcionarios, int id, bool eEdicao)
+        public TelaDeCadastro( int id, bool eEdicao)
         {
-            InitializeComponent();
-           
+            InitializeComponent();           
             _id = id;
             _eEdicao = eEdicao;
 

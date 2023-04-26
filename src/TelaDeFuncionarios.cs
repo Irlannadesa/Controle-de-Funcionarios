@@ -14,8 +14,8 @@ namespace ListaDePessoas
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
             _ultimoId = _ultimoId + 1;
-            TelaDeCadastro form = new TelaDeCadastro(SingletonFuncionarios.ObterInstancia(), _ultimoId, false);
-            form.ShowDialog();
+            var telaDeCadastro = new TelaDeCadastro(_ultimoId, false);
+            telaDeCadastro.ShowDialog();
             dataGrid_funcionarios.DataSource = null;
             dataGrid_funcionarios.DataSource = SingletonFuncionarios.ObterInstancia();            
         }
@@ -27,8 +27,8 @@ namespace ListaDePessoas
 
             if (dataGrid_funcionarios.SelectedRows.Count > 0)
             {
-                int idParaEditar = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
-                TelaDeCadastro formularioDeCadastro = new TelaDeCadastro(SingletonFuncionarios.ObterInstancia(), idParaEditar, true);
+                var idParaEditar = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
+                var formularioDeCadastro = new TelaDeCadastro(idParaEditar, true);
                 formularioDeCadastro.ShowDialog();
                 dataGrid_funcionarios.DataSource = null;
                 dataGrid_funcionarios.DataSource = SingletonFuncionarios.ObterInstancia();
@@ -42,11 +42,11 @@ namespace ListaDePessoas
         }
         private void AoClicarEmExcluir(object sender, EventArgs e)        
         {
-            int idParaExcluir;
+           
 
             if (dataGrid_funcionarios.SelectedRows.Count > 0)
             {
-                idParaExcluir = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
+                var idParaExcluir = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
                 var confirmacaoExcluir = MessageBox.Show("Deseja excluir este funcionário?", "Confirmação:", MessageBoxButtons.YesNo);
                 if (confirmacaoExcluir == DialogResult.No)
                 {
