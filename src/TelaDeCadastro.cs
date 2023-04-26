@@ -6,21 +6,20 @@ namespace ListaDePessoas
 {
     public partial class TelaDeCadastro : Form
     {
-        private List<Funcionario> _funcionarios;
+        
         private int _id;
         private bool _eEdicao;
-
         public TelaDeCadastro(List<Funcionario> funcionarios, int id, bool eEdicao)
         {
             InitializeComponent();
-            _funcionarios = funcionarios;
+           
             _id = id;
             _eEdicao = eEdicao;
 
             if (eEdicao)
             {
-                lbl_text_form_cadastro.Text = "Atualização de Funcionário";
-                foreach (var funcionario in _funcionarios)
+                TituloFormularioDeCadastro.Text = "Atualização de Funcionário";
+                foreach (var funcionario in SingletonFuncionarios.ObterInstancia())
                 {
                     if (funcionario.Id == id)
                     {
@@ -38,12 +37,11 @@ namespace ListaDePessoas
 
         private void AoClicarEmEnviar(object sender, EventArgs e)
         {
-            if (Validar())
-            {
+            if (Validar())            {
 
                 if (_eEdicao)
                 {
-                    foreach (var funcionario in _funcionarios)
+                    foreach (var funcionario in SingletonFuncionarios.ObterInstancia())
                     {
                         if (funcionario.Id == _id)
                         {
@@ -55,8 +53,7 @@ namespace ListaDePessoas
                             funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
                         }
                     }
-                }
-                else
+                }else
                 {
                     var funcionario = new Funcionario();
                     funcionario.Nome = campoDeNome.Text;
@@ -67,7 +64,7 @@ namespace ListaDePessoas
                     funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
                     funcionario.Id = _id;
 
-                    _funcionarios.Add(funcionario);
+                    SingletonFuncionarios.ObterInstancia().Add(funcionario);
                 }
 
                 this.Close();
