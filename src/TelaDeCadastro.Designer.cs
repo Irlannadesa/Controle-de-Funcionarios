@@ -31,7 +31,7 @@
         private void InitializeComponent()
         {
             campoDeNome = new MaskedTextBox();
-            lbl_text_form_cadastro = new Label();
+            TituloFormularioDeCadastro = new Label();
             campoDeEndereco = new MaskedTextBox();
             lbl_campo_nome = new Label();
             lbl_campo_endereco = new Label();
@@ -58,13 +58,13 @@
             // 
             // lbl_text_form_cadastro
             // 
-            lbl_text_form_cadastro.AutoSize = true;
-            lbl_text_form_cadastro.Font = new Font("Verdana", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_text_form_cadastro.Location = new Point(76, 19);
-            lbl_text_form_cadastro.Name = "lbl_text_form_cadastro";
-            lbl_text_form_cadastro.Size = new Size(250, 20);
-            lbl_text_form_cadastro.TabIndex = 1;
-            lbl_text_form_cadastro.Text = "Cadastro de Funcionários";
+            TituloFormularioDeCadastro.AutoSize = true;
+            TituloFormularioDeCadastro.Font = new Font("Verdana", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
+            TituloFormularioDeCadastro.Location = new Point(76, 19);
+            TituloFormularioDeCadastro.Name = "lbl_text_form_cadastro";
+            TituloFormularioDeCadastro.Size = new Size(250, 20);
+            TituloFormularioDeCadastro.TabIndex = 1;
+            TituloFormularioDeCadastro.Text = "Cadastro de Funcionários";
             // 
             // text_endereco
             // 
@@ -208,7 +208,7 @@
             Controls.Add(lbl_campo_nome);
             Controls.Add(campoDeCpf);
             Controls.Add(campoDeTelefone);
-            Controls.Add(lbl_text_form_cadastro);
+            Controls.Add(TituloFormularioDeCadastro);
             Controls.Add(campoDeEndereco);
             Controls.Add(campoDeNome);
             Name = "Form_Cadastro";
@@ -220,7 +220,7 @@
         #endregion
 
         private MaskedTextBox campoDeNome;
-        private Label lbl_text_form_cadastro;
+        private Label TituloFormularioDeCadastro;
         private MaskedTextBox campoDeEndereco;
         private Label lbl_campo_nome;
         private Label lbl_campo_endereco;
