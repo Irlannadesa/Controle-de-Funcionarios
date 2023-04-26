@@ -4,31 +4,41 @@ namespace ListaDePessoas
 {
     public partial class TelaDeFuncionarios : Form
     {
-        private List<Funcionario> _funcionarios;
+       
         private int _ultimoId;
         public TelaDeFuncionarios()
         {
-            InitializeComponent();
-            _funcionarios = new List<Funcionario>();
+            InitializeComponent();            
             _ultimoId = 0;
         }
-
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
             _ultimoId = _ultimoId + 1;
-            TelaDeCadastro form = new TelaDeCadastro(_funcionarios, _ultimoId, false);
+            TelaDeCadastro form = new TelaDeCadastro(SingletonFuncionarios.ObterInstancia(), _ultimoId, false);
             form.ShowDialog();
             dataGrid_funcionarios.DataSource = null;
-            dataGrid_funcionarios.DataSource = _funcionarios;            
+            dataGrid_funcionarios.DataSource = SingletonFuncionarios.ObterInstancia();            
         }
+        
+
 
         private void AoClicarEmEditar(object sender, EventArgs e)
         {
-            int idParaEditar = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
-            TelaDeCadastro formularioDeCadastro = new TelaDeCadastro(_funcionarios, idParaEditar, true);
-            formularioDeCadastro.ShowDialog();
-            dataGrid_funcionarios.DataSource = null;
-            dataGrid_funcionarios.DataSource = _funcionarios;
+
+            if (dataGrid_funcionarios.SelectedRows.Count > 0)
+            {
+                int idParaEditar = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
+                TelaDeCadastro formularioDeCadastro = new TelaDeCadastro(SingletonFuncionarios.ObterInstancia(), idParaEditar, true);
+                formularioDeCadastro.ShowDialog();
+                dataGrid_funcionarios.DataSource = null;
+                dataGrid_funcionarios.DataSource = SingletonFuncionarios.ObterInstancia();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione um item para Editar.");
+                return;
+            }
+
         }
         private void AoClicarEmExcluir(object sender, EventArgs e)        
         {
@@ -43,16 +53,16 @@ namespace ListaDePessoas
                     return;
                 }
 
-                foreach (var funcionario in _funcionarios)
+                foreach (var funcionario in SingletonFuncionarios.ObterInstancia())
                 {
                     if (funcionario.Id == idParaExcluir)
                     {
-                        _funcionarios.Remove(funcionario);
+                        SingletonFuncionarios.ObterInstancia().Remove(funcionario);
                         break;
                     }
                 }
                 dataGrid_funcionarios.DataSource = null;
-                dataGrid_funcionarios.DataSource = _funcionarios;
+                dataGrid_funcionarios.DataSource = SingletonFuncionarios.ObterInstancia();
             }
             else
             {
