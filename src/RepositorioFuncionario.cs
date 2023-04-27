@@ -12,8 +12,6 @@ namespace ListaDePessoas
 
         public Funcionario ObterPorId(int id)
         {
-
-
             foreach (Funcionario funcionario in SingletonFuncionarios.ObterInstancia())
             {
                 if (funcionario.Id == id)
@@ -21,9 +19,7 @@ namespace ListaDePessoas
                     return funcionario;
                 }
             }
-
             return null;
-
         }
 
         public void Criar(Funcionario novoFuncionario)
