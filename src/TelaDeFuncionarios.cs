@@ -26,6 +26,7 @@ namespace ListaDePessoas
         private void AoClicarEmEditar(object sender, EventArgs e)
         {
             RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
+
             if (dataGrid_funcionarios.SelectedRows.Count > 0)
             {
                 var idParaEditar = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
@@ -59,6 +60,7 @@ namespace ListaDePessoas
                     if (funcionario.Id == idParaExcluir)
                     {
                         repositorioFuncionario.Remover(funcionario.Id);
+
                         break;
                     }
                 }
