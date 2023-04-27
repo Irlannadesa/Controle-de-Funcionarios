@@ -4,11 +4,11 @@ namespace ListaDePessoas
 {
     public partial class TelaDeFuncionarios : Form
     {
-       
+
         private int _ultimoId;
         public TelaDeFuncionarios()
         {
-            InitializeComponent();            
+            InitializeComponent();
             _ultimoId = 0;
         }
         private void AoClicarEmCadastrar(object sender, EventArgs e)
@@ -18,9 +18,9 @@ namespace ListaDePessoas
             var telaDeCadastro = new TelaDeCadastro(_ultimoId, false);
             telaDeCadastro.ShowDialog();
             dataGrid_funcionarios.DataSource = null;
-            dataGrid_funcionarios.DataSource = repositorioFuncionario.ObterTodos();            
+            dataGrid_funcionarios.DataSource = repositorioFuncionario.ObterTodos();
         }
-        
+
 
 
         private void AoClicarEmEditar(object sender, EventArgs e)
@@ -42,7 +42,8 @@ namespace ListaDePessoas
             }
 
         }
-        private void AoClicarEmExcluir(object sender, EventArgs e)        
+
+        private void AoClicarEmExcluir(object sender, EventArgs e)
         {
             RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
 

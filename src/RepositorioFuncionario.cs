@@ -12,8 +12,6 @@ namespace ListaDePessoas
 
         public Funcionario ObterPorId(int id)
         {
-
-
             foreach (Funcionario funcionario in SingletonFuncionarios.ObterInstancia())
             {
                 if (funcionario.Id == id)
@@ -21,9 +19,7 @@ namespace ListaDePessoas
                     return funcionario;
                 }
             }
-
             return null;
-
         }
 
         public void Criar(Funcionario novoFuncionario)
@@ -35,8 +31,8 @@ namespace ListaDePessoas
 
         public void Remover(int id)
         {
-            var animalARemover = ObterPorId(id);
-            SingletonFuncionarios.ObterInstancia().Remove(animalARemover);
+            var funcionarioARemover = ObterPorId(id);
+            SingletonFuncionarios.ObterInstancia().Remove(funcionarioARemover);
         }
 
         public void Atualizar(Funcionario funcionarioASerAtualizado)
