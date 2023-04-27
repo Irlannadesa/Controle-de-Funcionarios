@@ -9,14 +9,17 @@ namespace ListaDePessoas
         
         private int _id;
         private bool _eEdicao;
+       
         public TelaDeCadastro( int id, bool eEdicao)
         {
             InitializeComponent();           
             _id = id;
             _eEdicao = eEdicao;
+            
 
             if (eEdicao)
             {
+
                 TituloFormularioDeCadastro.Text = "Atualização de Funcionário";
                 foreach (var funcionario in SingletonFuncionarios.ObterInstancia())
                 {
@@ -52,7 +55,8 @@ namespace ListaDePessoas
                             funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
                         }
                     }
-                }else
+                }
+                else
                 {
                     var funcionario = new Funcionario();
                     funcionario.Nome = campoDeNome.Text;

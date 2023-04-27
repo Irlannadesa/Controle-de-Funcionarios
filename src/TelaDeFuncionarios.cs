@@ -13,25 +13,26 @@ namespace ListaDePessoas
         }
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
+            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
             _ultimoId = _ultimoId + 1;
             var telaDeCadastro = new TelaDeCadastro(_ultimoId, false);
             telaDeCadastro.ShowDialog();
             dataGrid_funcionarios.DataSource = null;
-            dataGrid_funcionarios.DataSource = SingletonFuncionarios.ObterInstancia();            
+            dataGrid_funcionarios.DataSource = repositorioFuncionario.ObterTodos();            
         }
         
 
 
         private void AoClicarEmEditar(object sender, EventArgs e)
         {
-
+            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
             if (dataGrid_funcionarios.SelectedRows.Count > 0)
             {
                 var idParaEditar = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
                 var formularioDeCadastro = new TelaDeCadastro(idParaEditar, true);
                 formularioDeCadastro.ShowDialog();
                 dataGrid_funcionarios.DataSource = null;
-                dataGrid_funcionarios.DataSource = SingletonFuncionarios.ObterInstancia();
+                dataGrid_funcionarios.DataSource = repositorioFuncionario.ObterTodos();
             }
             else
             {
@@ -42,7 +43,7 @@ namespace ListaDePessoas
         }
         private void AoClicarEmExcluir(object sender, EventArgs e)        
         {
-           
+            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
 
             if (dataGrid_funcionarios.SelectedRows.Count > 0)
             {
@@ -57,12 +58,12 @@ namespace ListaDePessoas
                 {
                     if (funcionario.Id == idParaExcluir)
                     {
-                        SingletonFuncionarios.ObterInstancia().Remove(funcionario);
+                        repositorioFuncionario.Remover(funcionario.Id);
                         break;
                     }
                 }
                 dataGrid_funcionarios.DataSource = null;
-                dataGrid_funcionarios.DataSource = SingletonFuncionarios.ObterInstancia();
+                dataGrid_funcionarios.DataSource = repositorioFuncionario.ObterTodos();
             }
             else
             {
