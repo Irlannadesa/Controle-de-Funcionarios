@@ -6,55 +6,55 @@ namespace ListaDePessoas
 {
     public partial class TelaDeCadastro : Form
     {
-        
+
         private int _id;
         private bool _eEdicao;
-       
-        public TelaDeCadastro( int id, bool eEdicao)
+
+        public TelaDeCadastro(int id, bool eEdicao)
         {
-            InitializeComponent();           
+            InitializeComponent();
             _id = id;
             _eEdicao = eEdicao;
-            
+            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
+
 
             if (eEdicao)
             {
 
                 TituloFormularioDeCadastro.Text = "Atualização de Funcionário";
-                foreach (var funcionario in SingletonFuncionarios.ObterInstancia())
-                {
-                    if (funcionario.Id == id)
-                    {
-                        campoDeNome.Text = funcionario.Nome;
-                        campoDeCpf.Text = funcionario.CPF;
-                        campoDeEndereco.Text = funcionario.Endereco;
-                        campoDeTelefone.Text = funcionario.Telefone;
-                        campoDeDataDeNascimento.Value = funcionario.DataNascimento;
-                        campoDeDataDeAdmissao.Value = funcionario.DataAdmissao;
 
-                    }
-                }
+                var funcionario = repositorioFuncionario.ObterPorId(id);
+
+                campoDeNome.Text = funcionario.Nome;
+                campoDeCpf.Text = funcionario.CPF;
+                campoDeEndereco.Text = funcionario.Endereco;
+                campoDeTelefone.Text = funcionario.Telefone;
+                campoDeDataDeNascimento.Value = funcionario.DataNascimento;
+                campoDeDataDeAdmissao.Value = funcionario.DataAdmissao;
+
             }
         }
 
         private void AoClicarEmEnviar(object sender, EventArgs e)
         {
-            if (Validar())            {
+            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
+
+            if (Validar())
+            {
 
                 if (_eEdicao)
                 {
-                    foreach (var funcionario in SingletonFuncionarios.ObterInstancia())
-                    {
-                        if (funcionario.Id == _id)
-                        {
-                            funcionario.Nome = campoDeNome.Text;
-                            funcionario.CPF = campoDeCpf.Text;
-                            funcionario.Endereco = campoDeEndereco.Text;
-                            funcionario.Telefone = campoDeTelefone.Text;
-                            funcionario.DataNascimento = campoDeDataDeNascimento.Value;
-                            funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
-                        }
-                    }
+                    var funcionario = new Funcionario();
+
+                    funcionario.Nome = campoDeNome.Text;
+                    funcionario.CPF = campoDeCpf.Text;
+                    funcionario.Endereco = campoDeEndereco.Text;
+                    funcionario.Telefone = campoDeTelefone.Text;
+                    funcionario.DataNascimento = campoDeDataDeNascimento.Value;
+                    funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
+                    funcionario.Id = _id;
+
+                    repositorioFuncionario.Atualizar(funcionario);
                 }
                 else
                 {
@@ -67,7 +67,7 @@ namespace ListaDePessoas
                     funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
                     funcionario.Id = _id;
 
-                    SingletonFuncionarios.ObterInstancia().Add(funcionario);
+                    repositorioFuncionario.Criar(funcionario);
                 }
 
                 this.Close();
