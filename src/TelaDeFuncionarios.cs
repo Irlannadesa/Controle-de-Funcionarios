@@ -13,25 +13,26 @@ namespace ListaDePessoas
         }
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
+            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
             _ultimoId = _ultimoId + 1;
-            TelaDeCadastro form = new TelaDeCadastro(SingletonFuncionarios.ObterInstancia(), _ultimoId, false);
-            form.ShowDialog();
+            var telaDeCadastro = new TelaDeCadastro(_ultimoId, false);
+            telaDeCadastro.ShowDialog();
             dataGrid_funcionarios.DataSource = null;
-            dataGrid_funcionarios.DataSource = SingletonFuncionarios.ObterInstancia();            
+            dataGrid_funcionarios.DataSource = repositorioFuncionario.ObterTodos();            
         }
         
 
 
         private void AoClicarEmEditar(object sender, EventArgs e)
         {
-
+            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
             if (dataGrid_funcionarios.SelectedRows.Count > 0)
             {
-                int idParaEditar = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
-                TelaDeCadastro formularioDeCadastro = new TelaDeCadastro(SingletonFuncionarios.ObterInstancia(), idParaEditar, true);
+                var idParaEditar = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
+                var formularioDeCadastro = new TelaDeCadastro(idParaEditar, true);
                 formularioDeCadastro.ShowDialog();
                 dataGrid_funcionarios.DataSource = null;
-                dataGrid_funcionarios.DataSource = SingletonFuncionarios.ObterInstancia();
+                dataGrid_funcionarios.DataSource = repositorioFuncionario.ObterTodos();
             }
             else
             {
@@ -42,11 +43,11 @@ namespace ListaDePessoas
         }
         private void AoClicarEmExcluir(object sender, EventArgs e)        
         {
-            int idParaExcluir;
+            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
 
             if (dataGrid_funcionarios.SelectedRows.Count > 0)
             {
-                idParaExcluir = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
+                var idParaExcluir = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
                 var confirmacaoExcluir = MessageBox.Show("Deseja excluir este funcionário?", "Confirmação:", MessageBoxButtons.YesNo);
                 if (confirmacaoExcluir == DialogResult.No)
                 {
@@ -57,12 +58,12 @@ namespace ListaDePessoas
                 {
                     if (funcionario.Id == idParaExcluir)
                     {
-                        SingletonFuncionarios.ObterInstancia().Remove(funcionario);
+                        repositorioFuncionario.Remover(funcionario.Id);
                         break;
                     }
                 }
                 dataGrid_funcionarios.DataSource = null;
-                dataGrid_funcionarios.DataSource = SingletonFuncionarios.ObterInstancia();
+                dataGrid_funcionarios.DataSource = repositorioFuncionario.ObterTodos();
             }
             else
             {

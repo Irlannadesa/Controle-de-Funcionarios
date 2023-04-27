@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ListaDePessoas.Modelo;
 
 namespace ListaDePessoas
 {
     internal interface IFuncionarios
     {
+        public List<Funcionario> ObterTodos();
+        public void Criar(Funcionario novoFuncionario);
+        public Funcionario ObterPorId(int id);
+        public void Remover(int id);
+        public void Atualizar();
 
     }
 }
