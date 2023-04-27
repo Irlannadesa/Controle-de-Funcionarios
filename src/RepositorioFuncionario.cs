@@ -31,8 +31,8 @@ namespace ListaDePessoas
 
         public void Remover(int id)
         {
-            var animalARemover = ObterPorId(id);
-            SingletonFuncionarios.ObterInstancia().Remove(animalARemover);
+            var funcionarioARemover = ObterPorId(id);
+            SingletonFuncionarios.ObterInstancia().Remove(funcionarioARemover);
         }
 
         public void Atualizar(Funcionario funcionarioASerAtualizado)
