@@ -48,28 +48,28 @@
             btn_cancelar = new Button();
             SuspendLayout();
             // 
-            // text_nome
+            // campoDeNome
             // 
             campoDeNome.Location = new Point(34, 89);
-            campoDeNome.Name = "text_nome";
+            campoDeNome.Name = "campoDeNome";
             campoDeNome.Size = new Size(328, 23);
             campoDeNome.TabIndex = 0;
             campoDeNome.KeyPress += AoDigitarNoCampoNome;
             // 
-            // lbl_text_form_cadastro
+            // TituloFormularioDeCadastro
             // 
             TituloFormularioDeCadastro.AutoSize = true;
             TituloFormularioDeCadastro.Font = new Font("Verdana", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
             TituloFormularioDeCadastro.Location = new Point(76, 19);
-            TituloFormularioDeCadastro.Name = "lbl_text_form_cadastro";
+            TituloFormularioDeCadastro.Name = "TituloFormularioDeCadastro";
             TituloFormularioDeCadastro.Size = new Size(250, 20);
             TituloFormularioDeCadastro.TabIndex = 1;
             TituloFormularioDeCadastro.Text = "Cadastro de Funcionários";
             // 
-            // text_endereco
+            // campoDeEndereco
             // 
             campoDeEndereco.Location = new Point(34, 225);
-            campoDeEndereco.Name = "text_endereco";
+            campoDeEndereco.Name = "campoDeEndereco";
             campoDeEndereco.Size = new Size(328, 23);
             campoDeEndereco.TabIndex = 2;
             // 
@@ -93,11 +93,11 @@
             lbl_campo_endereco.TabIndex = 1;
             lbl_campo_endereco.Text = "Endereço:";
             // 
-            // mtb_telefone
+            // campoDeTelefone
             // 
             campoDeTelefone.Location = new Point(34, 290);
             campoDeTelefone.Mask = "(99) 0000-0000";
-            campoDeTelefone.Name = "mtb_telefone";
+            campoDeTelefone.Name = "campoDeTelefone";
             campoDeTelefone.Size = new Size(137, 23);
             campoDeTelefone.TabIndex = 3;
             // 
@@ -142,25 +142,26 @@
             btn_enviar_cadastro.UseVisualStyleBackColor = true;
             btn_enviar_cadastro.Click += AoClicarEmEnviar;
             // 
-            // mtb_dtNascimento
+            // campoDeDataDeNascimento
             // 
             campoDeDataDeNascimento.Format = DateTimePickerFormat.Short;
             campoDeDataDeNascimento.Location = new Point(221, 159);
             campoDeDataDeNascimento.MaxDate = new DateTime(2008, 1, 1, 0, 0, 0, 0);
             campoDeDataDeNascimento.MinDate = new DateTime(1963, 12, 1, 0, 0, 0, 0);
-            campoDeDataDeNascimento.Name = "mtb_dtNascimento";
+            campoDeDataDeNascimento.Name = "campoDeDataDeNascimento";
             campoDeDataDeNascimento.Size = new Size(141, 23);
             campoDeDataDeNascimento.TabIndex = 4;
             campoDeDataDeNascimento.Value = new DateTime(2008, 1, 1, 0, 0, 0, 0);
             // 
-            // mtb_dtAdimissao
+            // campoDeDataDeAdmissao
             // 
             campoDeDataDeAdmissao.Format = DateTimePickerFormat.Short;
             campoDeDataDeAdmissao.Location = new Point(225, 290);
             campoDeDataDeAdmissao.MaxDate = new DateTime(2023, 4, 24, 23, 59, 59, 0);
-            campoDeDataDeAdmissao.Name = "mtb_dtAdimissao";
+            campoDeDataDeAdmissao.Name = "campoDeDataDeAdmissao";
             campoDeDataDeAdmissao.Size = new Size(137, 23);
             campoDeDataDeAdmissao.TabIndex = 5;
+            campoDeDataDeAdmissao.Value = new DateTime(2023, 4, 24, 23, 59, 59, 0);
             // 
             // lbl_campo_cpf
             // 
@@ -172,11 +173,11 @@
             lbl_campo_cpf.TabIndex = 1;
             lbl_campo_cpf.Text = "CPF:";
             // 
-            // mtb_cpf
+            // campoDeCpf
             // 
             campoDeCpf.Location = new Point(34, 159);
             campoDeCpf.Mask = "000,000,000-00";
-            campoDeCpf.Name = "mtb_cpf";
+            campoDeCpf.Name = "campoDeCpf";
             campoDeCpf.Size = new Size(137, 23);
             campoDeCpf.TabIndex = 1;
             // 
@@ -191,7 +192,7 @@
             btn_cancelar.UseVisualStyleBackColor = true;
             btn_cancelar.Click += AoClicarEmCancelar;
             // 
-            // Form_Cadastro
+            // TelaDeCadastro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -211,8 +212,10 @@
             Controls.Add(TituloFormularioDeCadastro);
             Controls.Add(campoDeEndereco);
             Controls.Add(campoDeNome);
-            Name = "Form_Cadastro";
-            Text = "Form1";
+            Cursor = Cursors.Hand;
+            Name = "TelaDeCadastro";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Formulario de Cadastro de Funcionários";
             ResumeLayout(false);
             PerformLayout();
         }

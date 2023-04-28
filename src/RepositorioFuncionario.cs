@@ -25,6 +25,7 @@ namespace ListaDePessoas
         public void Criar(Funcionario novoFuncionario)
         {
             SingletonFuncionarios.ObterInstancia().Add(novoFuncionario);
+            SingletonFuncionarios.AdicionarIDFuncionario(novoFuncionario);
         }
 
 
