@@ -6,15 +6,14 @@ namespace ListaDePessoas
     {
 
         private int _ultimoId;
+        private static RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
         public TelaDeFuncionarios()
         {
             InitializeComponent();
-            _ultimoId = 0;
+           
         }
         private void AoClicarEmCadastrar(object sender, EventArgs e)
-        {
-            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
-            _ultimoId = _ultimoId + 1;
+        {            
             var telaDeCadastro = new TelaDeCadastro(_ultimoId, false);
             telaDeCadastro.ShowDialog();
             dataGrid_funcionarios.DataSource = null;
@@ -25,8 +24,6 @@ namespace ListaDePessoas
 
         private void AoClicarEmEditar(object sender, EventArgs e)
         {
-            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
-
             if (dataGrid_funcionarios.SelectedRows.Count > 0)
             {
                 var idParaEditar = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
@@ -45,8 +42,7 @@ namespace ListaDePessoas
 
         private void AoClicarEmExcluir(object sender, EventArgs e)
         {
-            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
-
+           
             if (dataGrid_funcionarios.SelectedRows.Count > 0)
             {
                 var idParaExcluir = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
