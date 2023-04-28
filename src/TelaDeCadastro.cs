@@ -9,14 +9,13 @@ namespace ListaDePessoas
 
         private int _id;
         private bool _eEdicao;
+        private static RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
 
         public TelaDeCadastro(int id, bool eEdicao)
         {
             InitializeComponent();
             _id = id;
             _eEdicao = eEdicao;
-            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
-
 
             if (eEdicao)
             {
@@ -24,7 +23,6 @@ namespace ListaDePessoas
                 TituloFormularioDeCadastro.Text = "Atualização de Funcionário";
 
                 var funcionario = repositorioFuncionario.ObterPorId(id);
-
                 campoDeNome.Text = funcionario.Nome;
                 campoDeCpf.Text = funcionario.CPF;
                 campoDeEndereco.Text = funcionario.Endereco;
@@ -37,7 +35,6 @@ namespace ListaDePessoas
 
         private void AoClicarEmEnviar(object sender, EventArgs e)
         {
-            RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
 
             if (Validar())
             {
@@ -45,7 +42,6 @@ namespace ListaDePessoas
                 if (_eEdicao)
                 {
                     var funcionario = new Funcionario();
-
                     funcionario.Nome = campoDeNome.Text;
                     funcionario.CPF = campoDeCpf.Text;
                     funcionario.Endereco = campoDeEndereco.Text;
@@ -66,6 +62,7 @@ namespace ListaDePessoas
                     funcionario.DataNascimento = campoDeDataDeNascimento.Value;
                     funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
                     funcionario.Id = _id;
+
 
                     repositorioFuncionario.Criar(funcionario);
                 }
