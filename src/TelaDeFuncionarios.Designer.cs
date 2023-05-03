@@ -38,10 +38,11 @@
             // 
             // btn_cadastrar
             // 
+            btn_cadastrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_cadastrar.Cursor = Cursors.Hand;
-            btn_cadastrar.Location = new Point(58, 408);
+            btn_cadastrar.Location = new Point(542, 408);
             btn_cadastrar.Name = "btn_cadastrar";
-            btn_cadastrar.Size = new Size(134, 48);
+            btn_cadastrar.Size = new Size(100, 48);
             btn_cadastrar.TabIndex = 0;
             btn_cadastrar.Text = "Cadatrar Funcionário";
             btn_cadastrar.UseVisualStyleBackColor = true;
@@ -49,20 +50,23 @@
             // 
             // lbl_titulo
             // 
+            lbl_titulo.Anchor = AnchorStyles.Top;
             lbl_titulo.AutoSize = true;
             lbl_titulo.Font = new Font("Cambria Math", 15.75F, FontStyle.Italic, GraphicsUnit.Point);
-            lbl_titulo.Location = new Point(268, -26);
+            lbl_titulo.Location = new Point(337, -26);
             lbl_titulo.Name = "lbl_titulo";
             lbl_titulo.Size = new Size(280, 117);
             lbl_titulo.TabIndex = 1;
             lbl_titulo.Text = "Cadastro de Funcionários";
+            
             // 
             // btn_editar
             // 
+            btn_editar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_editar.Cursor = Cursors.Hand;
-            btn_editar.Location = new Point(343, 408);
+            btn_editar.Location = new Point(662, 408);
             btn_editar.Name = "btn_editar";
-            btn_editar.Size = new Size(134, 48);
+            btn_editar.Size = new Size(100, 48);
             btn_editar.TabIndex = 3;
             btn_editar.Text = "Editar Funcionário";
             btn_editar.UseVisualStyleBackColor = true;
@@ -70,10 +74,11 @@
             // 
             // btn_excluir
             // 
+            btn_excluir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_excluir.Cursor = Cursors.Hand;
-            btn_excluir.Location = new Point(608, 408);
+            btn_excluir.Location = new Point(780, 408);
             btn_excluir.Name = "btn_excluir";
-            btn_excluir.Size = new Size(134, 48);
+            btn_excluir.Size = new Size(100, 48);
             btn_excluir.TabIndex = 4;
             btn_excluir.Text = "Excluir Funcionário";
             btn_excluir.UseVisualStyleBackColor = true;
@@ -81,25 +86,26 @@
             // 
             // dataGrid_funcionarios
             // 
+            dataGrid_funcionarios.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             dataGrid_funcionarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGrid_funcionarios.Location = new Point(58, 94);
             dataGrid_funcionarios.Name = "dataGrid_funcionarios";
             dataGrid_funcionarios.RowTemplate.Height = 25;
-            dataGrid_funcionarios.Size = new Size(684, 260);
+            dataGrid_funcionarios.Size = new Size(822, 260);
             dataGrid_funcionarios.TabIndex = 6;
             // 
-            // Janela_Principal
+            // TelaDeFuncionarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(800, 483);
+            ClientSize = new Size(938, 483);
             Controls.Add(dataGrid_funcionarios);
             Controls.Add(btn_excluir);
             Controls.Add(btn_editar);
             Controls.Add(lbl_titulo);
             Controls.Add(btn_cadastrar);
-            Name = "Janela_Principal";
+            Name = "TelaDeFuncionarios";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Funcionários";
             ((System.ComponentModel.ISupportInitialize)dataGrid_funcionarios).EndInit();

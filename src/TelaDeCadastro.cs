@@ -35,50 +35,50 @@ namespace ListaDePessoas
 
         private void AoClicarEmEnviar(object sender, EventArgs e)
         {
-
-            if (Validar())
+            try
             {
-
-                if (_eEdicao)
+                if (Validar())
                 {
-                    var funcionario = new Funcionario();
-                    funcionario.Nome = campoDeNome.Text;
-                    funcionario.CPF = campoDeCpf.Text;
-                    funcionario.Endereco = campoDeEndereco.Text;
-                    funcionario.Telefone = campoDeTelefone.Text;
-                    funcionario.DataNascimento = campoDeDataDeNascimento.Value;
-                    funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
-                    funcionario.Id = _id;
+                    if (_eEdicao)
+                    {
+                        var funcionario = new Funcionario();
+                        funcionario.Nome = campoDeNome.Text;
+                        funcionario.CPF = campoDeCpf.Text;
+                        funcionario.Endereco = campoDeEndereco.Text;
+                        funcionario.Telefone = campoDeTelefone.Text;
+                        funcionario.DataNascimento = campoDeDataDeNascimento.Value;
+                        funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
+                        funcionario.Id = _id;
 
-                    repositorioFuncionario.Atualizar(funcionario);
+                        repositorioFuncionario.Atualizar(funcionario);
+                    }
+                    else
+                    {
+                        var funcionario = new Funcionario();
+                        funcionario.Nome = campoDeNome.Text;
+                        funcionario.CPF = campoDeCpf.Text;
+                        funcionario.Endereco = campoDeEndereco.Text;
+                        funcionario.Telefone = campoDeTelefone.Text;
+                        funcionario.DataNascimento = campoDeDataDeNascimento.Value;
+                        funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
+                        funcionario.Id = _id;
+
+
+                        repositorioFuncionario.Criar(funcionario);
+                    }
+
+                    this.Close();
                 }
-                else
-                {
-                    var funcionario = new Funcionario();
-                    funcionario.Nome = campoDeNome.Text;
-                    funcionario.CPF = campoDeCpf.Text;
-                    funcionario.Endereco = campoDeEndereco.Text;
-                    funcionario.Telefone = campoDeTelefone.Text;
-                    funcionario.DataNascimento = campoDeDataDeNascimento.Value;
-                    funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
-                    funcionario.Id = _id;
-
-
-                    repositorioFuncionario.Criar(funcionario);
-                }
-
-                this.Close();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Precisa preencher todos os campos", "Erro:");
+                MessageBox.Show("Ocorreu um erro ao tentar enviar os dados do funcionário. Por favor, entre em contato com a equipe de suporte e informe o erro: " + ex.Message, "Erro");
             }
 
         }
 
         private bool Validar()
         {
-
             var ValidaCPF = campoDeCpf.Text;
             if (!Regex.IsMatch(ValidaCPF, @"^\d{3}\.\d{3}\.\d{3}-\d{2}$") || string.IsNullOrEmpty(campoDeCpf.Text))
             {
@@ -97,6 +97,20 @@ namespace ListaDePessoas
             if (!DateTime.TryParse(campoDeDataDeNascimento.Text, out ValidaDataNascimento))
             {
                 MessageBox.Show("Selecione uma data de Nascimento Válida!");
+                return false;
+            }
+
+            var ValidaEndereco = campoDeEndereco.Text;
+            if (string.IsNullOrEmpty(campoDeEndereco.Text))
+            {
+                MessageBox.Show("O campo Endereço não pode estar vazio!");
+                return false;
+            }
+
+            var ValidaNome = campoDeNome.Text;
+            if (string.IsNullOrEmpty(campoDeNome.Text))
+            {
+                MessageBox.Show("O campo Nome não pode estar vazio!");
                 return false;
             }
 

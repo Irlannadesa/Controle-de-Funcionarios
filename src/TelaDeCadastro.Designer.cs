@@ -50,6 +50,7 @@
             // 
             // campoDeNome
             // 
+            campoDeNome.Anchor = AnchorStyles.Top;
             campoDeNome.Location = new Point(34, 89);
             campoDeNome.Name = "campoDeNome";
             campoDeNome.Size = new Size(328, 23);
@@ -58,6 +59,7 @@
             // 
             // TituloFormularioDeCadastro
             // 
+            TituloFormularioDeCadastro.Anchor = AnchorStyles.Top;
             TituloFormularioDeCadastro.AutoSize = true;
             TituloFormularioDeCadastro.Font = new Font("Verdana", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
             TituloFormularioDeCadastro.Location = new Point(76, 19);
@@ -68,6 +70,7 @@
             // 
             // campoDeEndereco
             // 
+            campoDeEndereco.Anchor = AnchorStyles.Top;
             campoDeEndereco.Location = new Point(34, 225);
             campoDeEndereco.Name = "campoDeEndereco";
             campoDeEndereco.Size = new Size(328, 23);
@@ -75,6 +78,7 @@
             // 
             // lbl_campo_nome
             // 
+            lbl_campo_nome.Anchor = AnchorStyles.Top;
             lbl_campo_nome.AutoSize = true;
             lbl_campo_nome.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_campo_nome.Location = new Point(34, 70);
@@ -85,6 +89,7 @@
             // 
             // lbl_campo_endereco
             // 
+            lbl_campo_endereco.Anchor = AnchorStyles.Top;
             lbl_campo_endereco.AutoSize = true;
             lbl_campo_endereco.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_campo_endereco.Location = new Point(34, 206);
@@ -95,6 +100,7 @@
             // 
             // campoDeTelefone
             // 
+            campoDeTelefone.Anchor = AnchorStyles.Top;
             campoDeTelefone.Location = new Point(34, 290);
             campoDeTelefone.Mask = "(99) 0000-0000";
             campoDeTelefone.Name = "campoDeTelefone";
@@ -103,6 +109,7 @@
             // 
             // lbl_campo_telefone
             // 
+            lbl_campo_telefone.Anchor = AnchorStyles.Top;
             lbl_campo_telefone.AutoSize = true;
             lbl_campo_telefone.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_campo_telefone.Location = new Point(34, 271);
@@ -113,6 +120,7 @@
             // 
             // lbl_campo_data_nascimento
             // 
+            lbl_campo_data_nascimento.Anchor = AnchorStyles.Top;
             lbl_campo_data_nascimento.AutoSize = true;
             lbl_campo_data_nascimento.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_campo_data_nascimento.Location = new Point(221, 140);
@@ -123,6 +131,7 @@
             // 
             // lbl_campo_data_admissao
             // 
+            lbl_campo_data_admissao.Anchor = AnchorStyles.Top;
             lbl_campo_data_admissao.AutoSize = true;
             lbl_campo_data_admissao.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_campo_data_admissao.Location = new Point(225, 270);
@@ -133,6 +142,7 @@
             // 
             // btn_enviar_cadastro
             // 
+            btn_enviar_cadastro.Anchor = AnchorStyles.Top;
             btn_enviar_cadastro.Cursor = Cursors.Hand;
             btn_enviar_cadastro.Location = new Point(45, 353);
             btn_enviar_cadastro.Name = "btn_enviar_cadastro";
@@ -144,6 +154,7 @@
             // 
             // campoDeDataDeNascimento
             // 
+            campoDeDataDeNascimento.Anchor = AnchorStyles.Top;
             campoDeDataDeNascimento.Format = DateTimePickerFormat.Short;
             campoDeDataDeNascimento.Location = new Point(221, 159);
             campoDeDataDeNascimento.MaxDate = new DateTime(2008, 1, 1, 0, 0, 0, 0);
@@ -155,6 +166,7 @@
             // 
             // campoDeDataDeAdmissao
             // 
+            campoDeDataDeAdmissao.Anchor = AnchorStyles.Top;
             campoDeDataDeAdmissao.Format = DateTimePickerFormat.Short;
             campoDeDataDeAdmissao.Location = new Point(225, 290);
             campoDeDataDeAdmissao.MaxDate = new DateTime(2023, 4, 24, 23, 59, 59, 0);
@@ -165,6 +177,7 @@
             // 
             // lbl_campo_cpf
             // 
+            lbl_campo_cpf.Anchor = AnchorStyles.Top;
             lbl_campo_cpf.AutoSize = true;
             lbl_campo_cpf.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_campo_cpf.Location = new Point(34, 140);
@@ -175,6 +188,7 @@
             // 
             // campoDeCpf
             // 
+            campoDeCpf.Anchor = AnchorStyles.Top;
             campoDeCpf.Location = new Point(34, 159);
             campoDeCpf.Mask = "000,000,000-00";
             campoDeCpf.Name = "campoDeCpf";
@@ -183,6 +197,7 @@
             // 
             // btn_cancelar
             // 
+            btn_cancelar.Anchor = AnchorStyles.Top;
             btn_cancelar.Cursor = Cursors.Hand;
             btn_cancelar.Location = new Point(225, 353);
             btn_cancelar.Name = "btn_cancelar";
