@@ -21,10 +21,7 @@ namespace ListaDePessoas
         {
             _ultimoId++;
             funcionario.Id = _ultimoId;
-           
-             
         }
-
 
     }
 }
