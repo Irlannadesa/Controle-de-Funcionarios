@@ -1,12 +1,10 @@
 ﻿using ListaDePessoas.Modelo;
 using System.Text.RegularExpressions;
 
-
 namespace ListaDePessoas
 {
     public partial class TelaDeCadastro : Form
     {
-
         private int _id;
         private bool _eEdicao;
         private static RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
@@ -19,7 +17,6 @@ namespace ListaDePessoas
 
             if (eEdicao)
             {
-
                 TituloFormularioDeCadastro.Text = "Atualização de Funcionário";
 
                 var funcionario = repositorioFuncionario.ObterPorId(id);
@@ -29,7 +26,6 @@ namespace ListaDePessoas
                 campoDeTelefone.Text = funcionario.Telefone;
                 campoDeDataDeNascimento.Value = funcionario.DataNascimento;
                 campoDeDataDeAdmissao.Value = funcionario.DataAdmissao;
-
             }
         }
 
@@ -63,7 +59,6 @@ namespace ListaDePessoas
                         funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
                         funcionario.Id = _id;
 
-
                         repositorioFuncionario.Criar(funcionario);
                     }
 
@@ -74,7 +69,6 @@ namespace ListaDePessoas
             {
                 MessageBox.Show("Ocorreu um erro ao tentar enviar os dados do funcionário. Por favor, entre em contato com a equipe de suporte e informe o erro: " + ex.Message, "Erro");
             }
-
         }
 
         private bool Validar()
