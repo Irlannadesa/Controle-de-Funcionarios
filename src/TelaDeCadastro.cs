@@ -7,7 +7,7 @@ namespace ListaDePessoas
     {
         private int _id;
         private bool _eEdicao;
-        private static RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
+        private static RepositorioBancoDeDadosSqlFuncionarios repositorioFuncionario = new RepositorioBancoDeDadosSqlFuncionarios();
 
         public TelaDeCadastro(int id, bool eEdicao)
         {
