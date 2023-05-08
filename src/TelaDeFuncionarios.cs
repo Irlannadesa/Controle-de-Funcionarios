@@ -5,7 +5,7 @@ namespace ListaDePessoas
     public partial class TelaDeFuncionarios : Form
     {
 
-        private static RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
+        private static RepositorioBancoDeDadosSqlFuncionarios repositorioFuncionario = new RepositorioBancoDeDadosSqlFuncionarios();
         public TelaDeFuncionarios()
         {
             InitializeComponent();
