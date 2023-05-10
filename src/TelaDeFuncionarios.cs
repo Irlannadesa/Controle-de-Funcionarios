@@ -4,12 +4,16 @@ namespace ListaDePessoas
 {
     public partial class TelaDeFuncionarios : Form
     {
-
-        private static RepositorioBancoDeDadosSqlFuncionarios repositorioFuncionarioSQL = new RepositorioBancoDeDadosSqlFuncionarios();
-        public TelaDeFuncionarios()
+        public IFuncionarios _repositorio;
+       
+        public TelaDeFuncionarios(IFuncionarios repositorio)
         {
             InitializeComponent();
+            _repositorio = repositorio;
             AtualizarLista();
+            
+
+
         }
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
@@ -63,7 +67,7 @@ namespace ListaDePessoas
                         return;
                     }
 
-                    repositorioFuncionarioSQL.Remover(idParaExcluir);
+                    _repositorio.Remover(idParaExcluir);
 
                     AtualizarLista();
                 }
@@ -82,7 +86,7 @@ namespace ListaDePessoas
         public void AtualizarLista()
         {
             dataGrid_funcionarios.DataSource = null;
-            dataGrid_funcionarios.DataSource = repositorioFuncionarioSQL.ObterTodos();
+            dataGrid_funcionarios.DataSource = _repositorio.ObterTodos();
         }
     } 
 }

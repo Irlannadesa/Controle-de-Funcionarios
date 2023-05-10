@@ -1,5 +1,6 @@
 using FluentMigrator.Runner;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System.Configuration;
 using test;
 
@@ -10,15 +11,20 @@ namespace ListaDePessoas
         private static string conectionString = ConfigurationManager.ConnectionStrings["Funcionarios"].ConnectionString;
 
         [STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
+            var builder = CriaHostBuilder();
+            var servicesProvider = builder.Build().Services;
+            var repositorio = servicesProvider.GetService<IFuncionarios>();
             using (var serviceProvider = CreateServices())
             using (var scope = serviceProvider.CreateScope())
             {
                 UpdateDatabase(scope.ServiceProvider);
             }
             ApplicationConfiguration.Initialize();
-            Application.Run(new TelaDeFuncionarios());
+            Application.Run(new TelaDeFuncionarios(repositorio));
+
+        
 
         }
 
@@ -27,6 +33,13 @@ namespace ListaDePessoas
             var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
 
             runner.MigrateUp();
+        }
+        static IHostBuilder CriaHostBuilder()
+        {
+            return Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) => {
+                    services.AddScoped<IFuncionarios, RepositorioBancoDeDadosSqlFuncionarios>();
+                });
         }
 
         private static ServiceProvider CreateServices()

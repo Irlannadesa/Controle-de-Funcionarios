@@ -2,7 +2,7 @@
 
 namespace ListaDePessoas
 {
-    internal interface IFuncionarios
+    public interface IFuncionarios
     {
         public List<Funcionario> ObterTodos();
         public void Criar(Funcionario novoFuncionario);
