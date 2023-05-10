@@ -1,5 +1,5 @@
 ﻿using ListaDePessoas.Modelo;
-using System.Security.Cryptography;
+
 
 namespace ListaDePessoas
 {
@@ -36,8 +36,9 @@ namespace ListaDePessoas
             SingletonFuncionarios.ObterInstancia().Remove(funcionarioARemover);
         }
 
-        public void Atualizar(Funcionario funcionarioASerAtualizado)
+        public Funcionario Atualizar(Funcionario funcionarioASerAtualizado)
         {
+
             foreach (Funcionario funcionario in SingletonFuncionarios.ObterInstancia())
             {
                 if (funcionario.Id == funcionarioASerAtualizado.Id)
@@ -50,6 +51,7 @@ namespace ListaDePessoas
                     funcionario.DataAdmissao = funcionarioASerAtualizado.DataAdmissao;
                 }
             }
+            return funcionarioASerAtualizado;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace ListaDePessoas
     {
         private int _id;
         private bool _eEdicao;
-        private static RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
+        private static RepositorioBancoDeDadosSqlFuncionarios repositorioFuncionarioSQL = new RepositorioBancoDeDadosSqlFuncionarios();
 
         public TelaDeCadastro(int id, bool eEdicao)
         {
@@ -19,7 +19,7 @@ namespace ListaDePessoas
             {
                 TituloFormularioDeCadastro.Text = "Atualização de Funcionário";
 
-                var funcionario = repositorioFuncionario.ObterPorId(id);
+                var funcionario = repositorioFuncionarioSQL.ObterPorId(id);
                 campoDeNome.Text = funcionario.Nome;
                 campoDeCpf.Text = funcionario.CPF;
                 campoDeEndereco.Text = funcionario.Endereco;
@@ -46,7 +46,7 @@ namespace ListaDePessoas
                         funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
                         funcionario.Id = _id;
 
-                        repositorioFuncionario.Atualizar(funcionario);
+                        repositorioFuncionarioSQL.Atualizar(funcionario);
                     }
                     else
                     {
@@ -59,7 +59,7 @@ namespace ListaDePessoas
                         funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
                         funcionario.Id = _id;
 
-                        repositorioFuncionario.Criar(funcionario);
+                        repositorioFuncionarioSQL.Criar(funcionario);
                     }
 
                     this.Close();
