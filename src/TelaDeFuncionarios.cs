@@ -5,24 +5,25 @@ namespace ListaDePessoas
     public partial class TelaDeFuncionarios : Form
     {
 
-        private static RepositorioBancoDeDadosSqlFuncionarios repositorioFuncionario = new RepositorioBancoDeDadosSqlFuncionarios();
+        private static RepositorioBancoDeDadosSqlFuncionarios repositorioFuncionarioSQL = new RepositorioBancoDeDadosSqlFuncionarios();
         public TelaDeFuncionarios()
         {
             InitializeComponent();
+            AtualizarLista();
         }
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
             try
             {
                 var telaDeCadastro = new TelaDeCadastro(0, false);
-                telaDeCadastro.ShowDialog();
-                dataGrid_funcionarios.DataSource = null;
-                dataGrid_funcionarios.DataSource = repositorioFuncionario.ObterTodos();
+                telaDeCadastro.ShowDialog();          
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocorreu um erro ao tentar cadastrar um funcionário, Por favor, entre em contato com a equipe de suporte e informe o erro:" + ex.Message, "Erro");
             }
+            AtualizarLista();
         }
 
 
@@ -35,8 +36,7 @@ namespace ListaDePessoas
                     var idParaEditar = (int)dataGrid_funcionarios.SelectedRows[0].Cells["Id"].Value;
                     var formularioDeCadastro = new TelaDeCadastro(idParaEditar, true);
                     formularioDeCadastro.ShowDialog();
-                    dataGrid_funcionarios.DataSource = null;
-                    dataGrid_funcionarios.DataSource = repositorioFuncionario.ObterTodos();
+                    AtualizarLista();
                 }
                 else
                 {
@@ -63,10 +63,9 @@ namespace ListaDePessoas
                         return;
                     }
 
-                    repositorioFuncionario.Remover(idParaExcluir);
+                    repositorioFuncionarioSQL.Remover(idParaExcluir);
 
-                    dataGrid_funcionarios.DataSource = null;
-                    dataGrid_funcionarios.DataSource = repositorioFuncionario.ObterTodos();
+                    AtualizarLista();
                 }
                 else
                 {
@@ -80,5 +79,10 @@ namespace ListaDePessoas
             }
         }
 
-    }
+        public void AtualizarLista()
+        {
+            dataGrid_funcionarios.DataSource = null;
+            dataGrid_funcionarios.DataSource = repositorioFuncionarioSQL.ObterTodos();
+        }
+    } 
 }
