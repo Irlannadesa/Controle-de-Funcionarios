@@ -10,7 +10,6 @@ namespace ListaDePessoas
         SqlConnection sqlconecxao = new SqlConnection(conectionString);
         protected List<Funcionario> listaDeFuncionario = new List<Funcionario>();
 
-
         public List<Funcionario> ObterTodos()
         {
             List<Funcionario> listaDeFuncionario = new List<Funcionario>();
@@ -21,28 +20,20 @@ namespace ListaDePessoas
                 SqlCommand comando = new SqlCommand("SELECT * FROM Funcionario", sqlconecxao);
                 comando.CommandType = System.Data.CommandType.Text;
                 SqlDataReader dataReader = comando.ExecuteReader();
-
-                if (dataReader.HasRows) 
+                while (dataReader.Read())
                 {
-                    while (dataReader.Read())
-                    {
-                        Funcionario funcionario = new Funcionario();
-                        funcionario.Id = Convert.ToInt32(dataReader["Id"]);
-                        funcionario.Nome = dataReader["Nome"].ToString();
-                        funcionario.Endereco = dataReader["Endereco"].ToString();
-                        funcionario.CPF = dataReader["CPF"].ToString();
-                        funcionario.Telefone = dataReader["Telefone"].ToString();
-                        funcionario.DataNascimento = Convert.ToDateTime(dataReader["Data_Nascimento"]);
-                        funcionario.DataAdmissao = Convert.ToDateTime(dataReader["Data_Admissao"]);
+                   Funcionario funcionario = new Funcionario();
+                   funcionario.Id = Convert.ToInt32(dataReader["Id"]);
+                   funcionario.Nome = dataReader["Nome"].ToString();
+                   funcionario.Endereco = dataReader["Endereco"].ToString();
+                   funcionario.CPF = dataReader["CPF"].ToString();
+                   funcionario.Telefone = dataReader["Telefone"].ToString();
+                   funcionario.DataNascimento = Convert.ToDateTime(dataReader["Data_Nascimento"]);
+                   funcionario.DataAdmissao = Convert.ToDateTime(dataReader["Data_Admissao"]);
                                                
-                        listaDeFuncionario.Add(funcionario);
-                    }
+                   listaDeFuncionario.Add(funcionario);
                 }
-                else
-                {
-                   MessageBox.Show("Não há funcionários cadastrados.");
-                }
-
+             
                 dataReader.Close();
             }
             catch (SqlException ex)
