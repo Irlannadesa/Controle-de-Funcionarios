@@ -5,8 +5,6 @@ namespace ListaDePessoas
 {
     internal static class Program
     {
-
-
         static void Main()
         {
             var connectionString = ConfigurationManager.ConnectionStrings["Funcionarios"].ConnectionString;
@@ -15,10 +13,10 @@ namespace ListaDePessoas
             migratorConfiguration.ConfigureMigrations();
 
             var serviceProvider = InjecaoDeDependencia.ConfigureDependencies();
-            var repositorio = serviceProvider.GetService<IFuncionarios>();
+            var repositorioFuncionarios = serviceProvider.GetService<IFuncionarios>();
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new TelaDeFuncionarios(repositorio));
+            Application.Run(new TelaDeFuncionarios(repositorioFuncionarios));
         }
 
     }
