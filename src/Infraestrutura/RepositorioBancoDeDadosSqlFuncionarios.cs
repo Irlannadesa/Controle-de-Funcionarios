@@ -1,15 +1,16 @@
-﻿using ListaDePessoas.Modelo;
+﻿using Dominio;
+using Dominio.Modelo;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
 
-namespace ListaDePessoas
+
+namespace Infraestrutura
 {
-    internal class RepositorioBancoDeDadosSqlFuncionarios : IFuncionarios
+    public class RepositorioBancoDeDadosSqlFuncionarios : IFuncionarios
     {
         private static string conectionString = ConfigurationManager.ConnectionStrings["Funcionarios"].ConnectionString;
         SqlConnection sqlconecxao = new SqlConnection(conectionString);
         protected List<Funcionario> listaDeFuncionario = new List<Funcionario>();
-
 
         public List<Funcionario> ObterTodos()
         {
@@ -21,46 +22,34 @@ namespace ListaDePessoas
                 SqlCommand comando = new SqlCommand("SELECT * FROM Funcionario", sqlconecxao);
                 comando.CommandType = System.Data.CommandType.Text;
                 SqlDataReader dataReader = comando.ExecuteReader();
-
-                if (dataReader.HasRows) 
+                while (dataReader.Read())
                 {
-                    while (dataReader.Read())
-                    {
-                        Funcionario funcionario = new Funcionario();
-                        funcionario.Id = Convert.ToInt32(dataReader["Id"]);
-                        funcionario.Nome = dataReader["Nome"].ToString();
-                        funcionario.Endereco = dataReader["Endereco"].ToString();
-                        funcionario.CPF = dataReader["CPF"].ToString();
-                        funcionario.Telefone = dataReader["Telefone"].ToString();
-                        funcionario.DataNascimento = Convert.ToDateTime(dataReader["Data_Nascimento"]);
-                        funcionario.DataAdmissao = Convert.ToDateTime(dataReader["Data_Admissao"]);
+                   Funcionario funcionario = new Funcionario();
+                   funcionario.Id = Convert.ToInt32(dataReader["Id"]);
+                   funcionario.Nome = dataReader["Nome"].ToString();
+                   funcionario.Endereco = dataReader["Endereco"].ToString();
+                   funcionario.CPF = dataReader["CPF"].ToString();
+                   funcionario.Telefone = dataReader["Telefone"].ToString();
+                   funcionario.DataNascimento = Convert.ToDateTime(dataReader["Data_Nascimento"]);
+                   funcionario.DataAdmissao = Convert.ToDateTime(dataReader["Data_Admissao"]);
                                                
-                        listaDeFuncionario.Add(funcionario);
-                    }
+                   listaDeFuncionario.Add(funcionario);
                 }
-                else
-                {
-                   MessageBox.Show("Não há funcionários cadastrados.");
-                }
-
+             
                 dataReader.Close();
-            }
-            catch (SqlException ex)
+            }          
+            catch (Exception)
             {
-                MessageBox.Show("Erro de conexão com o banco de dados: " + ex.Message, "Erro:");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro ao tentar obter os dados do funcionário: " + ex.Message, "Erro:");
+                throw;
+
             }
             finally
             {
                 sqlconecxao.Close();
             }
-
+         
             return listaDeFuncionario;
         }
-
 
         public void Criar(Funcionario novoFuncionario)
         {
@@ -79,9 +68,10 @@ namespace ListaDePessoas
 
                 comandoAddFuncionario.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (Exception)
             {
-                MessageBox.Show("Erro de conexão com o banco de dados: " + ex.Message);
+                throw;
+
             }
             finally
             {
@@ -109,9 +99,9 @@ namespace ListaDePessoas
 
                 comandoAtualizarFuncionario.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (Exception)
             {
-                MessageBox.Show("Erro de conexão com o banco de dados: " + ex.Message);
+                throw;
             }
             finally
             {
@@ -132,12 +122,11 @@ namespace ListaDePessoas
                 SqlCommand comandoExcluirFuncionario = new SqlCommand(excluirFuncionarioNoSQL, sqlconecxao);
                 comandoExcluirFuncionario.CommandType = System.Data.CommandType.Text;
                 comandoExcluirFuncionario.ExecuteNonQuery() ;
-
-                MessageBox.Show("Funcionário excluído com sucesso!");
+                
             }
-            catch (SqlException ex)
+            catch (Exception)
             {
-                MessageBox.Show("Erro de conexão com o banco de dados: " + ex.Message);
+                throw;
             }
             finally
             {
@@ -171,13 +160,9 @@ namespace ListaDePessoas
 
                 dataReader.Close();
             }
-            catch (SqlException ex)
+            catch (Exception)
             {
-                MessageBox.Show("Erro de conexão com o banco de dados: " + ex.Message, "Erro:");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro ao tentar obter os dados do funcionário: " + ex.Message, "Erro:");
+                throw;
             }
             finally
             {

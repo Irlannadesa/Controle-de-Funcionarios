@@ -1,8 +1,8 @@
-﻿using ListaDePessoas.Modelo;
+﻿using Dominio.Modelo;
 
-namespace ListaDePessoas
+namespace Dominio
 {
-    internal interface IFuncionarios
+    public interface IFuncionarios
     {
         public List<Funcionario> ObterTodos();
         public void Criar(Funcionario novoFuncionario);

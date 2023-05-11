@@ -1,7 +1,8 @@
-﻿using ListaDePessoas.Modelo;
+﻿using Dominio;
+using Dominio.Modelo;
 
 
-namespace ListaDePessoas
+namespace Infraestrutura
 {
     internal class RepositorioFuncionario : IFuncionarios
     {

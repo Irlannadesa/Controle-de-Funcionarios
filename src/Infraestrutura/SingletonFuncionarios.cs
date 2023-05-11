@@ -1,7 +1,7 @@
 ﻿
-using ListaDePessoas.Modelo;
+using Dominio.Modelo;
 
-namespace ListaDePessoas
+namespace Infraestrutura
 {
     public class SingletonFuncionarios
     {

@@ -15,7 +15,6 @@ namespace test
                 .WithColumn("Telefone").AsString().NotNullable()
                 .WithColumn("Data_Nascimento").AsDateTime().NotNullable()
                 .WithColumn("Data_Admissao").AsDateTime().NotNullable();
-
         }
 
         public override void Down()
