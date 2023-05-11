@@ -1,4 +1,10 @@
 src/.vs
 src/obj
 src/bin
+src/ControleDeFuncionarios/bin
+src/ControleDeFuncionarios/obj
+src/Dominio/bin
+src/Dominio/obj
+src/Infraestrutura/bin
+src/Infraestrutura/obj
 .vs

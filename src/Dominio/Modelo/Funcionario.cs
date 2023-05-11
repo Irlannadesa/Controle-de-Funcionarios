@@ -1,4 +1,4 @@
-﻿namespace ListaDePessoas.Modelo
+﻿namespace Dominio.Modelo
 {
     public class Funcionario
     {

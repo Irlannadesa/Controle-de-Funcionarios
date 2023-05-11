@@ -1,7 +1,8 @@
-﻿using ListaDePessoas.Modelo;
-using System.Text.RegularExpressions;
+﻿using Dominio.Modelo;
+using Infraestrutura;
 
-namespace ListaDePessoas
+
+namespace ControleDeFuncionarios
 {
     public partial class TelaDeCadastro : Form
     {
@@ -28,12 +29,18 @@ namespace ListaDePessoas
                 campoDeDataDeAdmissao.Value = funcionario.DataAdmissao;
             }
         }
-
+               
         private void AoClicarEmEnviar(object sender, EventArgs e)
         {
             try
             {
-                if (Validar())
+                var cpf = campoDeCpf.Text;
+                var telefone = campoDeTelefone.Text;
+                var dataNascimento = campoDeDataDeNascimento.Text;
+                var endereco = campoDeEndereco.Text;
+                var nome = campoDeNome.Text;
+
+                if (ValidacoesFuncionarios.ValidarCampos(cpf, telefone, dataNascimento, endereco, nome))
                 {
                     if (_eEdicao)
                     {
@@ -69,46 +76,6 @@ namespace ListaDePessoas
             {
                 MessageBox.Show("Ocorreu um erro ao tentar enviar os dados do funcionário. Por favor, entre em contato com a equipe de suporte e informe o erro: " + ex.Message, "Erro");
             }
-        }
-
-        private bool Validar()
-        {
-            var ValidaCPF = campoDeCpf.Text;
-            if (!Regex.IsMatch(ValidaCPF, @"^\d{3}\.\d{3}\.\d{3}-\d{2}$") || string.IsNullOrEmpty(campoDeCpf.Text))
-            {
-                MessageBox.Show("CPF inválido!");
-                return false;
-            }
-
-            var ValidaTelefone = campoDeTelefone.Text;
-            if (!Regex.IsMatch(ValidaTelefone, @"^\(\d{2}\)\s\d{4}-\d{4}$") || string.IsNullOrEmpty(campoDeTelefone.Text))
-            {
-                MessageBox.Show("Telefone Inválido!");
-                return false;
-            }
-
-            var ValidaDataNascimento = new DateTime();
-            if (!DateTime.TryParse(campoDeDataDeNascimento.Text, out ValidaDataNascimento))
-            {
-                MessageBox.Show("Selecione uma data de Nascimento Válida!");
-                return false;
-            }
-
-            var ValidaEndereco = campoDeEndereco.Text;
-            if (string.IsNullOrEmpty(campoDeEndereco.Text))
-            {
-                MessageBox.Show("O campo Endereço não pode estar vazio!");
-                return false;
-            }
-
-            var ValidaNome = campoDeNome.Text;
-            if (string.IsNullOrEmpty(campoDeNome.Text))
-            {
-                MessageBox.Show("O campo Nome não pode estar vazio!");
-                return false;
-            }
-
-            return true;
         }
 
         private void AoClicarEmCancelar(object sender, EventArgs e)

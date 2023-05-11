@@ -1,4 +1,4 @@
-﻿namespace ListaDePessoas
+﻿namespace ControleDeFuncionarios
 {
     partial class TelaDeFuncionarios
     {
