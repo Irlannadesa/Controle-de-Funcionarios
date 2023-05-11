@@ -1,6 +1,6 @@
-﻿using ListaDePessoas.Modelo;
+﻿using Dominio.Modelo;
 
-namespace ListaDePessoas
+namespace Dominio
 {
     public interface IFuncionarios
     {

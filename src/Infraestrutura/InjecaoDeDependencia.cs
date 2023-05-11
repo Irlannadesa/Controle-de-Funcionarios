@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Dominio;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace ListaDePessoas
+namespace Infraestrutura
 {
     public class InjecaoDeDependencia
     {

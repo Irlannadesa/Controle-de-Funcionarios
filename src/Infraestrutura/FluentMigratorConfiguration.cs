@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using test;
 
-namespace ListaDePessoas
+namespace Infraestrutura
 {
     public class ConfiguracaoFluentMigrator
     {

@@ -1,7 +1,9 @@
+using Dominio;
+using Infraestrutura;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 
-namespace ListaDePessoas
+namespace ControleDeFuncionarios
 {
     internal static class Program
     {
@@ -18,6 +20,6 @@ namespace ListaDePessoas
             ApplicationConfiguration.Initialize();
             Application.Run(new TelaDeFuncionarios(repositorioFuncionarios));
         }
-
     }
 }
+     

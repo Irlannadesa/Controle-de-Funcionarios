@@ -1,17 +1,20 @@
-using ListaDePessoas.Modelo;
+using Dominio;
 
-namespace ListaDePessoas
+
+namespace ControleDeFuncionarios
 {
     public partial class TelaDeFuncionarios : Form
     {
         public IFuncionarios _repositorioFuncionarios;
-       
+     
         public TelaDeFuncionarios(IFuncionarios repositorioFuncionario)
         {
             InitializeComponent();
             _repositorioFuncionarios = repositorioFuncionario;
             AtualizarLista();          
         }
+          
+
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
             try
