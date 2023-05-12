@@ -1,4 +1,5 @@
-﻿using Dominio.Modelo;
+﻿using Dominio;
+using Dominio.Modelo;
 using Infraestrutura;
 
 
@@ -70,6 +71,21 @@ namespace ControleDeFuncionarios
                     }
 
                     this.Close();
+                }else
+                {
+                    if (!ValidacoesFuncionarios.ValidarCPF(cpf) || string.IsNullOrEmpty(cpf))
+                    {
+                        MessageBox.Show("CPF inválido!");
+                        
+                    }
+                    if (!ValidacoesFuncionarios.ValidarTelefone(telefone) || string.IsNullOrEmpty(telefone))
+                    {
+                        MessageBox.Show("Telefone inválido!");
+                    }
+                    if (!ValidacoesFuncionarios.ValidarCampos( dataNascimento,  endereco,  nome, cpf, telefone))
+                    {
+                        MessageBox.Show("Todos os campos precisam ser preenchidos corretamente!");
+                    }
                 }
             }
             catch (Exception ex)
