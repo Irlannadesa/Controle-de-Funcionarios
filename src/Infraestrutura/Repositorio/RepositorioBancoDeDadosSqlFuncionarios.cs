@@ -1,10 +1,9 @@
-﻿using Dominio;
-using Dominio.Modelo;
+﻿using Dominio.Modelo;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
 
 
-namespace Infraestrutura
+namespace Infraestrutura.Repositorio
 {
     public class RepositorioBancoDeDadosSqlFuncionarios : IFuncionarios
     {
@@ -22,22 +21,23 @@ namespace Infraestrutura
                 SqlCommand comando = new SqlCommand("SELECT * FROM Funcionario", sqlconecxao);
                 comando.CommandType = System.Data.CommandType.Text;
                 SqlDataReader dataReader = comando.ExecuteReader();
+
                 while (dataReader.Read())
                 {
-                   Funcionario funcionario = new Funcionario();
-                   funcionario.Id = Convert.ToInt32(dataReader["Id"]);
-                   funcionario.Nome = dataReader["Nome"].ToString();
-                   funcionario.Endereco = dataReader["Endereco"].ToString();
-                   funcionario.CPF = dataReader["CPF"].ToString();
-                   funcionario.Telefone = dataReader["Telefone"].ToString();
-                   funcionario.DataNascimento = Convert.ToDateTime(dataReader["Data_Nascimento"]);
-                   funcionario.DataAdmissao = Convert.ToDateTime(dataReader["Data_Admissao"]);
-                                               
-                   listaDeFuncionario.Add(funcionario);
+                    Funcionario funcionario = new Funcionario();
+                    funcionario.Id = Convert.ToInt32(dataReader["Id"]);
+                    funcionario.Nome = dataReader["Nome"].ToString();
+                    funcionario.Endereco = dataReader["Endereco"].ToString();
+                    funcionario.CPF = dataReader["CPF"].ToString();
+                    funcionario.Telefone = dataReader["Telefone"].ToString();
+                    funcionario.DataNascimento = Convert.ToDateTime(dataReader["Data_Nascimento"]);
+                    funcionario.DataAdmissao = Convert.ToDateTime(dataReader["Data_Admissao"]);
+
+                    listaDeFuncionario.Add(funcionario);
                 }
-             
+
                 dataReader.Close();
-            }          
+            }
             catch (Exception)
             {
                 throw;
@@ -47,7 +47,7 @@ namespace Infraestrutura
             {
                 sqlconecxao.Close();
             }
-         
+
             return listaDeFuncionario;
         }
 
@@ -79,7 +79,7 @@ namespace Infraestrutura
             }
         }
 
-        public Funcionario Atualizar (Funcionario funcionario)            
+        public Funcionario Atualizar(Funcionario funcionario)
         {
             var Id = funcionario.Id;
             try
@@ -121,8 +121,8 @@ namespace Infraestrutura
                 var excluirFuncionarioNoSQL = @"DELETE FROM Funcionario WHERE id=" + id;
                 SqlCommand comandoExcluirFuncionario = new SqlCommand(excluirFuncionarioNoSQL, sqlconecxao);
                 comandoExcluirFuncionario.CommandType = System.Data.CommandType.Text;
-                comandoExcluirFuncionario.ExecuteNonQuery() ;
-                
+                comandoExcluirFuncionario.ExecuteNonQuery();
+
             }
             catch (Exception)
             {

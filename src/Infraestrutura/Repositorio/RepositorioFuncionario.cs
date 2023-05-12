@@ -1,8 +1,7 @@
 ﻿using Dominio;
 using Dominio.Modelo;
 
-
-namespace Infraestrutura
+namespace Infraestrutura.Repositorio
 {
     internal class RepositorioFuncionario : IFuncionarios
     {
@@ -29,8 +28,6 @@ namespace Infraestrutura
             SingletonFuncionarios.AdicionarIDFuncionario(novoFuncionario);
         }
 
-
-
         public void Remover(int id)
         {
             var funcionarioARemover = ObterPorId(id);
@@ -39,7 +36,6 @@ namespace Infraestrutura
 
         public Funcionario Atualizar(Funcionario funcionarioASerAtualizado)
         {
-
             foreach (Funcionario funcionario in SingletonFuncionarios.ObterInstancia())
             {
                 if (funcionario.Id == funcionarioASerAtualizado.Id)

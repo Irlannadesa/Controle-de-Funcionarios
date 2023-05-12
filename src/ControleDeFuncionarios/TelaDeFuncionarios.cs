@@ -5,20 +5,20 @@ namespace ControleDeFuncionarios
     public partial class TelaDeFuncionarios : Form
     {
         public IFuncionarios _repositorioFuncionarios;
-     
+
         public TelaDeFuncionarios(IFuncionarios repositorioFuncionario)
         {
             InitializeComponent();
             _repositorioFuncionarios = repositorioFuncionario;
-            AtualizarLista();          
+            AtualizarLista();
         }
-          
+
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
             try
             {
                 var telaDeCadastro = new TelaDeCadastro(0, false);
-                telaDeCadastro.ShowDialog();          
+                telaDeCadastro.ShowDialog();
 
             }
             catch (Exception ex)
@@ -85,5 +85,5 @@ namespace ControleDeFuncionarios
             dataGrid_funcionarios.DataSource = null;
             dataGrid_funcionarios.DataSource = _repositorioFuncionarios.ObterTodos();
         }
-    } 
+    }
 }

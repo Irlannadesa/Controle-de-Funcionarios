@@ -1,6 +1,6 @@
 ﻿using Dominio.Modelo;
 
-namespace Infraestrutura
+namespace Infraestrutura.Repositorio
 {
     public interface IFuncionarios
     {
