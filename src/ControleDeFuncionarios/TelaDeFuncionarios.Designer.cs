@@ -58,7 +58,6 @@
             lbl_titulo.Size = new Size(280, 117);
             lbl_titulo.TabIndex = 1;
             lbl_titulo.Text = "Cadastro de Funcionários";
-            
             // 
             // btn_editar
             // 
@@ -91,6 +90,7 @@
             dataGrid_funcionarios.Location = new Point(58, 94);
             dataGrid_funcionarios.Name = "dataGrid_funcionarios";
             dataGrid_funcionarios.RowTemplate.Height = 25;
+            dataGrid_funcionarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGrid_funcionarios.Size = new Size(822, 260);
             dataGrid_funcionarios.TabIndex = 6;
             // 
