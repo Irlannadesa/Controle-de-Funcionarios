@@ -26,10 +26,10 @@ namespace ControleDeFuncionarios
                 campoDeEndereco.Text = funcionario.Endereco;
                 campoDeTelefone.Text = funcionario.Telefone;
                 campoDeDataDeNascimento.Value = funcionario.DataNascimento;
-                campoDeDataDeAdmissao.Value = funcionario.DataAdmissao;                
+                campoDeDataDeAdmissao.Value = funcionario.DataAdmissao;
             }
         }
-               
+
         private void AoClicarEmEnviar(object sender, EventArgs e)
         {
             try
@@ -45,9 +45,9 @@ namespace ControleDeFuncionarios
 
 
                 ValidacoesFuncionarios.ValidarCampos(funcionario);
-                
+
                 if (_eEdicao)
-                {                        
+                {
                     repositorioFuncionarioSQL.Atualizar(funcionario);
                 }
                 else
@@ -55,12 +55,12 @@ namespace ControleDeFuncionarios
                     funcionario.Id = _id;
                     repositorioFuncionarioSQL.Criar(funcionario);
                 }
-                    this.Close();                                   
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro ao tentar enviar os dados do funcionário." + ex.Message, "Erro");
-            }          
+            }
         }
 
         private void AoClicarEmCancelar(object sender, EventArgs e)
