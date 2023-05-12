@@ -1,13 +1,11 @@
 ﻿using FluentMigrator.Runner;
 using Microsoft.Extensions.DependencyInjection;
-using test;
 
-namespace Infraestrutura
+namespace Infraestrutura.MigracaoBD
 {
     public class ConfiguracaoFluentMigrator
     {
         private readonly string connectionString;
-
         public ConfiguracaoFluentMigrator(string connectionString)
         {
             this.connectionString = connectionString;
@@ -40,6 +38,4 @@ namespace Infraestrutura
             runner.MigrateUp();
         }
     }
-
-  
 }
