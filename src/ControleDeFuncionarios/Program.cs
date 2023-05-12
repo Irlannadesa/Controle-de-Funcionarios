@@ -1,5 +1,6 @@
-using Dominio;
-using Infraestrutura;
+using Infraestrutura.InjecaoDependencia;
+using Infraestrutura.MigracaoBD;
+using Infraestrutura.Repositorio;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 
