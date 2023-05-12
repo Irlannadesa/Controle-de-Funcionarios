@@ -1,7 +1,8 @@
 ﻿using Dominio;
+using Infraestrutura.Repositorio;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infraestrutura
+namespace Infraestrutura.InjecaoDependencia
 {
     public class InjecaoDeDependencia
     {

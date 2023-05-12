@@ -1,6 +1,6 @@
 ﻿using FluentMigrator;
 
-namespace test
+namespace Infraestrutura.MigracaoBD
 {
     [Migration(20230504084700)]
     public class AddFuncionarioTable : Migration
