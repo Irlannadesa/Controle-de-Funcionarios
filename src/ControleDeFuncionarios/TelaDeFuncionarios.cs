@@ -13,7 +13,6 @@ namespace ControleDeFuncionarios
             AtualizarLista();          
         }
           
-
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
             try
@@ -28,7 +27,6 @@ namespace ControleDeFuncionarios
             }
             AtualizarLista();
         }
-
 
         private void AoClicarEmEditar(object sender, EventArgs e)
         {
