@@ -1,7 +1,6 @@
-﻿using Dominio;
-using Dominio.Modelo;
-using Infraestrutura;
-
+﻿using Dominio.Modelo;
+using Dominio.Validacoes;
+using Infraestrutura.Repositorio;
 
 namespace ControleDeFuncionarios
 {
@@ -27,7 +26,7 @@ namespace ControleDeFuncionarios
                 campoDeEndereco.Text = funcionario.Endereco;
                 campoDeTelefone.Text = funcionario.Telefone;
                 campoDeDataDeNascimento.Value = funcionario.DataNascimento;
-                campoDeDataDeAdmissao.Value = funcionario.DataAdmissao;
+                campoDeDataDeAdmissao.Value = funcionario.DataAdmissao;                
             }
         }
                
@@ -35,69 +34,40 @@ namespace ControleDeFuncionarios
         {
             try
             {
-                var cpf = campoDeCpf.Text;
-                var telefone = campoDeTelefone.Text;
-                var dataNascimento = campoDeDataDeNascimento.Text;
-                var endereco = campoDeEndereco.Text;
-                var nome = campoDeNome.Text;
+                var funcionario = new Funcionario();
+                funcionario.Nome = campoDeNome.Text;
+                funcionario.CPF = campoDeCpf.Text;
+                funcionario.Endereco = campoDeEndereco.Text;
+                funcionario.Telefone = campoDeTelefone.Text;
+                funcionario.DataNascimento = campoDeDataDeNascimento.Value;
+                funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
+                funcionario.Id = _id;
 
-                if (ValidacoesFuncionarios.ValidarCampos(cpf, telefone, dataNascimento, endereco, nome))
-                {
-                    if (_eEdicao)
-                    {
-                        var funcionario = new Funcionario();
-                        funcionario.Nome = campoDeNome.Text;
-                        funcionario.CPF = campoDeCpf.Text;
-                        funcionario.Endereco = campoDeEndereco.Text;
-                        funcionario.Telefone = campoDeTelefone.Text;
-                        funcionario.DataNascimento = campoDeDataDeNascimento.Value;
-                        funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
-                        funcionario.Id = _id;
 
-                        repositorioFuncionarioSQL.Atualizar(funcionario);
-                    }
-                    else
-                    {
-                        var funcionario = new Funcionario();
-                        funcionario.Nome = campoDeNome.Text;
-                        funcionario.CPF = campoDeCpf.Text;
-                        funcionario.Endereco = campoDeEndereco.Text;
-                        funcionario.Telefone = campoDeTelefone.Text;
-                        funcionario.DataNascimento = campoDeDataDeNascimento.Value;
-                        funcionario.DataAdmissao = campoDeDataDeAdmissao.Value;
-                        funcionario.Id = _id;
-
-                        repositorioFuncionarioSQL.Criar(funcionario);
-                    }
-
-                    this.Close();
-                }else
-                {
-                    if (!ValidacoesFuncionarios.ValidarCPF(cpf) || string.IsNullOrEmpty(cpf))
-                    {
-                        MessageBox.Show("CPF inválido!");
-                        
-                    }
-                    if (!ValidacoesFuncionarios.ValidarTelefone(telefone) || string.IsNullOrEmpty(telefone))
-                    {
-                        MessageBox.Show("Telefone inválido!");
-                    }
-                    if (!ValidacoesFuncionarios.ValidarCampos( dataNascimento,  endereco,  nome, cpf, telefone))
-                    {
-                        MessageBox.Show("Todos os campos precisam ser preenchidos corretamente!");
-                    }
+                ValidacoesFuncionarios.ValidarCampos(funcionario);
+                
+                if (_eEdicao)
+                {                        
+                    repositorioFuncionarioSQL.Atualizar(funcionario);
                 }
+                else
+                {
+                    funcionario.Id = _id;
+                    repositorioFuncionarioSQL.Criar(funcionario);
+                }
+                    this.Close();                                   
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro ao tentar enviar os dados do funcionário. Por favor, entre em contato com a equipe de suporte e informe o erro: " + ex.Message, "Erro");
-            }
+                MessageBox.Show("Ocorreu um erro ao tentar enviar os dados do funcionário." + ex.Message, "Erro");
+            }          
         }
 
         private void AoClicarEmCancelar(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void AoDigitarNoCampoNome(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar))
