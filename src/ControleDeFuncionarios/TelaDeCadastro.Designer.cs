@@ -155,10 +155,10 @@
             // campoDeDataDeNascimento
             // 
             campoDeDataDeNascimento.Anchor = AnchorStyles.Top;
-            campoDeDataDeNascimento.Format = DateTimePickerFormat.Short;
-            campoDeDataDeNascimento.Location = new Point(221, 159);
-            campoDeDataDeNascimento.MaxDate = new DateTime(2008, 1, 1, 0, 0, 0, 0);
-            campoDeDataDeNascimento.MinDate = new DateTime(1963, 12, 1, 0, 0, 0, 0);
+            campoDeDataDeNascimento.Format = DateTimePickerFormat.Custom;
+            campoDeDataDeNascimento.Location = new Point(225, 159);
+            campoDeDataDeNascimento.MaxDate = new DateTime(2023, 5, 12, 0, 0, 0, 0);
+            campoDeDataDeNascimento.MinDate = new DateTime(1763, 12, 1, 0, 0, 0, 0);
             campoDeDataDeNascimento.Name = "campoDeDataDeNascimento";
             campoDeDataDeNascimento.Size = new Size(141, 23);
             campoDeDataDeNascimento.TabIndex = 4;
@@ -169,11 +169,12 @@
             campoDeDataDeAdmissao.Anchor = AnchorStyles.Top;
             campoDeDataDeAdmissao.Format = DateTimePickerFormat.Short;
             campoDeDataDeAdmissao.Location = new Point(225, 290);
-            campoDeDataDeAdmissao.MaxDate = new DateTime(2023, 4, 24, 23, 59, 59, 0);
+            campoDeDataDeAdmissao.MaxDate = new DateTime(2023, 5, 12, 0, 0, 0, 0);
+            campoDeDataDeAdmissao.MinDate = new DateTime(1953, 1, 1, 0, 0, 0, 0);
             campoDeDataDeAdmissao.Name = "campoDeDataDeAdmissao";
             campoDeDataDeAdmissao.Size = new Size(137, 23);
             campoDeDataDeAdmissao.TabIndex = 5;
-            campoDeDataDeAdmissao.Value = new DateTime(2023, 4, 24, 23, 59, 59, 0);
+            campoDeDataDeAdmissao.Value = new DateTime(2023, 4, 24, 0, 0, 0, 0);
             // 
             // lbl_campo_cpf
             // 

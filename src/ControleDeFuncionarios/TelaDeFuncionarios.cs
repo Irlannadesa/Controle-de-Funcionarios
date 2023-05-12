@@ -1,4 +1,4 @@
-using Infraestrutura;
+using Infraestrutura.Repositorio;
 
 namespace ControleDeFuncionarios
 {
