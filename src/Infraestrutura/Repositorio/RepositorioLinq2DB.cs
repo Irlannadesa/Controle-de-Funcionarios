@@ -5,14 +5,15 @@ using LinqToDB.DataProvider.SqlServer;
 using System.Configuration;
 
 
+
+
 namespace Infraestrutura.Repositorio
 {
-    internal class RepositorioLinkTwoDB : IFuncionarios
+    public class RepositorioLinkTwoDB : IFuncionarios
     {
-        private static string connectionString = ConfigurationManager.ConnectionStrings["Funcionarios"].ConnectionString;
-
         public DataConnection Conectar()
         {
+            string connectionString = ConfigurationManager.ConnectionStrings["Funcionarios"].ConnectionString;
             DataConnection conexao = SqlServerTools.CreateDataConnection(connectionString);
             return conexao;
         }
@@ -29,15 +30,13 @@ namespace Infraestrutura.Repositorio
             {
                 throw new Exception("Erro ao atualizar funcionario", ex);
             }
-
             return funcionario;
-
         }
 
         public void Criar(Funcionario novoFuncionario)
         {
             using var bancoSQL = Conectar();
-           
+
             try
             {
                 bancoSQL.Insert(novoFuncionario);
@@ -50,12 +49,33 @@ namespace Infraestrutura.Repositorio
 
         public Funcionario ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            using var bancoSQL = Conectar();
+
+            try
+            {
+                var obterPorid = bancoSQL.GetTable<Funcionario>().FirstOrDefault(funcionario => funcionario.Id == id);
+                return obterPorid;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao obter por ID", ex);
+            }
+
         }
 
         public List<Funcionario> ObterTodos()
         {
-            throw new NotImplementedException();
+            using var bancoSQL = Conectar();
+
+            try
+            {
+                var obterFuncionarios = bancoSQL.GetTable<Funcionario>().ToList();
+                return obterFuncionarios;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao obter todos os funcionário", ex); ;
+            }
         }
 
         public void Remover(int id)
