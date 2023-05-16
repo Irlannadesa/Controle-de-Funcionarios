@@ -19,10 +19,10 @@ namespace Dominio.Modelo
         [Column("Telefone"), NotNull]
         public string Telefone { get; set; }
 
-        [Column("DataNascimento"), NotNull]
+        [Column("Data_Nascimento"), NotNull]
         public DateTime DataNascimento { get; set; }
 
-        [Column("DataAdmissao"), NotNull]
+        [Column("Data_Admissao"), NotNull]
         public DateTime DataAdmissao { get; set; }
       
     }
