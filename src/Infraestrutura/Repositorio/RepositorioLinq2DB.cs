@@ -4,9 +4,6 @@ using LinqToDB.Data;
 using LinqToDB.DataProvider.SqlServer;
 using System.Configuration;
 
-
-
-
 namespace Infraestrutura.Repositorio
 {
     public class RepositorioLinkTwoDB : IFuncionarios
