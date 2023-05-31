@@ -8,12 +8,12 @@ namespace Dominio.Validacoes
     {
         public static bool ValidarCPF(string cpf)
         {
-            return Regex.IsMatch(cpf, @"^\d{3}\.\d{3}\.\d{3}-\d{2}$");
+            return Regex.IsMatch(cpf, @"^\d{11}$");
         }
 
         public static bool ValidarTelefone(string telefone)
         {
-            return Regex.IsMatch(telefone, @"^\(\d{2}\)\s\d{4}-\d{4}$");
+            return Regex.IsMatch(telefone, @"^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$");
         }
 
         public static bool ValidarDataNascimento(DateTime dataNascimento)
