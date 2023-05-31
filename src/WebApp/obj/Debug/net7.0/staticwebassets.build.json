@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "9A5+r3+Cf8kL1PwUC9e98w/coC7aXvo7ls0t+0zpzx8=",
+  "Hash": "zEVIAKHUmA5NmRz8KrSssSnHIjJDCiJEjcjcgJQVZO0=",
   "Source": "WebApp",
   "BasePath": "_content/WebApp",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebApp\\wwwroot",
+      "Source": "WebApp",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "BasePath": "_content/WebApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\index.html",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
 }

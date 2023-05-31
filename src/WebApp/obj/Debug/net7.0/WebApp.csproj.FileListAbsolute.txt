@@ -86,3 +86,4 @@ C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\W
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\obj\Debug\net7.0\ref\WebApp.dll
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\app.config
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\WebApp.dll.config
+C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\WebApp.staticwebassets.runtime.json

@@ -10,13 +10,12 @@ namespace WebApp.Controllers
     [ApiController]
     public class FuncionarioController : ControllerBase
     {
-        private IFuncionarios _funcionario;
-        //private ValidacoesFuncionario<Funcionario> _validacao;
+        private IFuncionarios _funcionario;  
+        
 
         public FuncionarioController(IFuncionarios funcionario)
         {
-            _funcionario = funcionario;
-            //_validacao = validacao;
+            _funcionario = funcionario;           
         }
 
         [HttpGet]
@@ -35,7 +34,6 @@ namespace WebApp.Controllers
                 return BadRequest(ex.Message);
             
             }
-
         }
 
         [HttpPost]
@@ -43,15 +41,27 @@ namespace WebApp.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult Criar(Funcionario novoFuncionario)
         {           
-            if (novoFuncionario == null)
-            {
-                return BadRequest("mensagem de erro - teste");
-            }
+            
             try
             {
-                ValidacoesFuncionarios.ValidarCampos(novoFuncionario);
-                _funcionario.Criar(novoFuncionario);
 
+                if (!ValidacoesFuncionarios.ValidarCPF(novoFuncionario.CPF))
+                {
+                    throw new Exception("Campo CPF é inválido.");
+                }
+                if (!ValidacoesFuncionarios.ValidarTelefone(novoFuncionario.Telefone))
+                {
+                    throw new Exception("Campo Telefone é inválido.");
+                }
+
+                if (!ValidacoesFuncionarios.ValidarDataNascimento(novoFuncionario.DataNascimento))
+                {
+                    throw new Exception("Campo Data de Nascimento é inválido.");
+                }
+
+                ValidacoesFuncionarios.ValidarCampos(novoFuncionario);
+                _funcionario.Criar(novoFuncionario);               
+              
                 return Created($"{novoFuncionario.Id}", novoFuncionario);
             }
             catch (Exception ex)
