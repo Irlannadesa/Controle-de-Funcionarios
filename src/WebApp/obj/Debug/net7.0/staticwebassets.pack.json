@@ -1,8 +1,40 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Component.js",
+      "PackagePath": "staticwebassets\\Component.js"
+    },
+    {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\App.controller.js",
+      "PackagePath": "staticwebassets\\Controller\\App.controller.js"
+    },
+    {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\App.view.xml",
+      "PackagePath": "staticwebassets\\View\\App.view.xml"
+    },
+    {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\FormCadastro.xml",
+      "PackagePath": "staticwebassets\\View\\FormCadastro.xml"
+    },
+    {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\ListView.xml",
+      "PackagePath": "staticwebassets\\View\\ListView.xml"
+    },
+    {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\i18n\\i18n.properties",
+      "PackagePath": "staticwebassets\\i18n\\i18n.properties"
+    },
+    {
       "Id": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\index.js",
+      "PackagePath": "staticwebassets\\index.js"
+    },
+    {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\manifest.json",
+      "PackagePath": "staticwebassets\\manifest.json"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.WebApp.Microsoft.AspNetCore.StaticWebAssets.props",

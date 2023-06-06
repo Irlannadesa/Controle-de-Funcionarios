@@ -1,0 +1,18 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="your.controller.name">
+    <VBox class="sapUiSmallMargin">
+        <Label text="Nome" />
+        <Input value="{path: '/nome'}" />
+
+        <Label text="Endereço" />
+        <Input value="{path: '/endereco'}" />
+
+        <Label text="CPF" />
+        <Input value="{path: '/cpf'}" />
+
+        <Label text="Data de Nascimento" />
+        <DatePicker value="{path: '/dataNascimento'}" />
+
+        <Label text="Data de Admissão" />
+        <DatePicker value="{path: '/dataAdmissao'}" />
+    </VBox>
+</mvc:View>

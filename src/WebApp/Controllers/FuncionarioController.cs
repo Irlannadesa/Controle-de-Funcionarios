@@ -10,12 +10,11 @@ namespace WebApp.Controllers
     [ApiController]
     public class FuncionarioController : ControllerBase
     {
-        private IFuncionarios _funcionario;  
-        
+        private IFuncionarios _funcionario;
 
         public FuncionarioController(IFuncionarios funcionario)
         {
-            _funcionario = funcionario;           
+            _funcionario = funcionario;
         }
 
         [HttpGet]
@@ -32,7 +31,7 @@ namespace WebApp.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            
+
             }
         }
 
@@ -40,28 +39,14 @@ namespace WebApp.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult Criar(Funcionario novoFuncionario)
-        {           
-            
+        {
+
             try
             {
-
-                if (!ValidacoesFuncionarios.ValidarCPF(novoFuncionario.CPF))
-                {
-                    throw new Exception("Campo CPF é inválido.");
-                }
-                if (!ValidacoesFuncionarios.ValidarTelefone(novoFuncionario.Telefone))
-                {
-                    throw new Exception("Campo Telefone é inválido.");
-                }
-
-                if (!ValidacoesFuncionarios.ValidarDataNascimento(novoFuncionario.DataNascimento))
-                {
-                    throw new Exception("Campo Data de Nascimento é inválido.");
-                }
-
+               
                 ValidacoesFuncionarios.ValidarCampos(novoFuncionario);
-                _funcionario.Criar(novoFuncionario);               
-              
+                _funcionario.Criar(novoFuncionario);
+
                 return Created($"{novoFuncionario.Id}", novoFuncionario);
             }
             catch (Exception ex)
@@ -69,6 +54,26 @@ namespace WebApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult Atualizar([FromRoute] int id, [FromBody] Funcionario funcionario)
+        {
+            try
+            {
+
+                ValidacoesFuncionarios.ValidarCampos(funcionario);
+                _funcionario.Atualizar(funcionario);
+
+                return Ok(funcionario.Id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -105,23 +110,7 @@ namespace WebApp.Controllers
                 return BadRequest(ex.Message + ", \n" + ex.InnerException);
             }
         }
-
-        [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Atualizar([FromRoute] int id, [FromBody] Funcionario funcionario)
-        {
-            try
-            {
-                ValidacoesFuncionarios.ValidarCampos(funcionario);
-                _funcionario.Atualizar(funcionario);
-
-                return Ok(funcionario.Id);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
     }
+
+     
 }

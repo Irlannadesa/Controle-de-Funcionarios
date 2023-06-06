@@ -1,6 +1,9 @@
+C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\app.config
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\appsettings.json
+C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\WebApp.staticwebassets.runtime.json
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\WebApp.exe
+C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\WebApp.dll.config
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\WebApp.deps.json
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\WebApp.runtimeconfig.json
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\WebApp.dll
@@ -84,6 +87,3 @@ C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\W
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\obj\Debug\net7.0\WebApp.pdb
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\obj\Debug\net7.0\WebApp.genruntimeconfig.cache
 C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\obj\Debug\net7.0\ref\WebApp.dll
-C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\app.config
-C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\WebApp.dll.config
-C:\Users\irlan\OneDrive\Área de Trabalho\Invent\CoderGrowth_Irlanna-de-sa\src\WebApp\bin\Debug\net7.0\WebApp.staticwebassets.runtime.json

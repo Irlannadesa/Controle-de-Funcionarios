@@ -63,6 +63,19 @@ namespace Dominio.Validacoes
             {
                 throw new Exception("Campo Telefone não foi preenchido ou esta inválido!");
             }
+            if (!ValidacoesFuncionarios.ValidarCPF(funcionario.CPF))
+            {
+                throw new Exception("Campo CPF é inválido.");
+            }
+            if (!ValidacoesFuncionarios.ValidarTelefone(funcionario.Telefone))
+            {
+                throw new Exception("Campo Telefone é inválido.");
+            }
+
+            if (!ValidacoesFuncionarios.ValidarDataNascimento(funcionario.DataNascimento))
+            {
+                throw new Exception("Campo Data de Nascimento é inválido.");
+            }
 
         }
     }
