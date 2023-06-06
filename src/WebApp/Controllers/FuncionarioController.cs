@@ -12,7 +12,6 @@ namespace WebApp.Controllers
     {
         private IFuncionarios _funcionario;
 
-
         public FuncionarioController(IFuncionarios funcionario)
         {
             _funcionario = funcionario;
@@ -44,20 +43,7 @@ namespace WebApp.Controllers
 
             try
             {
-                if (!ValidacoesFuncionarios.ValidarCPF(novoFuncionario.CPF))
-                {
-                    throw new Exception("Campo CPF é inválido.");
-                }
-                if (!ValidacoesFuncionarios.ValidarTelefone(novoFuncionario.Telefone))
-                {
-                    throw new Exception("Campo Telefone é inválido.");
-                }
-
-                if (!ValidacoesFuncionarios.ValidarDataNascimento(novoFuncionario.DataNascimento))
-                {
-                    throw new Exception("Campo Data de Nascimento é inválido.");
-                }
-
+               
                 ValidacoesFuncionarios.ValidarCampos(novoFuncionario);
                 _funcionario.Criar(novoFuncionario);
 
@@ -77,20 +63,7 @@ namespace WebApp.Controllers
             try
             {
 
-                if (!ValidacoesFuncionarios.ValidarCPF(funcionario.CPF))
-                {
-                    throw new Exception("Campo CPF é inválido.");
-                }
-                if (!ValidacoesFuncionarios.ValidarTelefone(funcionario.Telefone))
-                {
-                    throw new Exception("Campo Telefone é inválido.");
-                }
-
-                if (!ValidacoesFuncionarios.ValidarDataNascimento(funcionario.DataNascimento))
-                {
-                    throw new Exception("Campo Data de Nascimento é inválido.");
-                }
-
+                ValidacoesFuncionarios.ValidarCampos(funcionario);
                 _funcionario.Atualizar(funcionario);
 
                 return Ok(funcionario.Id);
