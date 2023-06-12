@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XA1G1nOgSHCxSrIQN6qGtfOQIdKQbxYWkP2VG62dBbU=",
+  "Hash": "1lYjJpNa7Lt6Enmj9lwAmkpRc68BCUlkCFDfU9rUtIU=",
   "Source": "WebApp",
   "BasePath": "_content/WebApp",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "WebApp\\wwwroot",
       "Source": "WebApp",
-      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Component.js",
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Component.js",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "Component.js",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\Component.js"
     },
     {
-      "Identity": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\App.controller.js",
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\App.controller.js",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "Controller/App.controller.js",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\Controller\\App.controller.js"
     },
     {
-      "Identity": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\i18n\\i18n.properties",
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\i18n\\i18n.properties",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "i18n/i18n.properties",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\i18n\\i18n.properties"
     },
     {
-      "Identity": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\index.html",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\index.js",
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\index.js",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "index.js",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\index.js"
     },
     {
-      "Identity": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\manifest.json",
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\manifest.json",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "manifest.json",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\manifest.json"
     },
     {
-      "Identity": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\App.view.xml",
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\App.view.xml",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "View/App.view.xml",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\View\\App.view.xml"
     },
     {
-      "Identity": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\FormCadastro.xml",
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\FormCadastro.xml",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "View/FormCadastro.xml",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\View\\FormCadastro.xml"
     },
     {
-      "Identity": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\ListView.xml",
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\ListView.xml",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Área de Trabalho\\Invent\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "View/ListView.xml",
       "AssetKind": "All",

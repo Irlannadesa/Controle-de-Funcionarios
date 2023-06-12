@@ -6,23 +6,22 @@ sap.ui.define([
   "use strict";
   return UIComponent.extend("controleDeFuncionarios.Component", {
      metadata : {
-        "interfaces": ["sap.ui.core.IAsyncContentCreation"],
-        "rootView": {
-           "viewName": "controleDeFuncionarios.view.App",
-           "type": "XML",
-           "async": true,
-           "id": "app"
-        }
+      interfaces: ["sap.ui.core.IAsyncContentCreation"],
+      manifest: "json"      
      },
      init : function () {        
         UIComponent.prototype.init.apply(this, arguments);       
         
-        
-        
-        let i18nModel = new ResourceModel({
-           bundleName: "controleDeFuncionarios.i18n.i18n"
-        });
-        this.setModel(i18nModel, "i18n");
+        var oData = {
+         recipient: {
+            name: ""
+         }
+      };
+      let oModel = new JSONModel(oData);
+      this.setModel(oModel);
+
+      
+      this.getRouter().initialize();
      }
   });
 });
