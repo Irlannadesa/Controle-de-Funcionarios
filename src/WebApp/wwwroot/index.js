@@ -6,7 +6,7 @@ sap.ui.define([
 	new ComponentContainer({
 		name: "controleDeFuncionarios",
 		settings : {
-			id : "app"
+			id : "controleDeFuncionarios"
 		},
 		async: true
 	}).placeAt("content");
