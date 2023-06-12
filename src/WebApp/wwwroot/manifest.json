@@ -65,9 +65,9 @@
           "target": "listView"
         },
         {
-          "pattern": "detail/{id}",
-          "name": "detail",
-          "target": "detail"
+          "pattern": "{detailsList}/{id}",
+          "name": "detailsList",
+          "target": "detailsList"
         }
       ],
       "targets": {
@@ -75,9 +75,9 @@
           "id": "ListView",
           "name": "ListView"
         },
-        "detail": {
-          "id": "detail",
-          "name": "Detail"
+        "detailsList": {
+          "id": "detailsList",
+          "name": "detailsList"
         }
       }
     }
