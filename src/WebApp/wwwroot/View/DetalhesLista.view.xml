@@ -1,0 +1,33 @@
+<mvc:View
+	xmlns:m="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	
+	 <m:Page title="{i18n>detalhesFuncionario}">
+                    <m:headerContent>                   
+                        
+                    </m:headerContent>
+                    <m:content>
+                        <m:Bar>
+                            <m:contentRight>
+                                <m:Button icon="sap-icon://nav-back" press="clicarEmVoltar" />
+                                <m:ToolbarSpacer/> 
+                                <m:Button icon="sap-icon://request" text="Editar" press="EditarFuncionario" />                                                                
+                               <m:Button icon="sap-icon://delete" text="Excluir" press="ExcluirFuncionario" />
+                            </m:contentRight>
+                        </m:Bar>
+                         <m:Panel class="sapUiResponsiveMargin" width="auto">
+                            <m:content>
+                               <m:ObjectHeader 
+                                    title="{nome}">
+                                    <m:ObjectAttribute text="Endereço:  {endereco}"/>
+                                    <m:ObjectAttribute text="CPF :  {cpf}"/>
+                                    <m:ObjectAttribute text="E-mail :  {email}"/>
+                                    <m:ObjectAttribute text="Data de Nascimento :  {path : 'dataDeNascimento', type : 'sap.ui.model.type.Date', formatOptions: {style : 'medium', source: {pattern: 'yyyy-MM-ddTHH:mm:ss.mmm'}}}"/>
+                                    <m:ObjectAttribute text="Data de Admissão :  {path : 'dataDeNascimento', type : 'sap.ui.model.type.Date', formatOptions: {style : 'medium', source: {pattern: 'yyyy-MM-ddTHH:mm:ss.mmm'}}}"/>		
+                                </m:ObjectHeader>
+                            </m:content>
+                        </m:Panel>
+                       
+                    </m:content>
+                </m:Page>
+</mvc:View>

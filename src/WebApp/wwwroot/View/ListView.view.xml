@@ -4,8 +4,8 @@
           xmlns:mvc="sap.ui.core.mvc"
           displayBlock="true">
 
-                <m:Page title="Controle de Funcionários Invent">
-                    <m:headerContent>                    
+                <m:Page title="{i18n>tituloPaginaPrincipal}">
+                    <m:headerContent>                   
                         
                     </m:headerContent>
                     <m:content>
@@ -19,7 +19,7 @@
                         <m:Panel class="sapUiResponsiveMargin" width="auto">
                             <m:content>
                                 <m:List id="myList" items="{funcionarios>/}">
-                                    <m:CustomListItem  type="Navigation" press="aoClicarNaLinha">
+                                    <m:CustomListItem  type="Navigation" press="detalhesFuncionarios">
                                         <m:HBox>
                                             <core:Icon size="2rem" src="sap-icon://work-history" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"></core:Icon>
                                             <m:VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">

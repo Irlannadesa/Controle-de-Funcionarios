@@ -4,7 +4,7 @@ sap.ui.define([
   "sap/ui/model/Filter",
   "sap/ui/model/FilterOperator",
   "sap/ui/core/routing/Router",
-], function(Controller, JSONModel, Filter, FilterOperator, Router) {
+], function(Controller, JSONModel, Filter, FilterOperator, ) {
   "use strict";
   return Controller.extend("controleDeFuncionarios.Controller.ListView", {
     onInit: function() {
@@ -21,25 +21,28 @@ sap.ui.define([
         
     },
 
-
     barraPesquisa: function (oEvent) {
       let filtro = [];
       let buscar = oEvent.getParameter("query");
       if (buscar) {
         filtro.push(new Filter("nome", FilterOperator.Contains, buscar));
-      }
-    
+      }    
       let lista = this.getView().byId("myList");
       let items = lista.getBinding("items");
       items.filter(filtro);
     },
 
-    aoClicarNaLinha: function (oEvent) {
-      var oItem = oEvent.getSource();
+    detalhesFuncionarios: function (oEvent) {
+      let itemSelecionado = oEvent.getSource();
       let rota = this.getOwnerComponent().getRouter();
-      let idDaLinhaSelecionada = oEvent.getSource().getBindingContext().getProperty("id")
-      rota.navTo("details", { id: idDaLinhaSelecionada })
-  }   
+      let lista = itemSelecionado.getBindingContext("funcionarios");
+      let idDaLinhaSelecionada = lista.getProperty("id");
+    
+      rota.navTo("details", {
+        id: idDaLinhaSelecionada
+      });
+    },
+       
   
   });
 });
