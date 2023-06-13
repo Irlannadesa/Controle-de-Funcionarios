@@ -16,12 +16,12 @@
       </m:Bar>
       <m:Panel class="sapUiResponsiveMargin" width="auto">
         <m:content>
-          <m:ObjectHeader title="{nome}" >
-            <m:ObjectAttribute text="Endereço: {endereco}" />
-            <m:ObjectAttribute text="CPF: {cpf}" />
-            <m:ObjectAttribute text="E-mail: {email}" />
-            <m:ObjectAttribute text="Data de Nascimento: {path: 'dataDeNascimento', type: 'sap.ui.model.type.Date', formatOptions: {style: 'medium'}}" />
-            <m:ObjectAttribute text="Data de Admissão: {path: 'dataDeAdmissao', type: 'sap.ui.model.type.Date', formatOptions: {style: 'medium'}}" />
+          <m:ObjectHeader title="{funcionario>/nome}" >
+            <m:ObjectAttribute text="Endereço: {funcionario>/endereco}" />
+            <m:ObjectAttribute text="CPF: {funcionario>/cpf}" />
+            <m:ObjectAttribute text="E-mail: {funcionario>/email}" />
+            <m:ObjectAttribute text="Data de Nascimento: {path: 'funcionario>/dataNascimento', type: 'sap.ui.model.type.Date', formatOptions: {style: 'medium'}}" />
+            <m:ObjectAttribute text="Data de Admissão: {path: 'fundataAdmissao', type: 'sap.ui.model.type.Date', formatOptions: {style: 'medium'}}" />
           </m:ObjectHeader>
           
         </m:content>

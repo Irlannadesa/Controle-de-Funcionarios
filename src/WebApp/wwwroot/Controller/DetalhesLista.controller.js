@@ -22,28 +22,29 @@ sap.ui.define(
       ObterFuncionario: function (id) {
         let funcionario = this.getView();
 
-        fetch("/api/Funcionario/" + id)
+        fetch(`/api/Funcionario/${id}`)
           .then((response) => response.json())
           .then((data) => {
+            console.log(data)
             funcionario.setModel(new JSONModel(data), "funcionario");
+
           })
           .catch((error) => {
             console.error(error);
           });
       },
-
       clicarEmVoltar: function () {
-        let historico = History.getInstance();
-        let anterior = historico.getPreviousHash();
-
-        if (anterior !== undefined) {
+        var oHistory = History.getInstance();
+        var sPreviousHash = oHistory.getPreviousHash();
+  
+        if (sPreviousHash !== undefined) {
           window.history.go(-1);
         } else {
-          let rota = sap.ui.core.UIComponent.getRouterFor(this);
-          rota.navTo("Lista");
+          var oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("Lista", {}, true);
         }
       },
-
+      
       EditarFuncionario: function () {
         
       },
