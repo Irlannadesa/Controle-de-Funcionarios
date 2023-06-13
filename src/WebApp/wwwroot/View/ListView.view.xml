@@ -11,7 +11,7 @@
                     <m:content>
                         <m:Bar>
                             <m:contentRight>
-                                <m:Button icon="sap-icon://add" text="Adicionar Novo" press="onAddButtonPress" />
+                                <m:Button icon="sap-icon://add" text="Adicionar Novo" press="aoClicarEmCadastrar" />
                                 <m:ToolbarSpacer/>                                
                                 <m:SearchField width="30%" search="barraPesquisa"/>
                             </m:contentRight>

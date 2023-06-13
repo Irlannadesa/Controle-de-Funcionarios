@@ -11,8 +11,7 @@ sap.ui.define(
       onInit: function() {
         let rota = sap.ui.core.UIComponent.getRouterFor(this);
         rota.attachRoutePatternMatched(this._onRouteMatched, this);
-      },
-      
+      },     
 
       _onRouteMatched: function (oEvent) {
         let id = oEvent.getParameter("arguments").id;
@@ -34,14 +33,14 @@ sap.ui.define(
           });
       },
       clicarEmVoltar: function () {
-        var oHistory = History.getInstance();
-        var sPreviousHash = oHistory.getPreviousHash();
+        let historico = History.getInstance();
+        let paginaAnterior = historico.getPreviousHash();
   
-        if (sPreviousHash !== undefined) {
+        if (paginaAnterior !== undefined) {
           window.history.go(-1);
         } else {
-          var oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("Lista", {}, true);
+          let rota = this.getOwnerComponent().getRouter();
+          rota.navTo("listView");
         }
       },
       

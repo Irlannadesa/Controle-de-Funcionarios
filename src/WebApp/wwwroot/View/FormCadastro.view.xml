@@ -1,0 +1,26 @@
+<mvc:View xmlns:core="sap.ui.core"
+          controllerName="controleDeFuncionarios.Controller.ListView"
+          xmlns:m="sap.m"
+          xmlns:mvc="sap.ui.core.mvc"
+          displayBlock="true">
+
+    <m:Page title="{i18n>cadastroDeFuncionarios}">
+        <m:content>
+            <m:Form>
+                <m:Label text="Product" labelFor="productInput" />
+                <m:Input
+                    id="productInput"
+                    placeholder="Enter product"
+                    showSuggestion="true"
+                    showValueHelp="true"
+                    valueHelpRequest=".onValueHelpRequest"
+                    suggestionItems="{/ProductCollection}">
+                    <m:suggestionItems>
+                        <core:Item text="{Name}" />
+                    </m:suggestionItems>
+                </m:Input>
+            </m:Form>
+        </m:content>
+    </m:Page>
+
+</mvc:View>

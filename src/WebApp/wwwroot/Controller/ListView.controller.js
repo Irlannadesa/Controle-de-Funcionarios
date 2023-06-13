@@ -42,6 +42,10 @@ sap.ui.define([
         id: idDaLinhaSelecionada
       });
     },
+    aoClicarEmCadastrar: function () {      
+      let rota = this.getOwnerComponent().getRouter();       
+      rota.navTo("formCadastro");
+    },
        
   
   });
