@@ -8,7 +8,7 @@ sap.ui.define([
   "use strict";
   return Controller.extend("controleDeFuncionarios.Controller.ListView", {
     onInit: function() {
-      var oView = this.getView();
+      let oView = this.getView();
 
       fetch("/api/Funcionario")
         .then((response) => response.json())

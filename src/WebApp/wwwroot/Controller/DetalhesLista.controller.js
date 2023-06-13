@@ -8,36 +8,48 @@ sap.ui.define(
     "use strict";
 
     return Controller.extend("controleDeFuncionarios.Controller.DetalhesLista", {
-      onInit: function () {
-        let Rota = this.getOwnerComponent().getRouter();
-        Rota.getRoute("details").attachPatternMatched(this.aoCoincidirRota, this);
-      },
-
-      aoCoincidirRota: function (oEvento) {
-        let id = oEvento.getParameter("arguments").id;
-        this.ObterFuncionario(id);
+      onInit: function() {
+        let rota = sap.ui.core.UIComponent.getRouterFor(this);
+        rota.attachRoutePatternMatched(this._onRouteMatched, this);
       },
       
+
+      _onRouteMatched: function (oEvent) {
+        let id = oEvent.getParameter("arguments").id;
+        this.ObterFuncionario(id);
+      },
+
       ObterFuncionario: function (id) {
-        let jsonFuncionario = new JSONModel();
+        let funcionario = this.getView();
 
         fetch("/api/Funcionario/" + id)
-          .then((res) => res.json())
-          .then((res) => jsonFuncionario.setData({ funcionario: res }));
-
-        this.getView().setModel(jsonFuncionario);
+          .then((response) => response.json())
+          .then((data) => {
+            funcionario.setModel(new JSONModel(data), "funcionario");
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       },
 
       clicarEmVoltar: function () {
         let historico = History.getInstance();
-        let paginaAnterior = historico.getPreviousHash();
+        let anterior = historico.getPreviousHash();
 
-        if (paginaAnterior !== undefined) {
+        if (anterior !== undefined) {
           window.history.go(-1);
         } else {
-          let rota = this.getOwnerComponent().getRouter();
-          rota.navTo("listView", {}, true);
+          let rota = sap.ui.core.UIComponent.getRouterFor(this);
+          rota.navTo("Lista");
         }
+      },
+
+      EditarFuncionario: function () {
+        
+      },
+
+      ExcluirFuncionario: function () {
+        
       }
     });
   }
