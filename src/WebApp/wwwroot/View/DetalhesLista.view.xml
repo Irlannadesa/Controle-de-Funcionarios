@@ -1,0 +1,31 @@
+<mvc:View
+  xmlns:m="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  controllerName="controleDeFuncionarios.Controller.DetalhesLista">
+
+  <m:Page title="{i18n>detalhesFuncionario}">
+    <m:headerContent></m:headerContent>
+    <m:content>
+      <m:Bar>
+        <m:contentRight>
+          <m:Button icon="sap-icon://nav-back" press="clicarEmVoltar" />
+          <m:ToolbarSpacer/>
+          <m:Button icon="sap-icon://request" text="Editar" press="EditarFuncionario" />
+          <m:Button icon="sap-icon://delete" text="Excluir" press="ExcluirFuncionario" />
+        </m:contentRight>
+      </m:Bar>
+      <m:Panel class="sapUiResponsiveMargin" width="auto">
+        <m:content>
+          <m:ObjectHeader title="{funcionario>/nome}" >
+            <m:ObjectAttribute text="Endereço: {funcionario>/endereco}" />
+            <m:ObjectAttribute text="CPF: {funcionario>/cpf}" />
+            <m:ObjectAttribute text="E-mail: {funcionario>/email}" />
+            <m:ObjectAttribute text="Data de Nascimento: {path: 'funcionario>/dataNascimento', type: 'sap.ui.model.type.Date', formatOptions: {style: 'medium'}}" />
+            <m:ObjectAttribute text="Data de Admissão: {path: 'fundataAdmissao', type: 'sap.ui.model.type.Date', formatOptions: {style: 'medium'}}" />
+          </m:ObjectHeader>
+          
+        </m:content>
+      </m:Panel>
+    </m:content>
+  </m:Page>
+</mvc:View>

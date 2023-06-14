@@ -4,8 +4,8 @@
           xmlns:mvc="sap.ui.core.mvc"
           displayBlock="true">
 
-                <m:Page title="Controle de Funcionários Invent">
-                    <m:headerContent>                    
+                <m:Page title="{i18n>tituloPaginaPrincipal}">
+                    <m:headerContent>                   
                         
                     </m:headerContent>
                     <m:content>
@@ -13,20 +13,19 @@
                             <m:contentRight>
                                 <m:Button icon="sap-icon://add" text="Adicionar Novo" press="onAddButtonPress" />
                                 <m:ToolbarSpacer/>                                
-                                <m:SearchField width="30%" search=".onFilterInvoices"/>
+                                <m:SearchField width="30%" search="barraPesquisa"/>
                             </m:contentRight>
                         </m:Bar>
                         <m:Panel class="sapUiResponsiveMargin" width="auto">
                             <m:content>
                                 <m:List id="myList" items="{funcionarios>/}">
-                                    <m:CustomListItem press="" type="Navigation">
+                                    <m:CustomListItem  type="Navigation" press="detalhesFuncionarios">
                                         <m:HBox>
                                             <core:Icon size="2rem" src="sap-icon://work-history" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"></core:Icon>
                                             <m:VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
                                                 <m:Text class="sapMTextWarning" text="{funcionarios>nome}" />
                                                 <m:Label text="{funcionarios>cpf}" />   
-                                            </m:VBox>     
-                                                                       
+                                            </m:VBox>                                                                            
                                         </m:HBox>
                                     </m:CustomListItem>
                                 </m:List>

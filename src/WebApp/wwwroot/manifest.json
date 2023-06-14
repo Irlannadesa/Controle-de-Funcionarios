@@ -4,8 +4,8 @@
     "id": "controleDeFuncionarios",
     "type": "application",
     "i18n": "i18n/i18n.properties",
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
+    "title": "{{titulo}}",
+    "description": "{{Descricao}}",
     "applicationVersion": {
       "version": "1.0.0"
     }
@@ -65,9 +65,9 @@
           "target": "listView"
         },
         {
-          "pattern": "detail/{id}",
-          "name": "detail",
-          "target": "detail"
+          "pattern": "details/{id}",
+          "name": "details",
+          "target": "DetalhesLista"
         }
       ],
       "targets": {
@@ -75,9 +75,9 @@
           "id": "ListView",
           "name": "ListView"
         },
-        "detail": {
-          "id": "detail",
-          "name": "Detail"
+        "DetalhesLista": {
+          "id": "DetalhesLista",
+          "name": "DetalhesLista"
         }
       }
     }
