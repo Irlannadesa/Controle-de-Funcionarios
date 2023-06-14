@@ -68,6 +68,10 @@
           "pattern": "details/{id}",
           "name": "details",
           "target": "DetalhesLista"
+        }, {
+          "pattern": "formCadastro",
+          "name": "formCadastro",
+          "target": "formCadastro"
         }
       ],
       "targets": {
@@ -78,6 +82,10 @@
         "DetalhesLista": {
           "id": "DetalhesLista",
           "name": "DetalhesLista"
+        },
+        "formCadastro": {
+          "id": "FormCadastro",
+          "name": "FormCadastro"
         }
       }
     }
