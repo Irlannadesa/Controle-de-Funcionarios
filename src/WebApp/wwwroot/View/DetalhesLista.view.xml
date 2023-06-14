@@ -10,8 +10,8 @@
         <m:contentRight>
           <m:Button icon="sap-icon://nav-back" press="clicarEmVoltar" />
           <m:ToolbarSpacer/>
-          <m:Button icon="sap-icon://request" text="Editar" press="EditarFuncionario" />
-          <m:Button icon="sap-icon://delete" text="Excluir" press="ExcluirFuncionario" />
+          <m:Button icon="sap-icon://request" text="Editar" type="Accept" press="EditarFuncionario" />
+          <m:Button icon="sap-icon://delete" text="Excluir" type="Negative" press="ExcluirFuncionario" />
         </m:contentRight>
       </m:Bar>
       <m:Panel class="sapUiResponsiveMargin" width="auto">
