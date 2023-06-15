@@ -3,6 +3,8 @@ using Dominio.Validacoes;
 using Infraestrutura.Repositorio;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace WebApp.Controllers
 {
@@ -10,7 +12,7 @@ namespace WebApp.Controllers
     [ApiController]
     public class FuncionarioController : ControllerBase
     {
-        private IFuncionarios _funcionario;
+        private readonly IFuncionarios _funcionario;
 
         public FuncionarioController(IFuncionarios funcionario)
         {
@@ -24,30 +26,31 @@ namespace WebApp.Controllers
         {
             try
             {
-                List<Funcionario> funcionario = _funcionario.ObterTodos();
-
-                return Ok(funcionario);
+                List<Funcionario> funcionarios = _funcionario.ObterTodos();
+                return Ok(funcionarios);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-
             }
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult Criar(Funcionario novoFuncionario)
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult Criar([FromBody] Funcionario novoFuncionario)
         {
+            if (novoFuncionario == null)
+            {
+                return BadRequest();
+            }
 
             try
             {
-               
                 ValidacoesFuncionarios.ValidarCampos(novoFuncionario);
                 _funcionario.Criar(novoFuncionario);
-
-                return Created($"{novoFuncionario.Id}", novoFuncionario);
+                var funcionarioNovo = _funcionario.ObterPorCpf(novoFuncionario.CPF);
+                return Ok(funcionarioNovo.Id);
             }
             catch (Exception ex)
             {
@@ -62,10 +65,8 @@ namespace WebApp.Controllers
         {
             try
             {
-
                 ValidacoesFuncionarios.ValidarCampos(funcionario);
                 _funcionario.Atualizar(funcionario);
-
                 return Ok(funcionario.Id);
             }
             catch (Exception ex)
@@ -73,7 +74,6 @@ namespace WebApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -83,7 +83,6 @@ namespace WebApp.Controllers
             try
             {
                 Funcionario funcionario = _funcionario.ObterPorId(id);
-
                 return Ok(funcionario);
             }
             catch (Exception ex)
@@ -100,9 +99,7 @@ namespace WebApp.Controllers
             try
             {
                 var funcionario = _funcionario.ObterPorId(id);
-
                 _funcionario.Remover(funcionario.Id);
-
                 return Ok(funcionario);
             }
             catch (Exception ex)
@@ -111,6 +108,4 @@ namespace WebApp.Controllers
             }
         }
     }
-
-     
 }

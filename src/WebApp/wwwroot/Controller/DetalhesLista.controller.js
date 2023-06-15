@@ -25,8 +25,7 @@ sap.ui.define(
 
           fetch(`/api/Funcionario/${id}`)
             .then((response) => response.json())
-            .then((data) => {
-              console.log(data);
+            .then((data) => {              
               funcionario.setModel(new JSONModel(data), "funcionario");
             })
             .catch((error) => {

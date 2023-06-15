@@ -9,6 +9,7 @@ namespace Infraestrutura.Repositorio
         public Funcionario ObterPorId(int id);
         public void Remover(int id);
         public Funcionario Atualizar(Funcionario funcionario);
+        public Funcionario ObterPorCpf(string cpf);
 
     }
 }

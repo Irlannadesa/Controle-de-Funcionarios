@@ -9,16 +9,16 @@
       "PackagePath": "staticwebassets\\Controller\\App.controller.js"
     },
     {
-      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\App.view.xml",
-      "PackagePath": "staticwebassets\\View\\App.view.xml"
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\DetalhesLista.controller.js",
+      "PackagePath": "staticwebassets\\Controller\\DetalhesLista.controller.js"
     },
     {
-      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\FormCadastro.xml",
-      "PackagePath": "staticwebassets\\View\\FormCadastro.xml"
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\FormCadastro.controller.js",
+      "PackagePath": "staticwebassets\\Controller\\FormCadastro.controller.js"
     },
     {
-      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\View\\ListView.xml",
-      "PackagePath": "staticwebassets\\View\\ListView.xml"
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\ListView.controller.js",
+      "PackagePath": "staticwebassets\\Controller\\ListView.controller.js"
     },
     {
       "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\i18n\\i18n.properties",
@@ -35,6 +35,22 @@
     {
       "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\manifest.json",
       "PackagePath": "staticwebassets\\manifest.json"
+    },
+    {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\App.view.xml",
+      "PackagePath": "staticwebassets\\view\\App.view.xml"
+    },
+    {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\DetalhesLista.view.xml",
+      "PackagePath": "staticwebassets\\view\\DetalhesLista.view.xml"
+    },
+    {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\FormCadastro.view.xml",
+      "PackagePath": "staticwebassets\\view\\FormCadastro.view.xml"
+    },
+    {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\ListView.view.xml",
+      "PackagePath": "staticwebassets\\view\\ListView.view.xml"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.WebApp.Microsoft.AspNetCore.StaticWebAssets.props",
