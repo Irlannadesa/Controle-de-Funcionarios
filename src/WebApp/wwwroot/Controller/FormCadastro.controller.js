@@ -48,6 +48,7 @@ sap.ui.define(
 
       clicarEmSalvar: function () {
         let funcionario = this.getView().getModel("funcionario").getData();
+        console.log(funcionario)
       
         let cpf = this.byId("inputCPF").getValue();
         funcionario.cpf = cpf.replaceAll(".", "").replace("-", "");
@@ -70,14 +71,14 @@ sap.ui.define(
                 onClose: (seOk) => {
                   if (seOk == MessageBox.Action.OK) {
                     this.limparFormulario();
-                    this.navegarParaDetalhes(res.data.id);
+                    this.navegarParaDetalhes(res);
                   }
                 },
               });
             }
           })
           .catch((error) => {
-            MessageBox.error("OPS! Erro ao cadastrar Funcionário: " + error.message); // Exibe o erro específico
+            MessageBox.error("OPS! Erro ao cadastrar Funcionário: "); 
           });
       },
       
@@ -97,15 +98,8 @@ sap.ui.define(
             }
           },
         });
-      },
-
-      navegarParaDetalhes: function (id) {
-
-        let rota = this.getOwnerComponent().getRouter();
-        rota.navTo("details", { id: id });
-    },
+      },  
       
-
       voltarTela: function () {
         let historico = History.getInstance();
         let paginaAnterior = historico.getPreviousHash();

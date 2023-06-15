@@ -8,8 +8,56 @@ namespace Dominio.Validacoes
     {
         public static bool ValidarCPF(string cpf)
         {
-            return Regex.IsMatch(cpf, @"^\d{11}$");
+           
+            cpf = Regex.Replace(cpf, @"[^0-9]", "");
+            
+            if (cpf.Length != 11)
+            {
+                return false;
+            }
+            
+            if (new string(cpf[0], 11) == cpf)
+            {
+                return false;
+            }
+
+            
+            int[] multiplicadores1 = { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicadores2 = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+
+            string cpfSemDigitos = cpf.Substring(0, 9);
+            string digito1 = cpf.Substring(9, 1);
+            string digito2 = cpf.Substring(10, 1);
+
+            int soma = 0;
+
+            for (int i = 0; i < 9; i++)
+            {
+                soma += int.Parse(cpfSemDigitos[i].ToString()) * multiplicadores1[i];
+            }
+
+            int resto = soma % 11;
+            int resultado1 = (resto < 2) ? 0 : 11 - resto;
+
+            if (digito1 != resultado1.ToString())
+            {
+                return false;
+            }
+
+            soma = 0;
+            cpfSemDigitos += resultado1;
+
+            for (int i = 0; i < 10; i++)
+            {
+                soma += int.Parse(cpfSemDigitos[i].ToString()) * multiplicadores2[i];
+            }
+
+            resto = soma % 11;
+            int resultado2 = (resto < 2) ? 0 : 11 - resto;
+
+            return digito2 == resultado2.ToString();
         }
+
 
         public static bool ValidarTelefone(string telefone)
         {
@@ -63,16 +111,16 @@ namespace Dominio.Validacoes
             {
                 throw new Exception("Campo Telefone não foi preenchido ou esta inválido!");
             }
-            if (!ValidacoesFuncionarios.ValidarCPF(funcionario.CPF))
+            if (!ValidarCPF(funcionario.CPF))
             {
                 throw new Exception("Campo CPF é inválido.");
             }
-            if (!ValidacoesFuncionarios.ValidarTelefone(funcionario.Telefone))
+            if (!ValidarTelefone(funcionario.Telefone))
             {
                 throw new Exception("Campo Telefone é inválido.");
             }
 
-            if (!ValidacoesFuncionarios.ValidarDataNascimento(funcionario.DataNascimento))
+            if (!ValidarDataNascimento(funcionario.DataNascimento))
             {
                 throw new Exception("Campo Data de Nascimento é inválido.");
             }

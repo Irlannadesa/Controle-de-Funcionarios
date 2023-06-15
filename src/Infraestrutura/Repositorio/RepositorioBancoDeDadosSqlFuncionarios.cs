@@ -172,5 +172,10 @@ namespace Infraestrutura.Repositorio
             return funcionarioBuscado;
         }
 
+        public Funcionario ObterPorCpf(string cpf)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

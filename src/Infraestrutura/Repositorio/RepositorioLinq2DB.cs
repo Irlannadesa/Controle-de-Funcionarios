@@ -60,6 +60,26 @@ namespace Infraestrutura.Repositorio
 
         }
 
+        public Funcionario ObterPorCpf(string cpf)
+        {
+            using var bancoSQL = Conectar();
+
+            try
+            {
+                var funcionario = bancoSQL.GetTable<Funcionario>().
+                FirstOrDefault(f => f.CPF == cpf)
+                ?? throw new Exception("O cpf não existe.");
+
+                return funcionario;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao obter o funcionario pelo cpf.", ex);
+            }
+        }
+
+    
+
         public List<Funcionario> ObterTodos()
         {
             using var bancoSQL = Conectar();

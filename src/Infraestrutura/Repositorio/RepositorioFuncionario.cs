@@ -50,5 +50,9 @@ namespace Infraestrutura.Repositorio
             }
             return funcionarioASerAtualizado;
         }
+        public Funcionario ObterPorCpf(string cpf)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
