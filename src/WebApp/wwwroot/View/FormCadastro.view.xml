@@ -1,41 +1,107 @@
 <mvc:View
-    xmlns:m="sap.m"
-    xmlns:mvc="sap.ui.core.mvc"
-    controllerName="controleDeFuncionarios.Controller.FormCadastro"       
-    displayBlock="true">
+	controllerName="controleDeFuncionarios.Controller.FormCadastro" 
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="FormularioFuncionario"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false"
+			ariaLabelledBy="TituloFormulario" >
+			<f:toolbar>
+				<Toolbar id="TB1">
+					<Button icon="sap-icon://nav-back" press="voltarTela" />
+                    <ToolbarSpacer/>
+					<Title id="TituloFormulario" text="{i18n>TituloFormulario}"/>
+					<ToolbarSpacer />
+					<Button icon="sap-icon://save" width="auto" text="{i18n>botaoSalvar}" type="Emphasized" press="clicarEmSalvar" ariaHasPopup="Dialog"/>
+					<Button icon="sap-icon://cancel"  width="auto" class="sapUiSmallMarginEnd" text="{i18n>botaoCancelar}" type="Negative" ariaHasPopup="Dialog" press="clicarEmCancelar" />
+				</Toolbar>
+			</f:toolbar>
+			<f:content>
+            
+				<Label text="{i18n>LabelNome}" design="Bold" labelFor="inputNome"/>
+                <Input id="inputNome"
+                required="true" 
+                placeholder="{i18n>InputNome}" 
+                value="{funcionario>/nome}"/>
+
+				
+                <Label text="{i18n>LabelEndereco}" design="Bold" labelFor="inputEndereco" />
+                <Input id="inputEndereco" 
+                required="true" 
+                placeholder="{i18n>InputEndereco}" 
+                value="{funcionario>/endereco}"/>
+				
+
+                <Label text="{i18n>LabelDataNascimento}" design="Bold" labelFor="inputDataNascimento" />
+								<DatePicker
+									id="inputDataNascimento"					
+														required="true" 
+									valueState="None"
+									change="aoMudarCampo"
+														placeholder="{i18n>InputDataNascimento}"
+									class="sapUiSmallMarginBottom"
+									fieldGroupIds="camposFormularios"
+									value="{
+										'path': 'funcionario>/dataNascimento',
+										'type': 'sap.ui.model.type.Date',
+										'formatOptions': {
+											'pattern': 'dd/MM/y'
+										}
+									}"
+									/>
+			    
+                <Label text="{i18n>LabelCPF}" design="Bold" labelFor="inputCPF" />
+                <MaskInput mask="999.999.999-99" 
+                placeholderSymbol="000.000.000-00" 
+                id="inputCPF" required="true" 
+                placeholder="{i18n>InputCPF}" 
+                value="{funcionario>/cpf}"/>
+
+                <Label text="{i18n>LabelTelefone}" design="Bold" labelFor="inputTelefone" />
+                <MaskInput mask="(99) 99999-9999"
+                 placeholderSymbol="(00)00000-0000"
+                 id="inputTelefone"
+                 required="true" 
+                 placeholder="{i18n>InputTelefone}" 
+                 value="{funcionario>/telefone}"/>
+
+                <Label text="{i18n>LabelDataAdmissao}"  design="Bold" labelFor="inputDataAdmissao"/>
+								<DatePicker
+									id="inputDataAdmissao" 					
+														required="true" 
+									valueState="None"
+									change="aoMudarCampo"
+														placeholder="{i18n>InputDataAdmissao}"
+									class="sapUiSmallMarginBottom"
+									fieldGroupIds="camposFormularios"
+									value="{
+										'path': 'funcionario>/dataAdmissao',
+										'type': 'sap.ui.model.type.Date',
+										'formatOptions': {
+											'pattern': 'dd/MM/y'
+										}
+									}"
+								/>
 	
-    <m:Page title="{i18n>TituloPaginaDeCadastro}" titleAlignment="Center" binding="{/}" showNavButton="true" navButtonPress="voltarTela">
-        <m:content>
-            
-                <m:Toolbar class="sapUiTinyMarginBottom">                 
-                    <m:ToolbarSpacer/>
-                    <m:Button icon="sap-icon://save" width="auto" text="{i18n>botaoSalvar}" type="Emphasized" press="clicarEmSalvar" ariaHasPopup="Dialog"/>
-                    <m:Button icon="sap-icon://cancel"  width="auto" class="sapUiSmallMarginEnd" text="{i18n>botaoCancelar}" type="Negative" ariaHasPopup="Dialog" press="clicarEmCancelar"/>
-                </m:Toolbar>
-
-                
-                <m:FlexBox class="sapUiContentPadding sapUiLargeMarginBegin" width="auto" justifyContent="Center" alignItems="Center" direction="Column">
-                <m:Panel class="sapUiResponsiveMargin" width="auto">
-                <m:Label text="{i18n>LabelNome}" design="Bold" labelFor="inputNome"/>
-                <m:Input id="inputNome" required="true" placeholder="{i18n>InputNome}" value="{funcionario>/nome}"/>
-
-                <m:Label text="{i18n>LabelEndereco}" design="Bold" labelFor="inputEndereco" />
-                <m:Input id="inputEndereco" required="true" placeholder="{i18n>InputEndereco}" value="{funcionario>/endereco}"/>
-              
-                <m:Label text="{i18n>LabelCPF}" design="Bold" labelFor="inputCPF" />
-                <m:MaskInput mask="999.999.999-99" placeholderSymbol="000.000.000-00" id="inputCPF" required="true" placeholder="{i18n>InputCPF}" value="{funcionario>/cpf}"/>
-            
-                <m:Label text="{i18n>LabelTelefone}" design="Bold" labelFor="inputTelefone" />
-                <m:MaskInput mask="(99) 99999-9999" placeholderSymbol="(00)00000-0000" id="inputTelefone" required="true" placeholder="{i18n>InputTelefone}" value="{funcionario>/telefone}"/>
-                <m:Label text="{i18n>LabelDataNascimento}" design="Bold" labelFor="inputDataNascimento" />
-                <m:DatePicker id="inputDataNascimento" width="15rem" required="true" placeholder="{i18n>InputDataNascimento}"
-                value="{path:'funcionario>/dataNascimento', type:'sap.ui.model.type.Date', formatOptions:{source:{pattern:'yyyy-MM-ddTHH:mm:ss.mmm'}}}"/>
-                <m:Label text="{i18n>LabelDataAdmissao}"  design="Bold" labelFor="inputDataAdmissao" />
-                <m:DatePicker id="inputDataAdmissao" width="15rem" required="true" placeholder="{i18n>InputDataAdmissao}"
-                value="{path:'funcionario>/dataAdmissao', type:'sap.ui.model.type.Date', formatOptions:{source:{pattern:'yyyy-MM-ddTHH:mm:ss.mmm'}}}"/>
-                    
-                </m:Panel>
-            </m:FlexBox>            
-        </m:content>
-    </m:Page>
+				
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
 </mvc:View>

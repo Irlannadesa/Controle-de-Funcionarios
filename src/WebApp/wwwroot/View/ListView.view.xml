@@ -5,13 +5,13 @@
           displayBlock="true">
 
                 <m:Page title="{i18n>tituloPaginaPrincipal}">
-                    <m:headerContent>                   
+                    <m:headerContent>                 
                         
                     </m:headerContent>
                     <m:content>
                         <m:Bar>
                             <m:contentRight>
-                                <m:Button icon="sap-icon://add" text="Adicionar Novo" press="aoClicarEmCadastrar" />
+                                <m:Button icon="sap-icon://add" width="auto" text="Adicionar Novo" press="aoClicarEmCadastrar" />
                                 <m:ToolbarSpacer/>                                
                                 <m:SearchField width="auto" search="barraPesquisa"/>
                             </m:contentRight>
@@ -32,7 +32,6 @@
                             </m:content>
                         </m:Panel>
                     </m:content>
-                </m:Page>
-       
+                </m:Page>       
 </mvc:View>
 

@@ -16,6 +16,7 @@
       </m:Bar>
       <m:Panel class="sapUiResponsiveMargin" width="auto">
         <m:content>
+      
           <m:ObjectHeader title="{funcionario>/nome}" >
             <m:ObjectAttribute text="Endereço: {funcionario>/endereco}"/>
             <m:ObjectAttribute text="Telefone: {funcionario>/telefone}"/>
