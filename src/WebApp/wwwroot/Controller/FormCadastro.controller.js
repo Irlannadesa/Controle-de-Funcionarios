@@ -6,7 +6,7 @@ sap.ui.define(
     "sap/m/MessageBox",
     "../servicos/Validacoes",
   ],
-  function (Controller, History, JSONModel, MessageBox) {
+  function (Controller, History, JSONModel, MessageBox, Validacoes) {
     "use strict";
 
     return Controller.extend("controleDeFuncionarios.Controller.FormCadastro", {
@@ -15,6 +15,7 @@ sap.ui.define(
         oRouter.attachRoutePatternMatched(this.rotaCorrespondida, this);
       },
 
+    
       rotaCorrespondida: function () {
         let dadosFuncionario = {
           nome: "",
@@ -49,28 +50,42 @@ sap.ui.define(
 
       clicarEmSalvar: function () {
         let funcionario = this.getView().getModel("funcionario").getData();
-        // Chamar validações
-        let errosNome = Validacoes.validarCampoNome(funcionario.nome);
-        let errosEmail = Validacoes.validarCampoEmail(funcionario.email);
-        let errosCpf = Validacoes.validarCampoCpf(funcionario.cpf);
-        let errosDataNascimento = Validacoes.validarCampoDataNascimento(
-          funcionario.dataNascimento
-        );
+  // Chamar validações
+  let errosNome = Validacoes.validarCampoNome(funcionario.nome);
+  let errosEmail = Validacoes.validarCampoEmail(funcionario.email);
+  let errosCpf = Validacoes.validarCampoCpf(funcionario.cpf);
+  let errosDataNascimento = Validacoes.validarCampoDataNascimento(
+    funcionario.dataNascimento
+  );
 
-        if (
-          errosNome.length > 0 ||
-          errosEmail.length > 0 ||
-          errosCpf.length > 0 ||
-          errosDataNascimento.length > 0
-        ) {
-          this.exibirMensagensErro(
-            errosNome,
-            errosEmail,
-            errosCpf,
-            errosDataNascimento
-          );
-          return;
-        }
+  // Adicione as validações para os campos obrigatórios
+  let errosEndereco = Validacoes.validarCampoEndereco(funcionario.endereco);
+  let errosTelefone = Validacoes.validarCampoTelefone(funcionario.telefone);
+  let errosDataAdmissao = Validacoes.validarCampoDataAdmissao(
+    funcionario.dataAdmissao
+  );
+
+  // Verifique se há erros em todos os campos obrigatórios
+  if (
+    errosNome.length > 0 ||
+    errosEmail.length > 0 ||
+    errosCpf.length > 0 ||
+    errosDataNascimento.length > 0 ||
+    errosEndereco.length > 0 ||
+    errosTelefone.length > 0 ||
+    errosDataAdmissao.length > 0
+  ) {
+    this.exibirMensagensErro(
+      errosNome,
+      errosEmail,
+      errosCpf,
+      errosDataNascimento,
+      errosEndereco,
+      errosTelefone,
+      errosDataAdmissao
+    );
+    return;
+  }
 
         // let cpf = this.byId("inputCPF").getValue();
         // funcionario.cpf = cpf.replaceAll(".", "").replace("-", "");
@@ -126,24 +141,41 @@ sap.ui.define(
         errosNome,
         errosEmail,
         errosCpf,
-        errosDataNascimento
+        errosDataNascimento,
+        errosEndereco,
+        errosTelefone,
+        errosDataAdmissao
       ) {
-        // Exibir erros no campo de nome
+        
         let campoNome = this.getView().byId("inputNome");
         Validacoes.mensagensErro(campoNome, errosNome);
-
-        // Exibir erros no campo de email
+      
+      
         let campoEmail = this.getView().byId("inputEmail");
         Validacoes.mensagensErro(campoEmail, errosEmail);
-
-        // Exibir erros no campo de CPF
+      
+        
         let campoCpf = this.getView().byId("inputCPF");
         Validacoes.mensagensErro(campoCpf, errosCpf);
-
-        // Exibir erros no campo de data de nascimento
+      
+      
         let campoDataNascimento = this.getView().byId("inputDataNascimento");
         Validacoes.mensagensErro(campoDataNascimento, errosDataNascimento);
+      
+       
+        let campoEndereco = this.getView().byId("inputEndereco");
+        Validacoes.mensagensErro(campoEndereco, errosEndereco);
+      
+        
+        let campoTelefone = this.getView().byId("inputTelefone");
+        Validacoes.mensagensErro(campoTelefone, errosTelefone);
+      
+        
+        let campoDataAdmissao = this.getView().byId("inputDataAdmissao");
+        Validacoes.mensagensErro(campoDataAdmissao, errosDataAdmissao);
       },
+      
+      
 
       voltarTela: function () {
         let historico = History.getInstance();
