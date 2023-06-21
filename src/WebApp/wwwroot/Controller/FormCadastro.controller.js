@@ -47,12 +47,11 @@ sap.ui.define(
       },
 
       clicarEmSalvar: function () {
-        let funcionario = this.getView().getModel("funcionario").getData();
-        console.log(funcionario)
+        let funcionario = this.getView().getModel("funcionario").getData();        
       
         let cpf = this.byId("inputCPF").getValue();
         funcionario.cpf = cpf.replaceAll(".", "").replace("-", "");
-      
+        
         fetch("/api/Funcionario", {
           method: "POST",
           headers: {
@@ -63,7 +62,7 @@ sap.ui.define(
           .then((res) => res.json())
           .then((res) => {
             if (res.status == 400) {
-              MessageBox.error("OPS! Erro ao cadastrar Funcionário");
+              MessageBox.error(`OPS! Erro ao cadastrar Funcionário `);
             } else {
               MessageBox.success("Funcionário cadastrado com sucesso!", {
                 title: "Sucesso",
@@ -77,9 +76,9 @@ sap.ui.define(
               });
             }
           })
-          .catch((error) => {
-            MessageBox.error("OPS! Erro ao cadastrar Funcionário: "); 
-          });
+          .catch((error) => {            
+            MessageBox.error(`OPS! Erro ao cadastrar Funcionário`);
+        });
       },
       
       navegarParaDetalhes: function (id) {

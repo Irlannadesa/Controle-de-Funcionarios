@@ -43,10 +43,18 @@
 
 				
                 <Label text="{i18n>LabelEndereco}" design="Bold" labelFor="inputEndereco" />
-                <Input id="inputEndereco" 
-                required="true" 
-                placeholder="{i18n>InputEndereco}" 
-                value="{funcionario>/endereco}"/>
+               
+             
+								<Input id="inputEndereco" 
+								name="inputNome" 
+								showClearIcon="true" 
+								required="true" 
+								valueState="None" 
+								valueLiveUpdate="true" 
+								liveChange="AoEditar" 
+								placeholder="{i18n>InputEndereco}"
+								value="{funcionario>/endereco}"
+								submit="aoClicarEmSalvar"/>
 				
 
                 <Label text="{i18n>LabelDataNascimento}" design="Bold" labelFor="inputDataNascimento" />
