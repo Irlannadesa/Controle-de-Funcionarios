@@ -4,6 +4,7 @@ sap.ui.define(
     "sap/ui/core/routing/History",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageBox",
+    "../servicos/Validacoes",
   ],
   function (Controller, History, JSONModel, MessageBox) {
     "use strict";
@@ -47,11 +48,33 @@ sap.ui.define(
       },
 
       clicarEmSalvar: function () {
-        let funcionario = this.getView().getModel("funcionario").getData();        
-      
-        let cpf = this.byId("inputCPF").getValue();
-        funcionario.cpf = cpf.replaceAll(".", "").replace("-", "");
-        
+        let funcionario = this.getView().getModel("funcionario").getData();
+        // Chamar validações
+        let errosNome = Validacoes.validarCampoNome(funcionario.nome);
+        let errosEmail = Validacoes.validarCampoEmail(funcionario.email);
+        let errosCpf = Validacoes.validarCampoCpf(funcionario.cpf);
+        let errosDataNascimento = Validacoes.validarCampoDataNascimento(
+          funcionario.dataNascimento
+        );
+
+        if (
+          errosNome.length > 0 ||
+          errosEmail.length > 0 ||
+          errosCpf.length > 0 ||
+          errosDataNascimento.length > 0
+        ) {
+          this.exibirMensagensErro(
+            errosNome,
+            errosEmail,
+            errosCpf,
+            errosDataNascimento
+          );
+          return;
+        }
+
+        // let cpf = this.byId("inputCPF").getValue();
+        // funcionario.cpf = cpf.replaceAll(".", "").replace("-", "");
+
         fetch("/api/Funcionario", {
           method: "POST",
           headers: {
@@ -76,16 +99,16 @@ sap.ui.define(
               });
             }
           })
-          .catch(() => {            
+          .catch(() => {
             MessageBox.error(`OPS! Erro ao cadastrar Funcionário`);
-        });
+          });
       },
-      
+
       navegarParaDetalhes: function (id) {
         let rota = this.getOwnerComponent().getRouter();
         rota.navTo("details", { id: id });
       },
-      
+
       clicarEmCancelar: function () {
         MessageBox.alert("Deseja cancelar o cadastro ?", {
           icon: MessageBox.Icon.WARNING,
@@ -97,8 +120,31 @@ sap.ui.define(
             }
           },
         });
-      },  
-      
+      },
+
+      exibirMensagensErro: function (
+        errosNome,
+        errosEmail,
+        errosCpf,
+        errosDataNascimento
+      ) {
+        // Exibir erros no campo de nome
+        let campoNome = this.getView().byId("inputNome");
+        Validacoes.mensagensErro(campoNome, errosNome);
+
+        // Exibir erros no campo de email
+        let campoEmail = this.getView().byId("inputEmail");
+        Validacoes.mensagensErro(campoEmail, errosEmail);
+
+        // Exibir erros no campo de CPF
+        let campoCpf = this.getView().byId("inputCPF");
+        Validacoes.mensagensErro(campoCpf, errosCpf);
+
+        // Exibir erros no campo de data de nascimento
+        let campoDataNascimento = this.getView().byId("inputDataNascimento");
+        Validacoes.mensagensErro(campoDataNascimento, errosDataNascimento);
+      },
+
       voltarTela: function () {
         let historico = History.getInstance();
         let paginaAnterior = historico.getPreviousHash();
