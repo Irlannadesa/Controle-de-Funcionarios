@@ -2,7 +2,7 @@ sap.ui.define([], function() {
 	"use strict";
 
 	return {
-		  validarNomeFuncionario: function(nomeFuncionario) {
+		  validarCampoNome: function(nomeFuncionario) {
       const formatoNomeFuncionario = /^[a-zA-ZÀ-ÖØ-öø-ÿ ]*$/;
       const quantidadeMinimadeLetras = 1;
       const erros = [];
@@ -20,28 +20,28 @@ sap.ui.define([], function() {
       return erros;
     },
 
-		_validarEmail: function(email) {
+		validarCampoEmail: function(emailFuncionario) {
 			const erros = [];
 			const formato = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/;
 
-			email = email.trim();
+			emailFuncionario = emailFuncionario.trim();
 
-			if (!formato.test(email)) {
+			if (!formato.test(emailFuncionario)) {
 				erros.push("Esse formato de email não é válido!");
 			}
 
-			if (email.length === 0) {
+			if (emailFuncionario.length === 0) {
 				erros.push("Esse campo não pode ser vazio");
 			}
 
 			return erros;
 		},
 
-		_validarCpf: function(cpf) {
+		validarCampoCpf: function(cpfFuncionario) {
 			const maximoTamanhoCaracteresRepetidos = 11;
 			const quantidadeNulaCaracteres = 0;
 
-			let strCPF = cpf.replaceAll(".", "").replace("-", "").replace(" ", "");
+			let strCPF = cpfFuncionario.replaceAll(".", "").replace("-", "").replace(" ", "");
 			const erros = [];
 			const expressaoRegular = new RegExp(`${strCPF[0]}`, 'g');
 			let Soma;
@@ -85,14 +85,13 @@ sap.ui.define([], function() {
 			return erros;
 		},
 
-		_validarDataNascimento: function(dataNascimento) {
-			const quantidadeNulaCaracteres = 0;
+		validarCampoDataNascimento: function(dataNascimentoFuncionario) {		
 			const erros = [];
-			const dataValidar = new Date(dataNascimento);
+			const dataValidar = new Date(dataNascimentoFuncionario);
 			const dataHoje = new Date();
 
-			if (dataHoje.getFullYear() - dataValidar.getFullYear() > 120) {
-        erros.push("A idade máxima é 120 anos!");
+			if (dataHoje.getFullYear() - dataValidar.getFullYear() > 70) {
+        erros.push("A idade máxima é 70 anos!");
       }
   
       if (dataHoje.getFullYear() - dataValidar.getFullYear() < 18) {
@@ -102,7 +101,7 @@ sap.ui.define([], function() {
       return erros;
     },
   
-    _addMensagensErro: function(oItem, erros) {
+    mensagensErro: function(oItem, erros) {
       const quantidadeNulaDeErros = 0;
   
       if (erros.length > quantidadeNulaDeErros) {
