@@ -76,7 +76,7 @@ sap.ui.define(
               });
             }
           })
-          .catch((error) => {            
+          .catch(() => {            
             MessageBox.error(`OPS! Erro ao cadastrar Funcionário`);
         });
       },
