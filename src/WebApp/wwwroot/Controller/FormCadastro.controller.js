@@ -87,8 +87,7 @@ sap.ui.define(
     return;
   }
 
-        // let cpf = this.byId("inputCPF").getValue();
-        // funcionario.cpf = cpf.replaceAll(".", "").replace("-", "");
+        
 
         fetch("/api/Funcionario", {
           method: "POST",

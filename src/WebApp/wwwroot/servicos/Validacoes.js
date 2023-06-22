@@ -120,24 +120,28 @@ sap.ui.define([], function() {
 	},
 	
 		
+	validarCampoDataNascimento: function(dataNascimentoFuncionario) {
+    const erros = [];
+    const dataValidar = new Date(dataNascimentoFuncionario);
+    const dataHoje = new Date();
 
-		validarCampoDataNascimento: function(dataNascimentoFuncionario) {		
-			const erros = [];
-			const dataValidar = new Date(dataNascimentoFuncionario);
-			const dataHoje = new Date();
+    if (!dataNascimentoFuncionario) {
+        erros.push("O campo de data de nascimento é obrigatório");
+    } else {
+        if (dataHoje.getFullYear() - dataValidar.getFullYear() > 70) {
+            erros.push("A idade máxima é 70 anos!");
+        }
 
-			if (dataHoje.getFullYear() - dataValidar.getFullYear() > 70) {
-        erros.push("A idade máxima é 70 anos!");
-      }
-  
-      if (dataHoje.getFullYear() - dataValidar.getFullYear() < 18) {
-        erros.push("A idade mínima é 18 anos!");
-      }
-  
-      return erros;
-    },
+        if (dataHoje.getFullYear() - dataValidar.getFullYear() < 18) {
+            erros.push("A idade mínima é 18 anos!");
+        }
+    }
 
-		
+    return erros;
+},
+
+
+
 		validarCampoDataAdmissao: function(dataAdmissao) {
 			const erros = [];
 			const dataAtual = new Date();
