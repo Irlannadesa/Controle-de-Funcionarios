@@ -38,6 +38,7 @@
 				<Label text="{i18n>LabelNome}" design="Bold" labelFor="inputNome"/>
                 <Input id="inputNome"
                 required="true" 
+								liveChange="aoMudarCampo" 
                 placeholder="{i18n>InputNome}" 
                 value="{funcionario>/nome}"/>
 
@@ -51,7 +52,7 @@
 								required="true" 
 								valueState="None" 
 								valueLiveUpdate="true" 
-								liveChange="AoEditar" 
+								liveChange="aoMudarCampo" 
 								placeholder="{i18n>InputEndereco}"
 								value="{funcionario>/endereco}"
 								submit="aoClicarEmSalvar"/>
