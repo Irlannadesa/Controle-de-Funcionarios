@@ -11,12 +11,11 @@ sap.ui.define(
 
     return Controller.extend("controleDeFuncionarios.Controller.FormCadastro", {
       onInit: function () {
-        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        oRouter.attachRoutePatternMatched(this.rotaCorrespondida, this);
+        var rota = sap.ui.core.UIComponent.getRouterFor(this);
+        rota.attachRoutePatternMatched(this._rotaCorrespondida, this);
       },
 
-    
-      rotaCorrespondida: function () {
+      _rotaCorrespondida: function () {
         let dadosFuncionario = {
           nome: "",
           endereco: "",
@@ -50,44 +49,40 @@ sap.ui.define(
 
       clicarEmSalvar: function () {
         let funcionario = this.getView().getModel("funcionario").getData();
-  // Chamar validações
-  let errosNome = Validacoes.validarCampoNome(funcionario.nome);
-  let errosEmail = Validacoes.validarCampoEmail(funcionario.email);
-  let errosCpf = Validacoes.validarCampoCpf(funcionario.cpf);
-  let errosDataNascimento = Validacoes.validarCampoDataNascimento(
-    funcionario.dataNascimento
-  );
 
-  // Adicione as validações para os campos obrigatórios
-  let errosEndereco = Validacoes.validarCampoEndereco(funcionario.endereco);
-  let errosTelefone = Validacoes.validarCampoTelefone(funcionario.telefone);
-  let errosDataAdmissao = Validacoes.validarCampoDataAdmissao(
-    funcionario.dataAdmissao
-  );
+        let errosNome = Validacoes.validarCampoNome(funcionario.nome);
+        let errosEndereco = Validacoes.validarCampoEndereco(
+          funcionario.endereco
+        );
+        let errosDataNascimento = Validacoes.validarCampoDataNascimento(
+          funcionario.dataNascimento
+        );
+        let errosCpf = Validacoes.validarCampoCpf(funcionario.cpf);
+        let errosTelefone = Validacoes.validarCampoTelefone(
+          funcionario.telefone
+        );
+        let errosDataAdmissao = Validacoes.validarCampoDataAdmissao(
+          funcionario.dataAdmissao
+        );
 
-  // Verifique se há erros em todos os campos obrigatórios
-  if (
-    errosNome.length > 0 ||
-    errosEmail.length > 0 ||
-    errosCpf.length > 0 ||
-    errosDataNascimento.length > 0 ||
-    errosEndereco.length > 0 ||
-    errosTelefone.length > 0 ||
-    errosDataAdmissao.length > 0
-  ) {
-    this.exibirMensagensErro(
-      errosNome,
-      errosEmail,
-      errosCpf,
-      errosDataNascimento,
-      errosEndereco,
-      errosTelefone,
-      errosDataAdmissao
-    );
-    return;
-  }
-
-        
+        if (
+          errosNome.length > 0 ||
+          errosCpf.length > 0 ||
+          errosDataNascimento.length > 0 ||
+          errosEndereco.length > 0 ||
+          errosTelefone.length > 0 ||
+          errosDataAdmissao.length > 0
+        ) {
+          this.exibirMensagensErro(
+            errosNome,
+            errosCpf,
+            errosDataNascimento,
+            errosEndereco,
+            errosTelefone,
+            errosDataAdmissao
+          );
+          return;
+        }
 
         fetch("/api/Funcionario", {
           method: "POST",
@@ -138,43 +133,31 @@ sap.ui.define(
 
       exibirMensagensErro: function (
         errosNome,
-        errosEmail,
+
         errosCpf,
         errosDataNascimento,
         errosEndereco,
         errosTelefone,
         errosDataAdmissao
       ) {
-        
         let campoNome = this.getView().byId("inputNome");
         Validacoes.mensagensErro(campoNome, errosNome);
-      
-      
-        let campoEmail = this.getView().byId("inputEmail");
-        Validacoes.mensagensErro(campoEmail, errosEmail);
-      
-        
+
         let campoCpf = this.getView().byId("inputCPF");
         Validacoes.mensagensErro(campoCpf, errosCpf);
-      
-      
+
         let campoDataNascimento = this.getView().byId("inputDataNascimento");
         Validacoes.mensagensErro(campoDataNascimento, errosDataNascimento);
-      
-       
+
         let campoEndereco = this.getView().byId("inputEndereco");
         Validacoes.mensagensErro(campoEndereco, errosEndereco);
-      
-        
+
         let campoTelefone = this.getView().byId("inputTelefone");
         Validacoes.mensagensErro(campoTelefone, errosTelefone);
-      
-        
+
         let campoDataAdmissao = this.getView().byId("inputDataAdmissao");
         Validacoes.mensagensErro(campoDataAdmissao, errosDataAdmissao);
       },
-      
-      
 
       voltarTela: function () {
         let historico = History.getInstance();
