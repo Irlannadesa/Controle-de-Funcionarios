@@ -1,5 +1,5 @@
 <mvc:View xmlns:core="sap.ui.core"
-          controllerName="controleDeFuncionarios.Controller.ListView"
+          controllerName="controleDeFuncionarios.Controller.ListaTelaInicial"
           xmlns:m="sap.m"
           xmlns:mvc="sap.ui.core.mvc"
           displayBlock="true">
@@ -9,6 +9,7 @@
                         
                     </m:headerContent>
                     <m:content>
+                    
                         <m:Bar>
                             <m:contentRight>
                                 <m:Button icon="sap-icon://add" width="auto" text="Adicionar Novo" press="aoClicarEmCadastrar" />
@@ -30,8 +31,14 @@
                                     </m:CustomListItem>
                                 </m:List>
                             </m:content>
+                             <m:FlexBox justifyContent="Center" alignItems="Center">
+                            <m:BusyIndicator size="2rem" busy="{funcionarios>/listaCarregando}" />
+                        </m:FlexBox>
                         </m:Panel>
+                       
                     </m:content>
+                    
+
                 </m:Page>       
 </mvc:View>
 

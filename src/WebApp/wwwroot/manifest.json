@@ -61,12 +61,12 @@
       "routes": [
         {
           "pattern": "",
-          "name": "listView",
-          "target": "listView"
+          "name": "listaTelaInicial",
+          "target": "ListaTelaInicial"
         },
         {
-          "pattern": "details/{id}",
-          "name": "details",
+          "pattern": "detalhes/{id}",
+          "name": "detalhes",
           "target": "DetalhesLista"
         }, {
           "pattern": "formCadastro",
@@ -75,9 +75,9 @@
         }
       ],
       "targets": {
-        "listView": {
-          "id": "ListView",
-          "name": "ListView"
+        "ListaTelaInicial": {
+          "id": "listaTelaInicial",
+          "name": "listaTelaInicial"
         },
         "DetalhesLista": {
           "id": "DetalhesLista",
