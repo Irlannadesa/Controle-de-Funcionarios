@@ -12,10 +12,10 @@ sap.ui.define(
       {
         onInit: function () {
           let rota = sap.ui.core.UIComponent.getRouterFor(this);
-          rota.attachRoutePatternMatched(this._onRouteMatched, this);
+          rota.attachRoutePatternMatched(this.rotaCorrespondida, this);
         },
 
-        _onRouteMatched: function (oEvent) {
+        rotaCorrespondida: function (oEvent) {
           let id = oEvent.getParameter("arguments").id;
           this.ObterFuncionario(id);
         },
@@ -32,6 +32,7 @@ sap.ui.define(
               console.error(error);
             });
         },
+        
         clicarEmVoltar: function () {
           let historico = History.getInstance();
           let paginaAnterior = historico.getPreviousHash();
@@ -40,7 +41,7 @@ sap.ui.define(
             window.history.go(-1);
           } else {
             let rota = this.getOwnerComponent().getRouter();
-            rota.navTo("listView");
+            rota.navTo("listaTelaInicial");
           }
         },
 

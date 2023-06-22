@@ -50,36 +50,34 @@ sap.ui.define(
       clicarEmSalvar: function () {
         let funcionario = this.getView().getModel("funcionario").getData();
 
-        let errosNome = Validacoes.validarCampoNome(funcionario.nome);
-        let errosEndereco = Validacoes.validarCampoEndereco(
-          funcionario.endereco
-        );
-        let errosDataNascimento = Validacoes.validarCampoDataNascimento(
+        let erros = {};
+        erros.nome = Validacoes.validarCampoNome(funcionario.nome);
+        erros.endereco = Validacoes.validarCampoEndereco(funcionario.endereco);
+        erros.dataNascimento = Validacoes.validarCampoDataNascimento(
           funcionario.dataNascimento
         );
-        let errosCpf = Validacoes.validarCampoCpf(funcionario.cpf);
-        let errosTelefone = Validacoes.validarCampoTelefone(
-          funcionario.telefone
-        );
-        let errosDataAdmissao = Validacoes.validarCampoDataAdmissao(
+        erros.cpf = Validacoes.validarCampoCpf(funcionario.cpf);
+        erros.telefone = Validacoes.validarCampoTelefone(funcionario.telefone);
+        erros.dataAdmissao = Validacoes.validarCampoDataAdmissao(
           funcionario.dataAdmissao
         );
 
-        if (
-          errosNome.length > 0 ||
-          errosCpf.length > 0 ||
-          errosDataNascimento.length > 0 ||
-          errosEndereco.length > 0 ||
-          errosTelefone.length > 0 ||
-          errosDataAdmissao.length > 0
-        ) {
+        let errors = false;
+        for (let campo in erros) {
+          if (erros[campo].length > 0) {
+            errors = true;
+            break;
+          }
+        }
+
+        if (errors) {
           this.exibirMensagensErro(
-            errosNome,
-            errosCpf,
-            errosDataNascimento,
-            errosEndereco,
-            errosTelefone,
-            errosDataAdmissao
+            erros.nome,
+            erros.endereco,
+            erros.dataNascimento,
+            erros.cpf,
+            erros.telefone,
+            erros.dataAdmissao
           );
           return;
         }
@@ -91,15 +89,17 @@ sap.ui.define(
           },
           body: JSON.stringify(funcionario),
         })
-          .then((res) => res.json())
-          .then((res) => {
+          .then(function (res) {
+            return res.json();
+          })
+          .then(function (res) {
             if (res.status == 400) {
-              MessageBox.error(`OPS! Erro ao cadastrar Funcionário `);
+              MessageBox.error("OPS! Erro ao cadastrar Funcionário");
             } else {
               MessageBox.success("Funcionário cadastrado com sucesso!", {
                 title: "Sucesso",
                 actions: [MessageBox.Action.OK],
-                onClose: (seOk) => {
+                onClose: function (seOk) {
                   if (seOk == MessageBox.Action.OK) {
                     this.limparFormulario();
                     this.navegarParaDetalhes(res);
@@ -108,14 +108,14 @@ sap.ui.define(
               });
             }
           })
-          .catch(() => {
-            MessageBox.error(`OPS! Erro ao cadastrar Funcionário`);
+          .catch(function () {
+            MessageBox.error("OPS! Erro ao cadastrar Funcionário");
           });
       },
 
       navegarParaDetalhes: function (id) {
         let rota = this.getOwnerComponent().getRouter();
-        rota.navTo("details", { id: id });
+        rota.navTo("detalhes", { id: id });
       },
 
       clicarEmCancelar: function () {
@@ -133,24 +133,23 @@ sap.ui.define(
 
       exibirMensagensErro: function (
         errosNome,
-
-        errosCpf,
-        errosDataNascimento,
         errosEndereco,
+        errosDataNascimento,
+        errosCpf,
         errosTelefone,
         errosDataAdmissao
       ) {
         let campoNome = this.getView().byId("inputNome");
         Validacoes.mensagensErro(campoNome, errosNome);
 
-        let campoCpf = this.getView().byId("inputCPF");
-        Validacoes.mensagensErro(campoCpf, errosCpf);
+        let campoEndereco = this.getView().byId("inputEndereco");
+        Validacoes.mensagensErro(campoEndereco, errosEndereco);
 
         let campoDataNascimento = this.getView().byId("inputDataNascimento");
         Validacoes.mensagensErro(campoDataNascimento, errosDataNascimento);
 
-        let campoEndereco = this.getView().byId("inputEndereco");
-        Validacoes.mensagensErro(campoEndereco, errosEndereco);
+        let campoCpf = this.getView().byId("inputCPF");
+        Validacoes.mensagensErro(campoCpf, errosCpf);
 
         let campoTelefone = this.getView().byId("inputTelefone");
         Validacoes.mensagensErro(campoTelefone, errosTelefone);
@@ -159,15 +158,42 @@ sap.ui.define(
         Validacoes.mensagensErro(campoDataAdmissao, errosDataAdmissao);
       },
 
+      alterarEstadoCampos: function (estado) {
+        let campoNome = this.byId("inputNome");
+        let campoEndereco = this.byId("inputEndereco");
+        let campoCpf = this.byId("inputCPF");
+        let campoTelefone = this.byId("inputTelefone");
+        let campoDataNascimento = this.byId("inputDataNascimento");
+        let campoDataAdmissao = this.byId("inputDataAdmissao");
+        let campos = [
+          campoNome,
+          campoEndereco,
+          campoCpf,
+          campoDataNascimento,
+          campoDataAdmissao,
+          campoTelefone,
+        ];
+
+        campos.forEach((campo) => {
+          campo.setValueState(estado);
+
+          if (estado === "None") campo.setValue("");
+
+          if (estado === "Error" && campo !== campoDataNascimento)
+            campo.setValueStateText("Esse campo não pode ser vazio");
+        });
+      },
+
       voltarTela: function () {
         let historico = History.getInstance();
         let paginaAnterior = historico.getPreviousHash();
 
+        this.alterarEstadoCampos("None");
         if (paginaAnterior !== undefined) {
           window.history.go(-1);
         } else {
           let rota = this.getOwnerComponent().getRouter();
-          rota.navTo("listView");
+          rota.navTo("listaTelaInicial");
         }
       },
     });

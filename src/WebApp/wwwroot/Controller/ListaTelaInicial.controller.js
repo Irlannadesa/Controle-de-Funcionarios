@@ -8,19 +8,25 @@ sap.ui.define(
   ],
   function (Controller, JSONModel, Filter, FilterOperator) {
     "use strict";
-    return Controller.extend("controleDeFuncionarios.Controller.ListView", {
-      onInit: function () {
-        let oView = this.getView();
-
-        fetch("/api/Funcionario")
-          .then((response) => response.json())
-          .then((data) => {
-            oView.setModel(new JSONModel(data), "funcionarios");
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+    return Controller.extend("controleDeFuncionarios.Controller.ListaTelaInicial", {
+      onInit: async function () {
+        let tela = this.getView();
+        let model = new JSONModel({
+          listaCarregando: true 
+        });
+        tela.setModel(model, "funcionarios");
+      
+        try {
+          const response = await fetch("/api/Funcionario");
+          const data = await response.json();
+          tela.getModel("funcionarios").setData(data);
+          model.setProperty("/listaCarregando", false); 
+        } catch (error) {
+          console.error(error);
+          model.setProperty("/listaCarregando", false);
+        }
       },
+
 
       barraPesquisa: function (oEvent) {
         let filtro = [];
@@ -33,16 +39,20 @@ sap.ui.define(
         items.filter(filtro);
       },
 
+
+
       detalhesFuncionarios: function (oEvent) {
         let itemSelecionado = oEvent.getSource();
         let rota = this.getOwnerComponent().getRouter();
         let lista = itemSelecionado.getBindingContext("funcionarios");
         let idDaLinhaSelecionada = lista.getProperty("id");
 
-        rota.navTo("details", {
+        rota.navTo("detalhes", {
           id: idDaLinhaSelecionada,
         });
       },
+
+
       aoClicarEmCadastrar: function () {
         let rota = this.getOwnerComponent().getRouter();
         rota.navTo("formCadastro");
