@@ -50,34 +50,28 @@ sap.ui.define(
       clicarEmSalvar: function () {
         let funcionario = this.getView().getModel("funcionario").getData();
 
-        let erros = {};
-        erros.nome = Validacoes.validarCampoNome(funcionario.nome);
-        erros.endereco = Validacoes.validarCampoEndereco(funcionario.endereco);
-        erros.dataNascimento = Validacoes.validarCampoDataNascimento(
-          funcionario.dataNascimento
-        );
-        erros.cpf = Validacoes.validarCampoCpf(funcionario.cpf);
-        erros.telefone = Validacoes.validarCampoTelefone(funcionario.telefone);
-        erros.dataAdmissao = Validacoes.validarCampoDataAdmissao(
-          funcionario.dataAdmissao
-        );
+        let errosNome = Validacoes.validarCampoNome(funcionario.nome);
+        let errosEndereco = Validacoes.validarCampoEndereco(funcionario.endereco);
+        let errosDataNascimento = Validacoes.validarCampoDataNascimento(funcionario.dataNascimento);
+        let errosCpf = Validacoes.validarCampoCpf(funcionario.cpf);
+        let errosTelefone = Validacoes.validarCampoTelefone(funcionario.telefone);
+        let errosDataAdmissao = Validacoes.validarCampoDataAdmissao(funcionario.dataAdmissao);
 
-        let errors = false;
-        for (let campo in erros) {
-          if (erros[campo].length > 0) {
-            errors = true;
-            break;
-          }
-        }
-
-        if (errors) {
+        if (
+          errosNome.length > 0 ||
+          errosCpf.length > 0 ||
+          errosDataNascimento.length > 0 ||
+          errosEndereco.length > 0 ||
+          errosTelefone.length > 0 ||
+          errosDataAdmissao.length > 0
+        ) {
           this.exibirMensagensErro(
-            erros.nome,
-            erros.endereco,
-            erros.dataNascimento,
-            erros.cpf,
-            erros.telefone,
-            erros.dataAdmissao
+            errosNome,
+            errosEndereco,
+            errosDataNascimento,
+            errosCpf,
+            errosTelefone,
+            errosDataAdmissao
           );
           return;
         }
@@ -89,17 +83,15 @@ sap.ui.define(
           },
           body: JSON.stringify(funcionario),
         })
-          .then(function (res) {
-            return res.json();
-          })
-          .then(function (res) {
+          .then((res) => res.json())
+          .then((res) => {
             if (res.status == 400) {
-              MessageBox.error("OPS! Erro ao cadastrar Funcionário");
+              MessageBox.error(`OPS! Erro ao cadastrar Funcionário `);
             } else {
               MessageBox.success("Funcionário cadastrado com sucesso!", {
                 title: "Sucesso",
                 actions: [MessageBox.Action.OK],
-                onClose: function (seOk) {
+                onClose: (seOk) => {
                   if (seOk == MessageBox.Action.OK) {
                     this.limparFormulario();
                     this.navegarParaDetalhes(res);
@@ -108,8 +100,8 @@ sap.ui.define(
               });
             }
           })
-          .catch(function () {
-            MessageBox.error("OPS! Erro ao cadastrar Funcionário");
+          .catch(() => {
+            MessageBox.error(`OPS! Erro ao cadastrar Funcionário`);
           });
       },
 
