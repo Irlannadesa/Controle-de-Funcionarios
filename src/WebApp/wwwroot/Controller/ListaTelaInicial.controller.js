@@ -5,6 +5,7 @@ sap.ui.define(
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/ui/core/routing/Router",
+    
   ],
   function (Controller, JSONModel, Filter, FilterOperator) {
     "use strict";
@@ -14,6 +15,7 @@ sap.ui.define(
         let model = new JSONModel({
           listaCarregando: true 
         });
+
         tela.setModel(model, "funcionarios");
       
         try {
@@ -34,14 +36,14 @@ sap.ui.define(
         if (buscar) {
           filtro.push(new Filter("nome", FilterOperator.Contains, buscar));
         }
-        let lista = this.getView().byId("myList");
+        let lista = this.getView().byId("minhaLista");
         let items = lista.getBinding("items");
         items.filter(filtro);
       },
 
 
 
-      detalhesFuncionarios: function (oEvent) {
+      _detalhesFuncionarios: function (oEvent) {
         let itemSelecionado = oEvent.getSource();
         let rota = this.getOwnerComponent().getRouter();
         let lista = itemSelecionado.getBindingContext("funcionarios");
@@ -53,7 +55,7 @@ sap.ui.define(
       },
 
 
-      aoClicarEmCadastrar: function () {
+      _aoClicarEmCadastrar: function () {
         let rota = this.getOwnerComponent().getRouter();
         rota.navTo("formCadastro");
       },

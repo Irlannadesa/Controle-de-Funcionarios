@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace Infraestrutura.Repositorio
 {
-    public class RepositorioLinkTwoDB : IFuncionarios
+    public class RepositorioLinkTwoDB : IRepositorioFuncionario
     {
         public DataConnection Conectar()
         {

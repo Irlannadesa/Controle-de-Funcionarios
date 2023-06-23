@@ -12,28 +12,51 @@ sap.ui.define(
       {
         onInit: function () {
           let rota = sap.ui.core.UIComponent.getRouterFor(this);
-          rota.attachRoutePatternMatched(this.rotaCorrespondida, this);
+          rota.attachRoutePatternMatched(this._rotaCorrespondida, this);
         },
 
-        rotaCorrespondida: function (oEvent) {
+        _rotaCorrespondida: function (oEvent) {
           let id = oEvent.getParameter("arguments").id;
-          this.ObterFuncionario(id);
+          this._obterFuncionario(id);
         },
 
-        ObterFuncionario: function (id) {
+        _obterFuncionario: function (id) {
           let funcionario = this.getView();
 
           fetch(`/api/Funcionario/${id}`)
             .then((response) => response.json())
-            .then((data) => {              
+            .then((data) => {
               funcionario.setModel(new JSONModel(data), "funcionario");
             })
             .catch((error) => {
               console.error(error);
             });
         },
-        
-        clicarEmVoltar: function () {
+
+        _atualizarFuncionario: function (id) {
+          let funcionario = this.getView()
+            .getModel("dadosFormularioCriar")
+            .getData();
+
+          return fetch(`/api/Funcionario/${id}`, {
+            method: "PUT",
+            body: JSON.stringify(funcionario),
+            headers: { "Content-type": "application/json; charset=UTF-8" },
+          });
+        },
+
+        _editarFuncionario: function () {
+          let dadosFormularioCriar =
+            this.getView().getModel("funcionarios");
+          var idFucionario = dadosFormularioCriar.getProperty("/id");
+          let rota = this.getOwnerComponent().getRouter();
+
+          rota.navTo("formCadastro", {
+            clienteCaminho: window.encodeURIComponent(idFucionario),
+          });
+        },
+
+        _clicarEmVoltar: function () {
           let historico = History.getInstance();
           let paginaAnterior = historico.getPreviousHash();
 
@@ -44,10 +67,6 @@ sap.ui.define(
             rota.navTo("listaTelaInicial");
           }
         },
-
-        EditarFuncionario: function () {},
-
-        ExcluirFuncionario: function () {},
       }
     );
   }

@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
-builder.Services.AddScoped<IFuncionarios, RepositorioLinkTwoDB>();
+builder.Services.AddScoped<IRepositorioFuncionario, RepositorioLinkTwoDB>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

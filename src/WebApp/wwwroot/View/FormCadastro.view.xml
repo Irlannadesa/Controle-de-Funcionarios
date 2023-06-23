@@ -26,7 +26,7 @@
       ariaLabelledBy="TituloFormulario">
       <f:toolbar>
         <Toolbar id="TB1">
-          <Button icon="sap-icon://nav-back" press="voltarTela" />
+          <Button icon="sap-icon://nav-back" press="_voltarTela" />
           <ToolbarSpacer />
           <Title id="TituloFormulario" text="{i18n>TituloFormulario}" />
           <ToolbarSpacer />
@@ -35,7 +35,7 @@
             width="auto"
             text="{i18n>botaoSalvar}"
             type="Emphasized"
-            press="clicarEmSalvar"
+            press="_clicarEmSalvar"
             ariaHasPopup="Dialog" />
           <Button
             icon="sap-icon://cancel"
@@ -44,7 +44,7 @@
             text="{i18n>botaoCancelar}"
             type="Negative"
             ariaHasPopup="Dialog"
-            press="clicarEmCancelar" />
+            press="_clicarEmCancelar" />
         </Toolbar>
       </f:toolbar>
       <f:content>

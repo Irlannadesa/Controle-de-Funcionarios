@@ -3,7 +3,7 @@ using Dominio.Modelo;
 
 namespace Infraestrutura.Repositorio
 {
-    internal class RepositorioFuncionario : IFuncionarios
+    internal class RepositorioFuncionario : IRepositorioFuncionario
     {
         public List<Funcionario> ObterTodos()
         {

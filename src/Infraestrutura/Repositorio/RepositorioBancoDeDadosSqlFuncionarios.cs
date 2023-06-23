@@ -5,7 +5,7 @@ using System.Configuration;
 
 namespace Infraestrutura.Repositorio
 {
-    public class RepositorioBancoDeDadosSqlFuncionarios : IFuncionarios
+    public class RepositorioBancoDeDadosSqlFuncionarios : IRepositorioFuncionario
     {
         private static string conectionString = ConfigurationManager.ConnectionStrings["Funcionarios"].ConnectionString;
         SqlConnection sqlconecxao = new SqlConnection(conectionString);

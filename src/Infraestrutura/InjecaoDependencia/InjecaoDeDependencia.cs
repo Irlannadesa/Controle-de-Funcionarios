@@ -8,7 +8,7 @@ namespace Infraestrutura.InjecaoDependencia
         public static IServiceProvider ConfigureDependencies()
         {
             var services = new ServiceCollection();
-            services.AddScoped<IFuncionarios, RepositorioLinkTwoDB>();
+            services.AddScoped<IRepositorioFuncionario, RepositorioLinkTwoDB>();
             return services.BuildServiceProvider();
         }
     }

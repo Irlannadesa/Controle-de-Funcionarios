@@ -16,7 +16,7 @@ namespace ControleDeFuncionarios
             migratorConfiguration.ConfigureMigrations();
 
             var serviceProvider = InjecaoDeDependencia.ConfigureDependencies();
-            var repositorioFuncionarios = serviceProvider.GetService<IFuncionarios>();
+            var repositorioFuncionarios = serviceProvider.GetService<IRepositorioFuncionario>();
 
             ApplicationConfiguration.Initialize();
             Application.Run(new TelaDeFuncionarios(repositorioFuncionarios));

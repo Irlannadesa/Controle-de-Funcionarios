@@ -12,9 +12,9 @@ namespace WebApp.Controllers
     [ApiController]
     public class FuncionarioController : ControllerBase
     {
-        private readonly IFuncionarios _funcionario;
+        private readonly IRepositorioFuncionario _funcionario;
 
-        public FuncionarioController(IFuncionarios funcionario)
+        public FuncionarioController(IRepositorioFuncionario funcionario)
         {
             _funcionario = funcionario;
         }

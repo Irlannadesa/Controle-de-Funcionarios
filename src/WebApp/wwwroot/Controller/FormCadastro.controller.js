@@ -28,35 +28,39 @@ sap.ui.define(
         let jsonFuncionario = new JSONModel(dadosFuncionario);
         this.getView().setModel(jsonFuncionario, "funcionario");
 
-        this.limparFormulario();
+        this._limparFormulario();
       },
 
-      limparFormulario: function () {
-        let Nome = this.getView().byId("inputNome");
-        let Endereco = this.getView().byId("inputEndereco");
-        let Cpf = this.getView().byId("inputCPF");
-        let Telefone = this.getView().byId("inputTelefone");
-        let DataNascimento = this.getView().byId("inputDataNascimento");
-        let DataAdmissao = this.getView().byId("inputDataAdmissao");
-
-        Nome.setValue("");
-        Endereco.setValue("");
-        Cpf.setValue("");
-        Telefone.setValue("");
-        DataNascimento.setValue("");
-        DataAdmissao.setValue("");
+      _obterControle: function (id) {
+        return this.getView().byId(id);
       },
 
-      clicarEmSalvar: function () {
+      _limparFormulario: function () {
+        let nome = this._obterControle("inputNome");
+        let endereco =this._obterControle("inputEndereco");
+        let cpf = this._obterControle("inputCPF");
+        let telefone = this._obterControle("inputTelefone");
+        let dataNascimento =this._obterControle("inputDataNascimento");
+        let dataAdmissao = this._obterControle("inputDataAdmissao");
+
+        nome.setValue("");
+        endereco.setValue("");
+        cpf.setValue("");
+        telefone.setValue("");
+        dataNascimento.setValue("");
+        dataAdmissao.setValue("");
+      },
+
+      _funcionarioEhValido() {
         let funcionario = this.getView().getModel("funcionario").getData();
-
+      
         let errosNome = Validacoes.validarCampoNome(funcionario.nome);
         let errosEndereco = Validacoes.validarCampoEndereco(funcionario.endereco);
         let errosDataNascimento = Validacoes.validarCampoDataNascimento(funcionario.dataNascimento);
         let errosCpf = Validacoes.validarCampoCpf(funcionario.cpf);
         let errosTelefone = Validacoes.validarCampoTelefone(funcionario.telefone);
         let errosDataAdmissao = Validacoes.validarCampoDataAdmissao(funcionario.dataAdmissao);
-
+      
         if (
           errosNome.length > 0 ||
           errosCpf.length > 0 ||
@@ -73,9 +77,20 @@ sap.ui.define(
             errosTelefone,
             errosDataAdmissao
           );
+          return false;
+        }
+      
+        return true;
+      },
+      
+
+      _clicarEmSalvar: function() {
+        if (!this._funcionarioEhValido()) {
           return;
         }
-
+      
+        let funcionario = this.getView().getModel("funcionario").getData();
+      
         fetch("/api/Funcionario", {
           method: "POST",
           headers: {
@@ -93,8 +108,8 @@ sap.ui.define(
                 actions: [MessageBox.Action.OK],
                 onClose: (seOk) => {
                   if (seOk == MessageBox.Action.OK) {
-                    this.limparFormulario();
-                    this.navegarParaDetalhes(res);
+                    this._limparFormulario();
+                    this._navegarParaDetalhes(res);
                   }
                 },
               });
@@ -104,20 +119,20 @@ sap.ui.define(
             MessageBox.error(`OPS! Erro ao cadastrar Funcionário`);
           });
       },
-
-      navegarParaDetalhes: function (id) {
+      
+      _navegarParaDetalhes: function (id) {
         let rota = this.getOwnerComponent().getRouter();
         rota.navTo("detalhes", { id: id });
       },
 
-      clicarEmCancelar: function () {
+      _clicarEmCancelar: function () {
         MessageBox.alert("Deseja cancelar o cadastro ?", {
           icon: MessageBox.Icon.WARNING,
           actions: [MessageBox.Action.YES, MessageBox.Action.NO],
           onClose: (seOk) => {
             if (seOk == MessageBox.Action.YES) {
-              this.voltarTela();
-              this.limparFormulario();
+              this._voltarTela();
+              this._limparFormulario();
             }
           },
         });
@@ -131,26 +146,26 @@ sap.ui.define(
         errosTelefone,
         errosDataAdmissao
       ) {
-        let campoNome = this.getView().byId("inputNome");
+        let campoNome = this._obterControle("inputNome");
         Validacoes.mensagensErro(campoNome, errosNome);
 
-        let campoEndereco = this.getView().byId("inputEndereco");
+        let campoEndereco = this._obterControle("inputEndereco");
         Validacoes.mensagensErro(campoEndereco, errosEndereco);
 
-        let campoDataNascimento = this.getView().byId("inputDataNascimento");
+        let campoDataNascimento = this._obterControle("inputDataNascimento");
         Validacoes.mensagensErro(campoDataNascimento, errosDataNascimento);
 
-        let campoCpf = this.getView().byId("inputCPF");
+        let campoCpf = this._obterControle("inputCPF");
         Validacoes.mensagensErro(campoCpf, errosCpf);
 
-        let campoTelefone = this.getView().byId("inputTelefone");
+        let campoTelefone = this._obterControle("inputTelefone");
         Validacoes.mensagensErro(campoTelefone, errosTelefone);
 
-        let campoDataAdmissao = this.getView().byId("inputDataAdmissao");
+        let campoDataAdmissao = this._obterControle("inputDataAdmissao");
         Validacoes.mensagensErro(campoDataAdmissao, errosDataAdmissao);
       },
 
-      alterarEstadoCampos: function (estado) {
+      _alterarEstadoCampos: function (estado) {
         let campoNome = this.byId("inputNome");
         let campoEndereco = this.byId("inputEndereco");
         let campoCpf = this.byId("inputCPF");
@@ -176,11 +191,11 @@ sap.ui.define(
         });
       },
 
-      voltarTela: function () {
+      _voltarTela: function () {
         let historico = History.getInstance();
         let paginaAnterior = historico.getPreviousHash();
 
-        this.alterarEstadoCampos("None");
+        this._alterarEstadoCampos("None");
         if (paginaAnterior !== undefined) {
           window.history.go(-1);
         } else {
