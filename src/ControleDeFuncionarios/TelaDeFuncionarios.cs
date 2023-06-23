@@ -4,9 +4,9 @@ namespace ControleDeFuncionarios
 {
     public partial class TelaDeFuncionarios : Form
     {
-        public IFuncionarios _repositorioFuncionarios;
+        public IRepositorioFuncionario _repositorioFuncionarios;
 
-        public TelaDeFuncionarios(IFuncionarios repositorioFuncionario)
+        public TelaDeFuncionarios(IRepositorioFuncionario repositorioFuncionario)
         {
             InitializeComponent();
             _repositorioFuncionarios = repositorioFuncionario;

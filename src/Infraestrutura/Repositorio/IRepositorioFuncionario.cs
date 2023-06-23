@@ -2,7 +2,7 @@
 
 namespace Infraestrutura.Repositorio
 {
-    public interface IFuncionarios
+    public interface IRepositorioFuncionario
     {
         public List<Funcionario> ObterTodos();
         public void Criar(Funcionario novoFuncionario);
