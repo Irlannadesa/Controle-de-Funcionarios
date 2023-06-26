@@ -69,10 +69,15 @@
           "name": "detalhes",
           "target": "DetalhesLista"
         }, {
-          "pattern": "formCadastro",
-          "name": "formCadastro",
-          "target": "formCadastro"
-        }
+          "pattern": "cadastroDeFuncionarios",
+          "name": "cadastroDeFuncionarios",
+          "target": "cadastroDeFuncionarios"
+        },
+        {
+          "pattern": "cadastroDeFuncionarios/{id}",
+          "name": "edicao",
+          "target": "cadastroDeFuncionarios"
+      }
       ],
       "targets": {
         "ListaTelaInicial": {
@@ -83,9 +88,13 @@
           "id": "DetalhesLista",
           "name": "DetalhesLista"
         },
-        "formCadastro": {
-          "id": "FormCadastro",
-          "name": "FormCadastro"
+        "cadastroDeFuncionarios": {
+          "id": "cadastroDeFuncionarios",
+          "name": "cadastroDeFuncionarios"
+        },
+        "cadastro": {
+            "id": "cadastro",
+            "name": "Cadastro"
         }
       }
     }

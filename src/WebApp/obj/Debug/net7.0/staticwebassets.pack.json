@@ -17,8 +17,8 @@
       "PackagePath": "staticwebassets\\Controller\\FormCadastro.controller.js"
     },
     {
-      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\ListView.controller.js",
-      "PackagePath": "staticwebassets\\Controller\\ListView.controller.js"
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\ListaTelaInicial.controller.js",
+      "PackagePath": "staticwebassets\\Controller\\ListaTelaInicial.controller.js"
     },
     {
       "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\i18n\\i18n.properties",
@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\manifest.json"
     },
     {
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\servicos\\Validacoes.js",
+      "PackagePath": "staticwebassets\\servicos\\Validacoes.js"
+    },
+    {
       "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\App.view.xml",
       "PackagePath": "staticwebassets\\view\\App.view.xml"
     },
@@ -49,8 +53,8 @@
       "PackagePath": "staticwebassets\\view\\FormCadastro.view.xml"
     },
     {
-      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\ListView.view.xml",
-      "PackagePath": "staticwebassets\\view\\ListView.view.xml"
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\ListaTelaInicial.view.xml",
+      "PackagePath": "staticwebassets\\view\\ListaTelaInicial.view.xml"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.WebApp.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -8,8 +8,9 @@
     <m:content>
       <m:Bar>
         <m:contentRight>
-          <m:Button icon="sap-icon://nav-back" press="_clicarEmVoltar" />
+          <!-- <m:Button icon="sap-icon://nav-back" press="_clicarEmVoltar" /> -->
           <m:ToolbarSpacer/>
+          <m:Button icon="sap-icon://business-card" text="Inicio" type="Emphasized" press="_voltaParaInicio" />
           <m:Button icon="sap-icon://request" text="Editar" type="Accept" press="_editarFuncionario" />
           <m:Button icon="sap-icon://delete" text="Excluir" type="Negative" press="_excluirFuncionario" />
         </m:contentRight>
