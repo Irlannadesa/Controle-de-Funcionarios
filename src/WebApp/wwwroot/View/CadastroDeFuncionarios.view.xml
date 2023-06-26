@@ -1,5 +1,5 @@
 <mvc:View
-  controllerName="controleDeFuncionarios.Controller.FormCadastro"
+  controllerName="controleDeFuncionarios.Controller.CadastroDeFuncionarios"
   xmlns:l="sap.ui.layout"
   xmlns:f="sap.ui.layout.form"
   xmlns:mvc="sap.ui.core.mvc"

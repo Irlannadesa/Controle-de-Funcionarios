@@ -141,35 +141,24 @@ sap.ui.define([], function () {
 
       if (!dataAdmissao) {
         erros.push("A data de admissão é obrigatória");
-      } else {
-        const dataAdmissaoObj = new Date(dataAdmissao);
-
-        if (dataAdmissaoObj < umMesAntes) {
-          erros.push("A data de admissão não pode ser anterior a um mês atrás");
-        }
-
-        if (dataAdmissaoObj > dataAtual) {
-          erros.push("A data de admissão não pode ser uma data futura");
-        }
       }
-
       return erros;
     },
 
-		mensagensErro: function (oItem, erros) {
+		mensagensErro: function (item, erros) {
 			const quantidadeNulaDeErros = 0;
 			if (erros.length > quantidadeNulaDeErros) {
 				let estadosErro = '';
-				if (oItem && oItem.setValueState) {
-					oItem.setValueState("Error");
+				if (item && item.setValueState) {
+					item.setValueState("Error");
 					erros.forEach(erro => {
 						estadosErro = estadosErro + "\n" + erro;
 					});
-					oItem.setValueStateText(estadosErro);
+					item.setValueStateText(estadosErro);
 				}
 			} else {
-				if (oItem && oItem.setValueState) {
-					oItem.setValueState("Success");
+				if (item && item.setValueState) {
+					item.setValueState("Success");
 				}
 			}
 		}

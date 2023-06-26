@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7Wd9svQvnvJiXT2cS0grU3Q/+UMcKIO3JsbUpCZrRgY=",
+  "Hash": "EdLRuKxPyEVhdifoVlhEplvibAKzo36FBrjzT4yq4gM=",
   "Source": "WebApp",
   "BasePath": "_content/WebApp",
   "Mode": "Default",
@@ -85,12 +85,12 @@
       "OriginalItemSpec": "wwwroot\\Controller\\FormCadastro.controller.js"
     },
     {
-      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\ListView.controller.js",
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\ListaTelaInicial.controller.js",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
-      "RelativePath": "Controller/ListView.controller.js",
+      "RelativePath": "Controller/ListaTelaInicial.controller.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,7 +99,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Controller\\ListView.controller.js"
+      "OriginalItemSpec": "wwwroot\\Controller\\ListaTelaInicial.controller.js"
     },
     {
       "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\i18n\\i18n.properties",
@@ -170,6 +170,23 @@
       "OriginalItemSpec": "wwwroot\\manifest.json"
     },
     {
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\servicos\\Validacoes.js",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "servicos/Validacoes.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\servicos\\Validacoes.js"
+    },
+    {
       "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\App.view.xml",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
@@ -221,12 +238,12 @@
       "OriginalItemSpec": "wwwroot\\view\\FormCadastro.view.xml"
     },
     {
-      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\ListView.view.xml",
+      "Identity": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\ListaTelaInicial.view.xml",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
-      "RelativePath": "view/ListView.view.xml",
+      "RelativePath": "view/ListaTelaInicial.view.xml",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -235,7 +252,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\view\\ListView.view.xml"
+      "OriginalItemSpec": "wwwroot\\view\\ListaTelaInicial.view.xml"
     }
   ]
 }

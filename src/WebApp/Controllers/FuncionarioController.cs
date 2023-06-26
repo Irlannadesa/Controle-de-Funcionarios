@@ -94,18 +94,18 @@ namespace WebApp.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Remover([FromRoute] int id)
+        public  IActionResult Remover([FromRoute] int id)
         {
             try
             {
                 var funcionario = _funcionario.ObterPorId(id);
-                _funcionario.Remover(funcionario.Id);
-                return Ok(funcionario);
+                _funcionario.Remover(funcionario.Id);                
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message + ", \n" + ex.InnerException);
             }
+            return Ok(id);
         }
     }
 }
