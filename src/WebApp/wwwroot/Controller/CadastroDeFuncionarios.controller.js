@@ -102,7 +102,8 @@ sap.ui.define(
             body: JSON.stringify(funcionario),
           });
         },
-
+        
+        
         _clicarEmSalvar: function () {
           let funcionario = this.getView().getModel("funcionario").getData();
           let id = funcionario.id;
@@ -122,7 +123,7 @@ sap.ui.define(
                   });
                 } else {
                   MessageBox.success(
-                    `Funcionario ${funcionario.nome} atualizado com sucesso !`,
+                    `${funcionario.nome} atualizado com sucesso !`,
                     {
                       emphasizedAction: MessageBox.Action.OK,
                       title: "Sucesso",
@@ -151,7 +152,7 @@ sap.ui.define(
                     emphasizedAction: MessageBox.Action.CLOSE,
                   });
                 } else {
-                  MessageBox.success(`Funcionario ${funcionario.nome} cadastrado com sucesso !`, {
+                  MessageBox.success(`${funcionario.nome} cadastrado com sucesso !`, {
                     emphasizedAction: MessageBox.Action.OK,
                     title: "Sucesso",
                     actions: [MessageBox.Action.OK],
@@ -166,6 +167,30 @@ sap.ui.define(
               });
           }
         },
+        
+        _clicarEmCancelar: function () {
+          let funcionario = this.getView().getModel("funcionario").getData();
+          let acao = funcionario.id ? "edicao" : "cadastro";
+        
+          let mensagem = "";
+          if (acao === "edicao") {
+            mensagem = "O Funcionário não foi atualizado, deseja cancelar a ação?";
+          } else if (acao === "cadastro") {
+            mensagem = "O Funcionário não foi cadastrado, deseja cancelar a ação?";
+          }
+        
+          MessageBox.alert(mensagem, {
+            icon: MessageBox.Icon.WARNING,
+            actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+            onClose: (seOk) => {
+              if (seOk === MessageBox.Action.YES) {
+                this._voltarTela();
+                this._limparFormulario();
+              }
+            },
+          });
+        },
+        
 
         _navegarParaDetalhes: function (id) {
           let rota = this.getOwnerComponent().getRouter();
@@ -191,18 +216,7 @@ sap.ui.define(
           dataAdmissao.setValue("");
         },
 
-        _clicarEmCancelar: function () {
-          MessageBox.alert("Deseja cancelar o cadastro ?", {
-            icon: MessageBox.Icon.WARNING,
-            actions: [MessageBox.Action.YES, MessageBox.Action.NO],
-            onClose: (seOk) => {
-              if (seOk == MessageBox.Action.YES) {
-                this._voltarTela();
-                this._limparFormulario();
-              }
-            },
-          });
-        },
+        
 
         _exibirMensagensErro: function (
           errosNome,
