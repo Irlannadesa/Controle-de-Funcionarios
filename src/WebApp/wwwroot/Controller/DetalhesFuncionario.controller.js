@@ -39,7 +39,7 @@ sap.ui.define([
 
     _voltaParaInicio: function () {
       let rota = this.getOwnerComponent().getRouter();
-      rota.navTo("listaTelaInicial");
+      rota.navTo("listaFuncionario");
     },
 
     // _clicarEmVoltar: function () {
@@ -52,7 +52,7 @@ sap.ui.define([
     //     let rota = this.getOwnerComponent().getRouter();
     //     let model = this.getView().getModel("funcionario");
     //     let id = model.getProperty("/id");
-    //     rota.navTo("listaTelaInicial", {
+    //     rota.navTo("listaFuncionario", {
     //       id: id
     //     });
     //   }
