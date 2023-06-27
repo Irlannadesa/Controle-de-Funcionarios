@@ -174,7 +174,7 @@ sap.ui.define(
         
           let mensagem = "";
           if (acao === "edicao") {
-            mensagem = "O Funcionário não foi atualizado, deseja cancelar a ação?";
+            mensagem = `Os dados do funcionario ${funcionario.nome} não foi atualizado, deseja cancelar a ação?`;
           } else if (acao === "cadastro") {
             mensagem = "O Funcionário não foi cadastrado, deseja cancelar a ação?";
           }
@@ -194,7 +194,7 @@ sap.ui.define(
 
         _navegarParaDetalhes: function (id) {
           let rota = this.getOwnerComponent().getRouter();
-          rota.navTo("detalhes", { id: id });
+          rota.navTo("detalhesFuncinario", { id: id });
         },
         _obterControle: function (id) {
           return this.getView().byId(id);
@@ -311,16 +311,8 @@ sap.ui.define(
         },
 
         _voltarTela: function () {
-          let historico = History.getInstance();
-          let paginaAnterior = historico.getPreviousHash();
-
-          this._alterarEstadoCampos("None");
-          if (paginaAnterior !== undefined) {
-            window.history.go(-1);
-          } else {
-            let rota = this.getOwnerComponent().getRouter();
-            rota.navTo("listaTelaInicial");
-          }
+          let rota = this.getOwnerComponent().getRouter();
+          rota.navTo("listaTelaInicial");
         },
       }
     );

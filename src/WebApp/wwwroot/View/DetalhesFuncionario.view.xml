@@ -1,16 +1,16 @@
 <mvc:View
   xmlns:m="sap.m"
   xmlns:mvc="sap.ui.core.mvc"
-  controllerName="controleDeFuncionarios.Controller.DetalhesLista">
+  controllerName="controleDeFuncionarios.Controller.DetalhesFuncionario">
 
   <m:Page title="{i18n>detalhesFuncionario}">
     <m:headerContent></m:headerContent>
     <m:content>
       <m:Bar>
         <m:contentRight>
-          <!-- <m:Button icon="sap-icon://nav-back" press="_clicarEmVoltar" /> -->
+          <m:Button icon="sap-icon://nav-back" press="_voltaParaInicio" />
           <m:ToolbarSpacer/>
-          <m:Button icon="sap-icon://business-card" text="Inicio" type="Emphasized" press="_voltaParaInicio" />
+          
           <m:Button icon="sap-icon://request" text="Editar" type="Accept" press="_editarFuncionario" />
           <m:Button icon="sap-icon://delete" text="Excluir" type="Negative" press="_excluirFuncionario" />
         </m:contentRight>

@@ -47,7 +47,7 @@ sap.ui.define([
       let lista = itemSelecionado.getBindingContext("funcionarios");
       let idDaLinhaSelecionada = lista.getProperty("id");
 
-      rota.navTo("detalhes", {
+      rota.navTo("detalhesFuncionario", {
         id: idDaLinhaSelecionada
       });
     },
