@@ -191,14 +191,14 @@ sap.ui.define(
           });
         },
         
-
         _navegarParaDetalhes: function (id) {
           let rota = this.getOwnerComponent().getRouter();
-          rota.navTo("detalhesFuncinario", { id: id });
+          rota.navTo("detalhesFuncionario", { id: id });
         },
         _obterControle: function (id) {
           return this.getView().byId(id);
         },
+      
 
         _limparFormulario: function () {
           let nome = this._obterControle("inputNome");
@@ -311,8 +311,16 @@ sap.ui.define(
         },
 
         _voltarTela: function () {
-          let rota = this.getOwnerComponent().getRouter();
-          rota.navTo("listaTelaInicial");
+          let historico = History.getInstance();
+          let paginaAnterior = historico.getPreviousHash();
+
+          this._alterarEstadoCampos("None");
+          if (paginaAnterior !== undefined) {
+            window.history.go(-1);
+          } else {
+            let rota = this.getOwnerComponent().getRouter();
+            rota.navTo("listaFuncionario");
+          }
         },
       }
     );

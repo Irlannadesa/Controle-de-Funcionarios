@@ -61,8 +61,8 @@
       "routes": [
         {
           "pattern": "",
-          "name": "listaTelaInicial",
-          "target": "ListaTelaInicial"
+          "name": "listaFuncionario",
+          "target": "ListaFuncionario"
         },
         {
           "pattern": "detalhesFuncionario/{id}",
@@ -80,9 +80,9 @@
       }
       ],
       "targets": {
-        "ListaTelaInicial": {
-          "id": "listaTelaInicial",
-          "name": "listaTelaInicial"
+        "ListaFuncionario": {
+          "id": "listaFuncionario",
+          "name": "listaFuncionario"
         },
         "DetalhesFuncionario": {
           "id": "detalhesFuncionario",

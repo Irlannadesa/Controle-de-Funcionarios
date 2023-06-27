@@ -7,7 +7,7 @@ sap.ui.define([
 ], function (Controller, JSONModel, Filter, FilterOperator) {
   "use strict";
 
-  return Controller.extend("controleDeFuncionarios.Controller.ListaTelaInicial", {
+  return Controller.extend("controleDeFuncionarios.Controller.ListaFuncionario", {
     onInit: function () {
       this._carregarLista(); 
     },
