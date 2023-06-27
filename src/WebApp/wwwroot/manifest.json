@@ -65,9 +65,9 @@
           "target": "ListaTelaInicial"
         },
         {
-          "pattern": "detalhes/{id}",
-          "name": "detalhes",
-          "target": "DetalhesLista"
+          "pattern": "detalhesFuncionario/{id}",
+          "name": "detalhesFuncionario",
+          "target": "DetalhesFuncionario"
         }, {
           "pattern": "cadastroDeFuncionarios",
           "name": "cadastroDeFuncionarios",
@@ -84,9 +84,9 @@
           "id": "listaTelaInicial",
           "name": "listaTelaInicial"
         },
-        "DetalhesLista": {
-          "id": "DetalhesLista",
-          "name": "DetalhesLista"
+        "DetalhesFuncionario": {
+          "id": "detalhesFuncionario",
+          "name": "detalhesFuncionario"
         },
         "cadastroDeFuncionarios": {
           "id": "cadastroDeFuncionarios",

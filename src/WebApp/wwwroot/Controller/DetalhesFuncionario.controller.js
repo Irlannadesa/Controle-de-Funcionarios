@@ -5,7 +5,7 @@ sap.ui.define([
 ], function (Controller, JSONModel, History) {
   "use strict";
 
-  return Controller.extend("controleDeFuncionarios.Controller.DetalhesLista", {
+  return Controller.extend("controleDeFuncionarios.Controller.DetalhesFuncionario", {
     onInit: function () {
       let rota = sap.ui.core.UIComponent.getRouterFor(this);
       rota.attachRoutePatternMatched(this._rotaCorrespondida, this);
