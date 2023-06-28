@@ -12,7 +12,7 @@
           <m:ToolbarSpacer/>
           
           <m:Button icon="sap-icon://request" text="Editar" type="Accept" press="_editarFuncionario" />
-          <m:Button icon="sap-icon://delete" text="Excluir" type="Negative" press="_excluirFuncionario" />
+          <m:Button icon="sap-icon://delete" text="Excluir" type="Negative" press="_aoClicarEmExcluirFuncionario" />
         </m:contentRight>
       </m:Bar>
       <m:Panel class="sapUiResponsiveMargin" width="auto">

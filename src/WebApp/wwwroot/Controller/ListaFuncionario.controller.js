@@ -9,7 +9,12 @@ sap.ui.define([
 
   return Controller.extend("controleDeFuncionarios.Controller.ListaFuncionario", {
     onInit: function () {
-      this._carregarLista(); 
+      let rota = sap.ui.core.UIComponent.getRouterFor(this);
+      rota.attachRoutePatternMatched(this._rotaCorrespondida, this);
+    },
+
+    _rotaCorrespondida: function(){     
+      this._carregarLista();
     },
 
     _carregarLista: async function () {
