@@ -9,16 +9,16 @@
       "PackagePath": "staticwebassets\\Controller\\App.controller.js"
     },
     {
-      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\DetalhesLista.controller.js",
-      "PackagePath": "staticwebassets\\Controller\\DetalhesLista.controller.js"
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\CadastroDeFuncionarios.controller.js",
+      "PackagePath": "staticwebassets\\Controller\\CadastroDeFuncionarios.controller.js"
     },
     {
-      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\FormCadastro.controller.js",
-      "PackagePath": "staticwebassets\\Controller\\FormCadastro.controller.js"
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\DetalhesFuncionario.controller.js",
+      "PackagePath": "staticwebassets\\Controller\\DetalhesFuncionario.controller.js"
     },
     {
-      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\ListaTelaInicial.controller.js",
-      "PackagePath": "staticwebassets\\Controller\\ListaTelaInicial.controller.js"
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\Controller\\ListaFuncionario.controller.js",
+      "PackagePath": "staticwebassets\\Controller\\ListaFuncionario.controller.js"
     },
     {
       "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\i18n\\i18n.properties",
@@ -45,16 +45,16 @@
       "PackagePath": "staticwebassets\\view\\App.view.xml"
     },
     {
-      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\DetalhesLista.view.xml",
-      "PackagePath": "staticwebassets\\view\\DetalhesLista.view.xml"
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\CadastroDeFuncionarios.view.xml",
+      "PackagePath": "staticwebassets\\view\\CadastroDeFuncionarios.view.xml"
     },
     {
-      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\FormCadastro.view.xml",
-      "PackagePath": "staticwebassets\\view\\FormCadastro.view.xml"
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\DetalhesFuncionario.view.xml",
+      "PackagePath": "staticwebassets\\view\\DetalhesFuncionario.view.xml"
     },
     {
-      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\ListaTelaInicial.view.xml",
-      "PackagePath": "staticwebassets\\view\\ListaTelaInicial.view.xml"
+      "Id": "C:\\Users\\irlan\\OneDrive\\Documentos\\CoderGrowth_Irlanna-de-sa\\src\\WebApp\\wwwroot\\view\\ListaFuncionario.view.xml",
+      "PackagePath": "staticwebassets\\view\\ListaFuncionario.view.xml"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.WebApp.Microsoft.AspNetCore.StaticWebAssets.props",

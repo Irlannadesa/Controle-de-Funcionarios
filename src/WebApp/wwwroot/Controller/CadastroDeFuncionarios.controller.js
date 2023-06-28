@@ -102,8 +102,7 @@ sap.ui.define(
             body: JSON.stringify(funcionario),
           });
         },
-        
-        
+
         _clicarEmSalvar: function () {
           let funcionario = this.getView().getModel("funcionario").getData();
           let id = funcionario.id;
@@ -152,33 +151,37 @@ sap.ui.define(
                     emphasizedAction: MessageBox.Action.CLOSE,
                   });
                 } else {
-                  MessageBox.success(`${funcionario.nome} cadastrado com sucesso !`, {
-                    emphasizedAction: MessageBox.Action.OK,
-                    title: "Sucesso",
-                    actions: [MessageBox.Action.OK],
-                    onClose: (acao) => {
-                      if (acao === MessageBox.Action.OK) {
-                        this._limparFormulario();
-                        this._navegarParaDetalhes(res);
-                      }
-                    },
-                  });
+                  MessageBox.success(
+                    `${funcionario.nome} cadastrado com sucesso !`,
+                    {
+                      emphasizedAction: MessageBox.Action.OK,
+                      title: "Sucesso",
+                      actions: [MessageBox.Action.OK],
+                      onClose: (acao) => {
+                        if (acao === MessageBox.Action.OK) {
+                          this._limparFormulario();
+                          this._navegarParaDetalhes(res);
+                        }
+                      },
+                    }
+                  );
                 }
               });
           }
         },
-        
+
         _clicarEmCancelar: function () {
           let funcionario = this.getView().getModel("funcionario").getData();
           let acao = funcionario.id ? "edicao" : "cadastro";
-        
+
           let mensagem = "";
           if (acao === "edicao") {
             mensagem = `Os dados do funcionario ${funcionario.nome} não foi atualizado, deseja cancelar a ação?`;
           } else if (acao === "cadastro") {
-            mensagem = "O Funcionário não foi cadastrado, deseja cancelar a ação?";
+            mensagem =
+              "O Funcionário não foi cadastrado, deseja cancelar a ação?";
           }
-        
+
           MessageBox.alert(mensagem, {
             icon: MessageBox.Icon.WARNING,
             actions: [MessageBox.Action.YES, MessageBox.Action.NO],
@@ -190,15 +193,16 @@ sap.ui.define(
             },
           });
         },
-        
+
         _navegarParaDetalhes: function (id) {
           let rota = this.getOwnerComponent().getRouter();
           rota.navTo("detalhesFuncionario", { id: id });
         },
+
+        
         _obterControle: function (id) {
           return this.getView().byId(id);
         },
-      
 
         _limparFormulario: function () {
           let nome = this._obterControle("inputNome");
@@ -215,8 +219,6 @@ sap.ui.define(
           dataNascimento.setValue("");
           dataAdmissao.setValue("");
         },
-
-        
 
         _exibirMensagensErro: function (
           errosNome,
@@ -270,6 +272,8 @@ sap.ui.define(
               campo.setValueStateText("Esse campo não pode ser vazio");
           });
         },
+
+
         _funcionarioEhValido() {
           let funcionario = this.getView().getModel("funcionario").getData();
 

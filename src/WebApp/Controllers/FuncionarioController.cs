@@ -12,11 +12,11 @@ namespace WebApp.Controllers
     [ApiController]
     public class FuncionarioController : ControllerBase
     {
-        private readonly IRepositorioFuncionario _funcionario;
+        private readonly IRepositorioFuncionario _repositorioFuncionario;
 
-        public FuncionarioController(IRepositorioFuncionario funcionario)
+        public FuncionarioController(IRepositorioFuncionario repositorioFuncionario)
         {
-            _funcionario = funcionario;
+            _repositorioFuncionario = repositorioFuncionario;
         }
 
         [HttpGet]
@@ -26,7 +26,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                List<Funcionario> funcionarios = _funcionario.ObterTodos();
+                List<Funcionario> funcionarios = _repositorioFuncionario.ObterTodos();
                 return Ok(funcionarios);
             }
             catch (Exception ex)
@@ -48,8 +48,8 @@ namespace WebApp.Controllers
             try
             {
                 ValidacoesFuncionarios.ValidarCampos(novoFuncionario);
-                _funcionario.Criar(novoFuncionario);
-                var funcionarioNovo = _funcionario.ObterPorCpf(novoFuncionario.CPF);
+                _repositorioFuncionario.Criar(novoFuncionario);
+                var funcionarioNovo = _repositorioFuncionario.ObterPorCpf(novoFuncionario.CPF);
                 return Ok(funcionarioNovo.Id);
             }
             catch (Exception ex)
@@ -66,7 +66,7 @@ namespace WebApp.Controllers
             try
             {
                 ValidacoesFuncionarios.ValidarCampos(funcionario);
-                _funcionario.Atualizar(funcionario);
+                _repositorioFuncionario.Atualizar(funcionario);
                 return Ok(funcionario.Id);
             }
             catch (Exception ex)
@@ -82,7 +82,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                Funcionario funcionario = _funcionario.ObterPorId(id);
+                Funcionario funcionario = _repositorioFuncionario.ObterPorId(id);
                 return Ok(funcionario);
             }
             catch (Exception ex)
@@ -94,18 +94,19 @@ namespace WebApp.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public  IActionResult Remover([FromRoute] int id)
+        public IActionResult Remover([FromRoute] int Id)
         {
             try
             {
-                var funcionario = _funcionario.ObterPorId(id);
-                _funcionario.Remover(funcionario.Id);                
+                if (_repositorioFuncionario.ObterPorId(Id) != null)
+                    _repositorioFuncionario.Remover(Id);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message + ", \n" + ex.InnerException);
+                return BadRequest(ex.Message);
             }
-            return Ok(id);
+            return Ok(Id);
         }
+       
     }
 }
