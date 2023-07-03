@@ -103,77 +103,84 @@ sap.ui.define(
           });
         },
 
-        _clicarEmSalvar: function () {
+        _aoClicarEmSalvar: function() {
           let funcionario = this.getView().getModel("funcionario").getData();
           let id = funcionario.id;
-
+        
           if (id) {
-            if (!this._funcionarioEhValido() && !this._exibirMensagensErro()) {
-              return;
-            }
-            this._editarFuncionario(id)
-              .then((res) => {
-                if (res.status !== 200) {
-                  return res.text();
-                }
-                return res.json();
-              })
-              .then((res) => {
-                if (typeof res === "string") {
-                  MessageBox.error(`${res}`, {
-                    emphasizedAction: MessageBox.Action.CLOSE,
-                  });
-                } else {
-                  MessageBox.success(
-                    `${funcionario.nome} atualizado com sucesso !`,
-                    {
-                      emphasizedAction: MessageBox.Action.OK,
-                      title: "Sucesso",
-                      actions: [MessageBox.Action.OK],
-                      onClose: (acao) => {
-                        if (acao === MessageBox.Action.OK) {
-                          this._limparFormulario();
-                          this._navegarParaDetalhes(res);
-                        }
-                      },
-                    }
-                  );
-                }
-              });
+            this._seEditarFuncionario(id);
           } else {
-            if (!this._funcionarioEhValido() && !this._exibirMensagensErro()) {
-              return;
-            }
-            this._cadastrarNovoFuncionario()
-              .then((res) => {
-                if (res.status !== 200) {
-                  return res.text();
-                }
-                return res.json();
-              })
-              .then((res) => {
-                if (typeof res === "string") {
-                  MessageBox.error(`Erro ao cadastrar Funcionário`, {
-                    emphasizedAction: MessageBox.Action.CLOSE,
-                  });
-                } else {
-                  MessageBox.success(
-                    `${funcionario.nome} cadastrado com sucesso !`,
-                    {
-                      emphasizedAction: MessageBox.Action.OK,
-                      title: "Sucesso",
-                      actions: [MessageBox.Action.OK],
-                      onClose: (acao) => {
-                        if (acao === MessageBox.Action.OK) {
-                          this._limparFormulario();
-                          this._navegarParaDetalhes(res);
-                        }
-                      },
-                    }
-                  );
-                }
-              });
+            this._seCadastrarNovoFunconario();
           }
+        },
+        
+        _seEditarFuncionario: function (id) {
+          if (!this._funcionarioEhValido()) {
+            this._exibirMensagensErro()
+            return;
+          }
+          this._editarFuncionario(id)
+            .then((res) => {
+              if (res.status !== 200) {
+                return res.text();
+              }
+              return res.json();
+            })
+            .then((res) => {
+              if (typeof res === "string") {
+                MessageBox.error(`${res}`, {
+                  emphasizedAction: MessageBox.Action.CLOSE,
+                });
+              } else {
+                MessageBox.success(`Funcionario atualizado com sucesso !`, {
+                  emphasizedAction: MessageBox.Action.OK,
+                  title: "Sucesso",
+                  actions: [MessageBox.Action.OK],
+                  onClose: (acao) => {
+                    if (acao === MessageBox.Action.OK) {
+                      this._limparFormulario();
+                      this._navegarParaDetalhes(res);
+                    }
+                  },
+                });
+              }
+            });
+        },
+
+        _seCadastrarNovoFunconario: function () {
+          if (!this._funcionarioEhValido()) {
+            this._exibirMensagensErro()
+            return;
+          }
+          this._cadastrarNovoFuncionario()
+            .then((res) => {
+              if (res.status !== 200) {
+                return res.text();
+              }
+              return res.json();
+            })
+            .then((res) => {
+              if (typeof res === "string") {
+                MessageBox.error(`Erro ao cadastrar Funcionário`, {
+                  emphasizedAction: MessageBox.Action.CLOSE,
+                });
+              } else {
+                MessageBox.success(
+                  `${funcionario.nome} cadastrado com sucesso !`,
+                  {
+                    emphasizedAction: MessageBox.Action.OK,
+                    title: "Sucesso",
+                    actions: [MessageBox.Action.OK],
+                    onClose: (acao) => {
+                      if (acao === MessageBox.Action.OK) {
+                        this._limparFormulario();
+                        this._navegarParaDetalhes(res);
+                      }
+                    },
+                  }
+                );
+              }
+            });
         },
 
         _clicarEmCancelar: function () {
@@ -182,7 +189,7 @@ sap.ui.define(
 
           let mensagem = "";
           if (acao === "edicao") {
-            mensagem = `Os dados do funcionario ${funcionario.nome} não foi atualizado, deseja cancelar a ação?`;
+            mensagem = `Os dados do funcionário ${funcionario.nome} não foram atualizados, deseja cancelar a ação?`; // Corrigido para "funcionário"
           } else if (acao === "cadastro") {
             mensagem =
               "O Funcionário não foi cadastrado, deseja cancelar a ação?";

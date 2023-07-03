@@ -35,7 +35,7 @@
             width="auto"
             text="{i18n>botaoSalvar}"
             type="Emphasized"
-            press="_clicarEmSalvar"
+            press="_aoClicarEmSalvar"
             ariaHasPopup="Dialog" />
           <Button
             icon="sap-icon://cancel"
