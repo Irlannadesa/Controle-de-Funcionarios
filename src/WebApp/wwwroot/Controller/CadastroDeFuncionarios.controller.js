@@ -103,20 +103,20 @@ sap.ui.define(
           });
         },
 
-        _aoClicarEmSalvar: function() {
+        _aoClicarEmSalvar: function () {
           let funcionario = this.getView().getModel("funcionario").getData();
           let id = funcionario.id;
-        
+
           if (id) {
             this._seEditarFuncionario(id);
           } else {
             this._seCadastrarNovoFunconario();
           }
         },
-        
+
         _seEditarFuncionario: function (id) {
           if (!this._funcionarioEhValido()) {
-            this._exibirMensagensErro()
+            this._exibirMensagensErro();
             return;
           }
           this._editarFuncionario(id)
@@ -149,7 +149,7 @@ sap.ui.define(
 
         _seCadastrarNovoFunconario: function () {
           if (!this._funcionarioEhValido()) {
-            this._exibirMensagensErro()
+            this._exibirMensagensErro();
             return;
           }
           this._cadastrarNovoFuncionario()
