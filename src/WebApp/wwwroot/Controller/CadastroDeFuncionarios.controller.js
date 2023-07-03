@@ -108,6 +108,9 @@ sap.ui.define(
           let id = funcionario.id;
 
           if (id) {
+            if (!this._funcionarioEhValido() && !this._exibirMensagensErro()) {
+              return;
+            }
             this._editarFuncionario(id)
               .then((res) => {
                 if (res.status !== 200) {
@@ -138,6 +141,9 @@ sap.ui.define(
                 }
               });
           } else {
+            if (!this._funcionarioEhValido() && !this._exibirMensagensErro()) {
+              return;
+            }
             this._cadastrarNovoFuncionario()
               .then((res) => {
                 if (res.status !== 200) {
@@ -199,7 +205,6 @@ sap.ui.define(
           rota.navTo("detalhesFuncionario", { id: id });
         },
 
-        
         _obterControle: function (id) {
           return this.getView().byId(id);
         },
@@ -218,6 +223,29 @@ sap.ui.define(
           telefone.setValue("");
           dataNascimento.setValue("");
           dataAdmissao.setValue("");
+        },
+
+        _alterarEstadoCampos: function (estado) {
+          let campoNome = this.byId("inputNome");
+          let campoEndereco = this.byId("inputEndereco");
+          let campoCpf = this.byId("inputCPF");
+          let campoTelefone = this.byId("inputTelefone");
+          let campoDataNascimento = this.byId("inputDataNascimento");
+          let campoDataAdmissao = this.byId("inputDataAdmissao");
+          let campos = [
+            campoNome,
+            campoEndereco,
+            campoCpf,
+            campoDataNascimento,
+            campoDataAdmissao,
+            campoTelefone,
+          ];
+
+          campos.forEach((campo) => {
+            campo.setValueState(estado);
+
+            if (estado === "None") campo.setValue("");
+          });
         },
 
         _exibirMensagensErro: function (
@@ -246,33 +274,6 @@ sap.ui.define(
           let campoDataAdmissao = this._obterControle("inputDataAdmissao");
           Validacoes.mensagensErro(campoDataAdmissao, errosDataAdmissao);
         },
-
-        _alterarEstadoCampos: function (estado) {
-          let campoNome = this.byId("inputNome");
-          let campoEndereco = this.byId("inputEndereco");
-          let campoCpf = this.byId("inputCPF");
-          let campoTelefone = this.byId("inputTelefone");
-          let campoDataNascimento = this.byId("inputDataNascimento");
-          let campoDataAdmissao = this.byId("inputDataAdmissao");
-          let campos = [
-            campoNome,
-            campoEndereco,
-            campoCpf,
-            campoDataNascimento,
-            campoDataAdmissao,
-            campoTelefone,
-          ];
-
-          campos.forEach((campo) => {
-            campo.setValueState(estado);
-
-            if (estado === "None") campo.setValue("");
-
-            if (estado === "Error" && campo !== campoDataNascimento)
-              campo.setValueStateText("Esse campo não pode ser vazio");
-          });
-        },
-
 
         _funcionarioEhValido() {
           let funcionario = this.getView().getModel("funcionario").getData();

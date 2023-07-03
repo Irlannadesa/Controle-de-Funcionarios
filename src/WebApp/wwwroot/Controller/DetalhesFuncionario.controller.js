@@ -7,9 +7,7 @@ sap.ui.define(
     "sap/m/MessageBox",
   ],
   function (Controller, JSONModel, History, MessageToast, MessageBox) {
-    "use strict";
-    const ROTA_LISTA = "listaFuncionario";
-
+    "use strict";  
     return Controller.extend(
       "controleDeFuncionarios.Controller.DetalhesFuncionario",
       {

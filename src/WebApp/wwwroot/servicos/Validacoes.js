@@ -2,7 +2,6 @@ sap.ui.define([], function () {
   "use strict";
 
   return {
-
     validarCampoNome: function (nomeFuncionario) {
       const formatoNomeFuncionario = /^[a-zA-ZÀ-ÖØ-öø-ÿ ]*$/;
       const erros = [];
@@ -22,7 +21,7 @@ sap.ui.define([], function () {
       return erros;
     },
 
-		validarCampoEndereco: function (enderecoFuncionario) {
+    validarCampoEndereco: function (enderecoFuncionario) {
       const erros = [];
       if (enderecoFuncionario.trim().length === 0) {
         erros.push("O campo endereço é obrigatório");
@@ -30,7 +29,7 @@ sap.ui.define([], function () {
       return erros;
     },
 
-		validarCampoDataNascimento: function (dataNascimentoFuncionario) {
+    validarCampoDataNascimento: function (dataNascimentoFuncionario) {
       const erros = [];
       const dataValidar = new Date(dataNascimentoFuncionario);
       const dataHoje = new Date();
@@ -49,7 +48,6 @@ sap.ui.define([], function () {
 
       return erros;
     },
-   
 
     validarCampoCpf: function (cpfFuncionario) {
       const maximoTamanhoCaracteresRepetidos = 11;
@@ -103,8 +101,6 @@ sap.ui.define([], function () {
       return erros;
     },
 
-  
-
     validarCampoTelefone: function (telefoneFuncionario) {
       const erros = [];
       const formato = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
@@ -128,8 +124,6 @@ sap.ui.define([], function () {
       return erros;
     },
 
-
-
     validarCampoDataAdmissao: function (dataAdmissao) {
       const erros = [];
       const dataAtual = new Date();
@@ -145,26 +139,18 @@ sap.ui.define([], function () {
       return erros;
     },
 
-		mensagensErro: function (item, erros) {
-			const quantidadeNulaDeErros = 0;
-			if (erros.length > quantidadeNulaDeErros) {
-				let estadosErro = '';
-				if (item && item.setValueState) {
-					item.setValueState("Error");
-					erros.forEach(erro => {
-						estadosErro = estadosErro + "\n" + erro;
-					});
-					item.setValueStateText(estadosErro);
-				}
-			} else {
-				if (item && item.setValueState) {
-					item.setValueState("Success");
-				}
-			}
-		}
-		
-	
-		
-			
+    mensagensErro: function (item, erros) {
+      const quantidadeNulaDeErros = 0;
+      if (erros.length > quantidadeNulaDeErros) {
+        let estadosErro = "";
+        if (item && item.setValueState) {
+          item.setValueState("Error");
+          erros.forEach((erro) => {
+            estadosErro = estadosErro + "\n" + erro;
+          });
+          item.setValueStateText(estadosErro);
+        }
+      }
+    },
   };
 });
